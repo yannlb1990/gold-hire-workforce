@@ -1,0 +1,130 @@
+import { Link, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Menu, X, Phone, ChevronDown } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+
+const navLinks = [
+  { name: "Home", href: "/" },
+  { name: "Services", href: "/services" },
+  { name: "Client Tools", href: "/client-tools" },
+  { name: "Join Our Team", href: "/careers" },
+  { name: "About", href: "/about" },
+  { name: "Blog", href: "/blog" },
+  { name: "Contact", href: "/contact" },
+];
+
+export function Navbar() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <header
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        isScrolled
+          ? "bg-navy/95 backdrop-blur-md shadow-elevated py-3"
+          : "bg-transparent py-5"
+      )}
+    >
+      <div className="container mx-auto px-4 lg:px-8">
+        <nav className="flex items-center justify-between">
+          {/* Logo */}
+          <Link to="/" className="flex items-center gap-3 group">
+            <div className="w-10 h-10 rounded-lg bg-gold flex items-center justify-center shadow-gold transition-transform duration-300 group-hover:scale-105">
+              <span className="text-navy font-heading font-bold text-xl">G</span>
+            </div>
+            <div className="hidden sm:block">
+              <span className="text-concrete font-heading font-bold text-lg leading-tight block">
+                The Gold Hire
+              </span>
+              <span className="text-gold text-xs font-medium tracking-wider uppercase">
+                Company
+              </span>
+            </div>
+          </Link>
+
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                to={link.href}
+                className={cn(
+                  "nav-link text-sm",
+                  location.pathname === link.href && "text-gold after:w-full"
+                )}
+              >
+                {link.name}
+              </Link>
+            ))}
+          </div>
+
+          {/* CTA Buttons */}
+          <div className="hidden lg:flex items-center gap-4">
+            <a
+              href="tel:0400000000"
+              className="flex items-center gap-2 text-concrete/80 hover:text-gold transition-colors text-sm"
+            >
+              <Phone size={16} />
+              <span className="font-medium">04XX XXX XXX</span>
+            </a>
+            <Button variant="gold" size="lg" asChild>
+              <Link to="/contact">Request Labour</Link>
+            </Button>
+          </div>
+
+          {/* Mobile Menu Toggle */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="lg:hidden text-concrete hover:text-gold transition-colors p-2"
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </nav>
+
+        {/* Mobile Menu */}
+        <div
+          className={cn(
+            "lg:hidden overflow-hidden transition-all duration-300",
+            isMobileMenuOpen ? "max-h-[500px] opacity-100 mt-4" : "max-h-0 opacity-0"
+          )}
+        >
+          <div className="bg-navy-light/50 backdrop-blur-lg rounded-xl p-4 border border-steel-blue/20">
+            <div className="flex flex-col gap-2">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  to={link.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={cn(
+                    "px-4 py-3 rounded-lg text-concrete/80 hover:text-concrete hover:bg-steel-blue/20 transition-all",
+                    location.pathname === link.href && "text-gold bg-steel-blue/20"
+                  )}
+                >
+                  {link.name}
+                </Link>
+              ))}
+              <hr className="border-steel-blue/20 my-2" />
+              <Button variant="gold" size="lg" className="w-full" asChild>
+                <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
+                  Request Labour
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+  );
+}
