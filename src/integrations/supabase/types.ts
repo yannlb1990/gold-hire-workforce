@@ -109,6 +109,7 @@ export type Database = {
           name: string
           notes: string | null
           phone: string
+          resume_url: string | null
           status: Database["public"]["Enums"]["worker_lead_status"] | null
           tickets: string[] | null
           trade: string | null
@@ -129,6 +130,7 @@ export type Database = {
           name: string
           notes?: string | null
           phone: string
+          resume_url?: string | null
           status?: Database["public"]["Enums"]["worker_lead_status"] | null
           tickets?: string[] | null
           trade?: string | null
@@ -149,6 +151,7 @@ export type Database = {
           name?: string
           notes?: string | null
           phone?: string
+          resume_url?: string | null
           status?: Database["public"]["Enums"]["worker_lead_status"] | null
           tickets?: string[] | null
           trade?: string | null
