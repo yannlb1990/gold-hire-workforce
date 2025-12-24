@@ -1,10 +1,14 @@
 import { Helmet } from "react-helmet-async";
 import { Layout } from "@/components/layout/Layout";
 import { HeroSection } from "@/components/home/HeroSection";
-import { ServicesSection } from "@/components/home/ServicesSection";
+import { TrustBar } from "@/components/home/TrustBar";
+import { HowItWorks } from "@/components/home/HowItWorks";
+import { TradesGrid } from "@/components/home/TradesGrid";
+import { LocationsGrid } from "@/components/home/LocationsGrid";
 import { WhyUsSection } from "@/components/home/WhyUsSection";
-import { ServiceAreasSection } from "@/components/home/ServiceAreasSection";
 import { CandidateCTASection } from "@/components/home/CandidateCTASection";
+import { FinalCTA } from "@/components/home/FinalCTA";
+import { PHONE_NUMBER } from "@/lib/constants";
 
 const Index = () => {
   return (
@@ -13,11 +17,11 @@ const Index = () => {
         <title>Labour Hire Gold Coast, Brisbane & Byron Bay | The Gold Hire Company</title>
         <meta
           name="description"
-          content="Skilled labour hire, carpenters, painters, commercial cleaning and landscaping support across Gold Coast, Brisbane, Logan, Ipswich, Tweed Heads and Byron Bay. Systems-driven workforce solutions with clear communication."
+          content="Skilled labour hire for construction across Gold Coast, Brisbane, Logan, Ipswich, Tweed Heads and Byron Bay. Carpenters, labourers, concreters, demolition crews. Fast response, fully insured."
         />
         <meta
           name="keywords"
-          content="labour hire gold coast, labour hire brisbane, labour hire byron bay, labour hire tweed heads, skilled labour hire seq, hiring company brisbane"
+          content="labour hire gold coast, labour hire brisbane, labour hire byron bay, construction workers, carpenters hire, labourers hire, demolition crews, concreters gold coast"
         />
         <link rel="canonical" href="https://thegoldhirecompany.com.au" />
         <script type="application/ld+json">
@@ -25,9 +29,9 @@ const Index = () => {
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
             "name": "The Gold Hire Company",
-            "description": "Labour hire and workforce solutions across South-East Queensland",
+            "description": "Labour hire and workforce solutions for construction across South-East Queensland and Northern NSW",
             "url": "https://thegoldhirecompany.com.au",
-            "telephone": "04XX XXX XXX",
+            "telephone": PHONE_NUMBER,
             "email": "enquiries@thegoldhirecompany.com.au",
             "areaServed": [
               { "@type": "City", "name": "Gold Coast" },
@@ -39,20 +43,25 @@ const Index = () => {
             ],
             "serviceType": [
               "Labour Hire",
-              "Carpentry Services",
-              "Painting Services",
-              "Commercial Cleaning",
-              "Landscaping Services"
+              "Carpenter Hire",
+              "Labourer Hire",
+              "Demolition Crews",
+              "Concreter Hire",
+              "Plasterer Hire",
+              "Steel Fixer Hire"
             ]
           })}
         </script>
       </Helmet>
       <Layout>
         <HeroSection />
-        <ServicesSection />
+        <TrustBar />
+        <HowItWorks />
+        <TradesGrid />
+        <LocationsGrid />
         <WhyUsSection />
-        <ServiceAreasSection />
         <CandidateCTASection />
+        <FinalCTA />
       </Layout>
     </>
   );
