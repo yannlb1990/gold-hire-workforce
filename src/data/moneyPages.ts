@@ -52,40 +52,35 @@ export const MONEY_PAGE_LOCATIONS = {
 } as const;
 
 export const MONEY_PAGE_TRADES = {
+  "labourers": {
+    name: "Skilled Labourers",
+    slug: "labourers",
+    singularName: "Labourer",
+  },
+  "demolition": {
+    name: "Demolition Crews",
+    slug: "demolition",
+    singularName: "Demolition Worker",
+  },
   "carpenters": {
     name: "Carpenters",
     slug: "carpenters",
     singularName: "Carpenter",
   },
-  "labourers": {
-    name: "Labourers",
-    slug: "labourers",
-    singularName: "Labourer",
+  "building-cleaners": {
+    name: "Building Cleaners",
+    slug: "building-cleaners",
+    singularName: "Building Cleaner",
   },
-  "demolition": {
-    name: "Demolition Workers",
-    slug: "demolition",
-    singularName: "Demolition Worker",
+  "landscaping": {
+    name: "Landscaping Workers",
+    slug: "landscaping",
+    singularName: "Landscaping Worker",
   },
-  "fitout-crews": {
-    name: "Fitout Crews",
-    slug: "fitout-crews",
-    singularName: "Fitout Worker",
-  },
-  "plasterers": {
-    name: "Plasterers",
-    slug: "plasterers",
-    singularName: "Plasterer",
-  },
-  "concreters": {
-    name: "Concreters",
-    slug: "concreters",
-    singularName: "Concreter",
-  },
-  "steel-fixers": {
-    name: "Steel Fixers",
-    slug: "steel-fixers",
-    singularName: "Steel Fixer",
+  "maintenance": {
+    name: "Maintenance Ground Workers",
+    slug: "maintenance",
+    singularName: "Maintenance Worker",
   },
 } as const;
 
