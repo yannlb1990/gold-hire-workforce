@@ -2,46 +2,70 @@ import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Calendar, Clock, User } from "lucide-react";
+import { ArrowRight, Calendar, Clock } from "lucide-react";
 
 const articles = [
   {
-    slug: "labour-hire-vs-subcontractors",
-    title: "Labour Hire vs Subcontractors: What's Right for Your Business in 2025",
-    excerpt: "Understanding the key differences between labour hire and subcontracting arrangements, and when to use each for your construction or commercial projects.",
-    category: "Industry Insights",
+    slug: "labour-hire-rates-gold-coast",
+    title: "Labour Hire Rates Gold Coast 2025: Complete Pricing Guide",
+    excerpt: "Comprehensive guide to labour hire rates across Gold Coast. Understand current pricing for labourers, carpenters, demolition crews and more.",
+    category: "Pricing",
     date: "December 2024",
-    readTime: "5 min read",
+    readTime: "8 min read",
   },
   {
-    slug: "choosing-labour-hire-company-brisbane",
-    title: "How to Choose a Labour Hire Company in Brisbane & Gold Coast",
-    excerpt: "What to look for when selecting a labour hire partner: compliance, communication, replacements and management accountability.",
-    category: "Guides",
+    slug: "hiring-carpenters-brisbane",
+    title: "Hiring Carpenters in Brisbane: What Builders Need to Know",
+    excerpt: "Expert tips for hiring quality carpenters in Brisbane. Learn about rates, qualifications, and how to find reliable trade professionals.",
+    category: "Hiring Guide",
+    date: "December 2024",
+    readTime: "10 min read",
+  },
+  {
+    slug: "white-card-checklist-qld-nsw",
+    title: "White Card & Construction Tickets Checklist: QLD & NSW",
+    excerpt: "Complete checklist of required tickets and certifications for construction workers in Queensland and New South Wales.",
+    category: "Compliance",
     date: "December 2024",
     readTime: "7 min read",
   },
   {
-    slug: "commercial-cleaning-labour-property-managers",
-    title: "Commercial Cleaning Labour for Property Managers",
-    excerpt: "How to source reliable cleaning crews for post-construction cleans, commercial offices and body corporate common areas.",
-    category: "Services",
-    date: "November 2024",
-    readTime: "4 min read",
+    slug: "shutdown-crew-mobilisation",
+    title: "Shutdown Crew Mobilisation: How to Plan Large-Scale Labour",
+    excerpt: "Step-by-step guide to mobilising large crews for shutdowns, turnarounds and major construction projects.",
+    category: "Operations",
+    date: "December 2024",
+    readTime: "12 min read",
   },
   {
-    slug: "why-communication-fails-labour-hire",
-    title: "Why Communication Fails in Labour Hire (And How to Fix It)",
-    excerpt: "The common breakdown points in labour hire communication and what management-led companies do differently.",
-    category: "Industry Insights",
+    slug: "labour-hire-qld-guide",
+    title: "Labour Hire Queensland: The Complete Business Guide",
+    excerpt: "Everything businesses need to know about labour hire in Queensland, from licensing to compliance requirements.",
+    category: "Guides",
+    date: "November 2024",
+    readTime: "15 min read",
+  },
+  {
+    slug: "avoiding-no-shows",
+    title: "Avoiding No-Shows: How to Ensure Reliable Labour Hire",
+    excerpt: "Practical strategies to minimise no-shows and ensure your labour hire workers show up on time, every time.",
+    category: "Best Practices",
     date: "November 2024",
     readTime: "6 min read",
   },
   {
-    slug: "labour-hire-compliance-qld-nsw",
-    title: "Labour Hire Compliance: QLD vs NSW Explained",
-    excerpt: "A practical guide to labour hire licensing requirements in Queensland and New South Wales for businesses operating across state lines.",
-    category: "Compliance",
+    slug: "residential-vs-commercial",
+    title: "Residential vs Commercial Construction: Labour Requirements",
+    excerpt: "Understanding the different labour requirements for residential and commercial construction projects.",
+    category: "Industry Insights",
+    date: "November 2024",
+    readTime: "9 min read",
+  },
+  {
+    slug: "whs-onboarding-checklist",
+    title: "WHS Onboarding Checklist for Labour Hire Workers",
+    excerpt: "Complete workplace health and safety onboarding checklist for integrating labour hire workers into your site.",
+    category: "Safety",
     date: "October 2024",
     readTime: "8 min read",
   },
@@ -60,7 +84,11 @@ const Blog = () => {
       <Layout>
         {/* Hero */}
         <section className="pt-32 pb-16 section-dark relative overflow-hidden">
+          {/* Floating organic shapes */}
+          <div className="absolute top-20 right-10 w-64 h-64 rounded-blob bg-gold/5 blur-3xl" />
+          <div className="absolute bottom-10 left-10 w-48 h-48 rounded-full bg-gold/10 blur-2xl" />
           <div className="absolute inset-0 grid-pattern opacity-20" />
+          
           <div className="container mx-auto px-4 lg:px-8 relative">
             <div className="max-w-3xl">
               <div className="inline-flex items-center gap-2 badge-gold mb-6">
@@ -79,12 +107,19 @@ const Blog = () => {
         </section>
 
         {/* Articles Grid */}
-        <section className="py-24">
-          <div className="container mx-auto px-4 lg:px-8">
+        <section className="py-24 relative overflow-hidden">
+          {/* Decorative curved divider */}
+          <div className="absolute top-0 left-0 right-0 h-24 bg-oil -translate-y-1" style={{ borderRadius: '0 0 50% 50% / 0 0 100% 100%' }} />
+          
+          <div className="container mx-auto px-4 lg:px-8 pt-8">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {articles.map((article) => (
-                <article key={article.slug} className="card-elevated group cursor-pointer">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold/10 text-gold-dark text-xs font-medium mb-4">
+                <Link 
+                  to={`/blog/${article.slug}`} 
+                  key={article.slug} 
+                  className="card-feature group block"
+                >
+                  <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-gold-dark text-xs font-medium mb-4">
                     {article.category}
                   </div>
                   <h2 className="font-heading font-bold text-navy text-xl mb-3 group-hover:text-gold transition-colors line-clamp-2">
@@ -103,15 +138,19 @@ const Blog = () => {
                       {article.readTime}
                     </span>
                   </div>
-                </article>
+                  <div className="mt-4 flex items-center gap-2 text-gold font-medium text-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                    Read Article <ArrowRight size={16} />
+                  </div>
+                </Link>
               ))}
             </div>
           </div>
         </section>
 
         {/* Newsletter CTA */}
-        <section className="py-16 section-dark">
-          <div className="container mx-auto px-4 lg:px-8 text-center">
+        <section className="py-16 section-dark relative overflow-hidden">
+          <div className="absolute top-10 left-1/4 w-32 h-32 rounded-full bg-gold/10 blur-xl" />
+          <div className="container mx-auto px-4 lg:px-8 text-center relative">
             <h2 className="heading-md text-concrete mb-4">
               Need Labour Hire Expertise?
             </h2>

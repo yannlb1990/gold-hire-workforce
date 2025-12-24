@@ -19,6 +19,7 @@ export type Database = {
           address: string | null
           budget_range: string | null
           created_at: string
+          documents_url: string | null
           duration: string | null
           email: string
           id: string
@@ -46,6 +47,7 @@ export type Database = {
           address?: string | null
           budget_range?: string | null
           created_at?: string
+          documents_url?: string | null
           duration?: string | null
           email: string
           id?: string
@@ -73,6 +75,7 @@ export type Database = {
           address?: string | null
           budget_range?: string | null
           created_at?: string
+          documents_url?: string | null
           duration?: string | null
           email?: string
           id?: string
