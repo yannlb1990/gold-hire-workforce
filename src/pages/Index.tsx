@@ -17,11 +17,11 @@ const Index = () => {
         <title>Labour Hire Gold Coast, Brisbane & Byron Bay | The Gold Hire Company</title>
         <meta
           name="description"
-          content="Skilled labour hire for construction across Gold Coast, Brisbane, Logan, Ipswich, Tweed Heads and Byron Bay. Carpenters, labourers, concreters, demolition crews. Fast response, fully insured."
+          content="Skilled labour hire for construction across Gold Coast, Brisbane, Logan, Ipswich, Tweed Heads and Byron Bay. Labourers, demolition crews, carpenters, building cleaners, landscaping and maintenance workers. Fast response, fully insured."
         />
         <meta
           name="keywords"
-          content="labour hire gold coast, labour hire brisbane, labour hire byron bay, construction workers, carpenters hire, labourers hire, demolition crews, concreters gold coast"
+          content="labour hire gold coast, labour hire brisbane, labour hire byron bay, construction workers, carpenters hire, labourers hire, demolition crews, building cleaners gold coast, landscaping workers brisbane"
         />
         <link rel="canonical" href="https://thegoldhirecompany.com.au" />
         <script type="application/ld+json">
@@ -43,12 +43,12 @@ const Index = () => {
             ],
             "serviceType": [
               "Labour Hire",
-              "Carpenter Hire",
-              "Labourer Hire",
+              "Skilled Labourers",
               "Demolition Crews",
-              "Concreter Hire",
-              "Plasterer Hire",
-              "Steel Fixer Hire"
+              "Carpenter Hire",
+              "Building Cleaners",
+              "Landscaping Workers",
+              "Maintenance Ground Workers"
             ]
           })}
         </script>
