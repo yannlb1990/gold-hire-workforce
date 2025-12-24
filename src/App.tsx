@@ -20,14 +20,13 @@ import ByronBay from "./pages/locations/ByronBay";
 import Logan from "./pages/locations/Logan";
 import Ipswich from "./pages/locations/Ipswich";
 
-// Trade Pages
-import Carpenters from "./pages/trades/Carpenters";
+// Trade Pages - Updated 6 Services
 import Labourers from "./pages/trades/Labourers";
 import Demolition from "./pages/trades/Demolition";
-import FitoutCrews from "./pages/trades/FitoutCrews";
-import Plasterers from "./pages/trades/Plasterers";
-import Concreters from "./pages/trades/Concreters";
-import SteelFixers from "./pages/trades/SteelFixers";
+import Carpenters from "./pages/trades/Carpenters";
+import BuildingCleaners from "./pages/trades/BuildingCleaners";
+import Landscaping from "./pages/trades/Landscaping";
+import Maintenance from "./pages/trades/Maintenance";
 
 // Conversion Pages
 import RequestLabour from "./pages/RequestLabour";
@@ -40,28 +39,53 @@ import Compliance from "./pages/Compliance";
 import Insurances from "./pages/Insurances";
 import LabourHireLicensing from "./pages/LabourHireLicensing";
 
+// Blog Articles
+import LabourHireRatesGoldCoast from "./pages/blog/LabourHireRatesGoldCoast";
+import HiringCarpentersBrisbane from "./pages/blog/HiringCarpentersBrisbane";
+import WhiteCardChecklist from "./pages/blog/WhiteCardChecklist";
+import ShutdownMobilisation from "./pages/blog/ShutdownMobilisation";
+import LabourHireQldGuide from "./pages/blog/LabourHireQldGuide";
+import AvoidingNoShows from "./pages/blog/AvoidingNoShows";
+import ResidentialVsCommercial from "./pages/blog/ResidentialVsCommercial";
+import WhsOnboarding from "./pages/blog/WhsOnboarding";
+
 // Money Pages
-import GoldCoastCarpenters from "./pages/money/GoldCoastCarpenters";
 import GoldCoastLabourers from "./pages/money/GoldCoastLabourers";
 import GoldCoastDemolition from "./pages/money/GoldCoastDemolition";
-import GoldCoastFitoutCrews from "./pages/money/GoldCoastFitoutCrews";
-import GoldCoastPlasterers from "./pages/money/GoldCoastPlasterers";
-import GoldCoastConcreters from "./pages/money/GoldCoastConcreters";
-import GoldCoastSteelFixers from "./pages/money/GoldCoastSteelFixers";
-import BrisbaneCarpenters from "./pages/money/BrisbaneCarpenters";
+import GoldCoastCarpenters from "./pages/money/GoldCoastCarpenters";
+import GoldCoastBuildingCleaners from "./pages/money/GoldCoastBuildingCleaners";
+import GoldCoastLandscaping from "./pages/money/GoldCoastLandscaping";
+import GoldCoastMaintenance from "./pages/money/GoldCoastMaintenance";
 import BrisbaneLabourers from "./pages/money/BrisbaneLabourers";
 import BrisbaneDemolition from "./pages/money/BrisbaneDemolition";
-import BrisbaneFitoutCrews from "./pages/money/BrisbaneFitoutCrews";
-import BrisbanePlasterers from "./pages/money/BrisbanePlasterers";
-import BrisbaneConcreters from "./pages/money/BrisbaneConcreters";
-import BrisbaneSteelFixers from "./pages/money/BrisbaneSteelFixers";
-import ByronBayCarpenters from "./pages/money/ByronBayCarpenters";
+import BrisbaneCarpenters from "./pages/money/BrisbaneCarpenters";
+import BrisbaneBuildingCleaners from "./pages/money/BrisbaneBuildingCleaners";
+import BrisbaneLandscaping from "./pages/money/BrisbaneLandscaping";
+import BrisbaneMaintenance from "./pages/money/BrisbaneMaintenance";
 import ByronBayLabourers from "./pages/money/ByronBayLabourers";
 import ByronBayDemolition from "./pages/money/ByronBayDemolition";
-import ByronBayFitoutCrews from "./pages/money/ByronBayFitoutCrews";
-import ByronBayPlasterers from "./pages/money/ByronBayPlasterers";
-import ByronBayConcreters from "./pages/money/ByronBayConcreters";
-import ByronBaySteelFixers from "./pages/money/ByronBaySteelFixers";
+import ByronBayCarpenters from "./pages/money/ByronBayCarpenters";
+import ByronBayBuildingCleaners from "./pages/money/ByronBayBuildingCleaners";
+import ByronBayLandscaping from "./pages/money/ByronBayLandscaping";
+import ByronBayMaintenance from "./pages/money/ByronBayMaintenance";
+import LoganLabourers from "./pages/money/LoganLabourers";
+import LoganDemolition from "./pages/money/LoganDemolition";
+import LoganCarpenters from "./pages/money/LoganCarpenters";
+import LoganBuildingCleaners from "./pages/money/LoganBuildingCleaners";
+import LoganLandscaping from "./pages/money/LoganLandscaping";
+import LoganMaintenance from "./pages/money/LoganMaintenance";
+import TweedHeadsLabourers from "./pages/money/TweedHeadsLabourers";
+import TweedHeadsDemolition from "./pages/money/TweedHeadsDemolition";
+import TweedHeadsCarpenters from "./pages/money/TweedHeadsCarpenters";
+import TweedHeadsBuildingCleaners from "./pages/money/TweedHeadsBuildingCleaners";
+import TweedHeadsLandscaping from "./pages/money/TweedHeadsLandscaping";
+import TweedHeadsMaintenance from "./pages/money/TweedHeadsMaintenance";
+import IpswichLabourers from "./pages/money/IpswichLabourers";
+import IpswichDemolition from "./pages/money/IpswichDemolition";
+import IpswichCarpenters from "./pages/money/IpswichCarpenters";
+import IpswichBuildingCleaners from "./pages/money/IpswichBuildingCleaners";
+import IpswichLandscaping from "./pages/money/IpswichLandscaping";
+import IpswichMaintenance from "./pages/money/IpswichMaintenance";
 
 const queryClient = new QueryClient();
 
@@ -82,6 +106,16 @@ const App = () => (
             <Route path="/blog" element={<Blog />} />
             <Route path="/contact" element={<Contact />} />
             
+            {/* Blog Articles */}
+            <Route path="/blog/labour-hire-rates-gold-coast" element={<LabourHireRatesGoldCoast />} />
+            <Route path="/blog/hiring-carpenters-brisbane" element={<HiringCarpentersBrisbane />} />
+            <Route path="/blog/white-card-checklist-qld-nsw" element={<WhiteCardChecklist />} />
+            <Route path="/blog/shutdown-crew-mobilisation" element={<ShutdownMobilisation />} />
+            <Route path="/blog/labour-hire-qld-guide" element={<LabourHireQldGuide />} />
+            <Route path="/blog/avoiding-no-shows" element={<AvoidingNoShows />} />
+            <Route path="/blog/residential-vs-commercial" element={<ResidentialVsCommercial />} />
+            <Route path="/blog/whs-onboarding-checklist" element={<WhsOnboarding />} />
+            
             {/* Conversion Pages */}
             <Route path="/request-labour" element={<RequestLabour />} />
             <Route path="/find-work" element={<FindWork />} />
@@ -93,14 +127,13 @@ const App = () => (
             <Route path="/insurances" element={<Insurances />} />
             <Route path="/labour-hire-licensing" element={<LabourHireLicensing />} />
             
-            {/* Trade Pages */}
-            <Route path="/trades/carpenters" element={<Carpenters />} />
+            {/* Trade Pages - Updated 6 Services */}
             <Route path="/trades/labourers" element={<Labourers />} />
             <Route path="/trades/demolition" element={<Demolition />} />
-            <Route path="/trades/fitout-crews" element={<FitoutCrews />} />
-            <Route path="/trades/plasterers" element={<Plasterers />} />
-            <Route path="/trades/concreters" element={<Concreters />} />
-            <Route path="/trades/steel-fixers" element={<SteelFixers />} />
+            <Route path="/trades/carpenters" element={<Carpenters />} />
+            <Route path="/trades/building-cleaners" element={<BuildingCleaners />} />
+            <Route path="/trades/landscaping" element={<Landscaping />} />
+            <Route path="/trades/maintenance" element={<Maintenance />} />
             
             {/* Location Pages */}
             <Route path="/locations" element={<Locations />} />
@@ -115,31 +148,52 @@ const App = () => (
             <Route path="/labour-hire-byron-bay" element={<ByronBay />} />
             
             {/* Money Pages - Gold Coast */}
-            <Route path="/gold-coast/carpenters" element={<GoldCoastCarpenters />} />
             <Route path="/gold-coast/labourers" element={<GoldCoastLabourers />} />
             <Route path="/gold-coast/demolition" element={<GoldCoastDemolition />} />
-            <Route path="/gold-coast/fitout-crews" element={<GoldCoastFitoutCrews />} />
-            <Route path="/gold-coast/plasterers" element={<GoldCoastPlasterers />} />
-            <Route path="/gold-coast/concreters" element={<GoldCoastConcreters />} />
-            <Route path="/gold-coast/steel-fixers" element={<GoldCoastSteelFixers />} />
+            <Route path="/gold-coast/carpenters" element={<GoldCoastCarpenters />} />
+            <Route path="/gold-coast/building-cleaners" element={<GoldCoastBuildingCleaners />} />
+            <Route path="/gold-coast/landscaping" element={<GoldCoastLandscaping />} />
+            <Route path="/gold-coast/maintenance" element={<GoldCoastMaintenance />} />
             
             {/* Money Pages - Brisbane */}
-            <Route path="/brisbane/carpenters" element={<BrisbaneCarpenters />} />
             <Route path="/brisbane/labourers" element={<BrisbaneLabourers />} />
             <Route path="/brisbane/demolition" element={<BrisbaneDemolition />} />
-            <Route path="/brisbane/fitout-crews" element={<BrisbaneFitoutCrews />} />
-            <Route path="/brisbane/plasterers" element={<BrisbanePlasterers />} />
-            <Route path="/brisbane/concreters" element={<BrisbaneConcreters />} />
-            <Route path="/brisbane/steel-fixers" element={<BrisbaneSteelFixers />} />
+            <Route path="/brisbane/carpenters" element={<BrisbaneCarpenters />} />
+            <Route path="/brisbane/building-cleaners" element={<BrisbaneBuildingCleaners />} />
+            <Route path="/brisbane/landscaping" element={<BrisbaneLandscaping />} />
+            <Route path="/brisbane/maintenance" element={<BrisbaneMaintenance />} />
             
             {/* Money Pages - Byron Bay */}
-            <Route path="/byron-bay/carpenters" element={<ByronBayCarpenters />} />
             <Route path="/byron-bay/labourers" element={<ByronBayLabourers />} />
             <Route path="/byron-bay/demolition" element={<ByronBayDemolition />} />
-            <Route path="/byron-bay/fitout-crews" element={<ByronBayFitoutCrews />} />
-            <Route path="/byron-bay/plasterers" element={<ByronBayPlasterers />} />
-            <Route path="/byron-bay/concreters" element={<ByronBayConcreters />} />
-            <Route path="/byron-bay/steel-fixers" element={<ByronBaySteelFixers />} />
+            <Route path="/byron-bay/carpenters" element={<ByronBayCarpenters />} />
+            <Route path="/byron-bay/building-cleaners" element={<ByronBayBuildingCleaners />} />
+            <Route path="/byron-bay/landscaping" element={<ByronBayLandscaping />} />
+            <Route path="/byron-bay/maintenance" element={<ByronBayMaintenance />} />
+            
+            {/* Money Pages - Logan */}
+            <Route path="/logan/labourers" element={<LoganLabourers />} />
+            <Route path="/logan/demolition" element={<LoganDemolition />} />
+            <Route path="/logan/carpenters" element={<LoganCarpenters />} />
+            <Route path="/logan/building-cleaners" element={<LoganBuildingCleaners />} />
+            <Route path="/logan/landscaping" element={<LoganLandscaping />} />
+            <Route path="/logan/maintenance" element={<LoganMaintenance />} />
+            
+            {/* Money Pages - Tweed Heads */}
+            <Route path="/tweed-heads/labourers" element={<TweedHeadsLabourers />} />
+            <Route path="/tweed-heads/demolition" element={<TweedHeadsDemolition />} />
+            <Route path="/tweed-heads/carpenters" element={<TweedHeadsCarpenters />} />
+            <Route path="/tweed-heads/building-cleaners" element={<TweedHeadsBuildingCleaners />} />
+            <Route path="/tweed-heads/landscaping" element={<TweedHeadsLandscaping />} />
+            <Route path="/tweed-heads/maintenance" element={<TweedHeadsMaintenance />} />
+            
+            {/* Money Pages - Ipswich */}
+            <Route path="/ipswich/labourers" element={<IpswichLabourers />} />
+            <Route path="/ipswich/demolition" element={<IpswichDemolition />} />
+            <Route path="/ipswich/carpenters" element={<IpswichCarpenters />} />
+            <Route path="/ipswich/building-cleaners" element={<IpswichBuildingCleaners />} />
+            <Route path="/ipswich/landscaping" element={<IpswichLandscaping />} />
+            <Route path="/ipswich/maintenance" element={<IpswichMaintenance />} />
             
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
