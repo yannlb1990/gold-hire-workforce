@@ -14,7 +14,23 @@ export default {
     },
     extend: {
       colors: {
-        // Brand Colors
+        // New Warm Brown Palette
+        oil: {
+          DEFAULT: "hsl(var(--oil))",
+        },
+        "judge-gray": {
+          DEFAULT: "hsl(var(--judge-gray))",
+        },
+        "roman-coffee": {
+          DEFAULT: "hsl(var(--roman-coffee))",
+        },
+        "pale-oyster": {
+          DEFAULT: "hsl(var(--pale-oyster))",
+        },
+        cream: {
+          DEFAULT: "hsl(var(--cream))",
+        },
+        // Legacy Brand Colors (mapped to new palette)
         navy: {
           DEFAULT: "hsl(var(--navy))",
           light: "hsl(var(--navy-light))",
@@ -89,6 +105,8 @@ export default {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        "3xl": "1.5rem",
+        "4xl": "2rem",
       },
       boxShadow: {
         'soft': 'var(--shadow-sm)',
@@ -143,6 +161,7 @@ export default {
         'gradient-gold': 'var(--gradient-gold)',
         'gradient-card': 'var(--gradient-card)',
         'gradient-dark-card': 'var(--gradient-dark-card)',
+        'gradient-warm': 'var(--gradient-warm)',
       },
     },
   },

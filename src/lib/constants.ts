@@ -14,14 +14,14 @@ export const LOCATIONS = [
   { id: "tweed-heads", name: "Tweed Heads", slug: "tweed-heads", state: "NSW" },
 ] as const;
 
+// Updated to match correct 6 services
 export const TRADES = [
+  { id: "labourers", name: "Skilled Labourers", slug: "labourers" },
+  { id: "demolition", name: "Demolition Crews", slug: "demolition" },
   { id: "carpenters", name: "Carpenters", slug: "carpenters" },
-  { id: "labourers", name: "Labourers", slug: "labourers" },
-  { id: "demolition", name: "Demolition", slug: "demolition" },
-  { id: "fitout-crews", name: "Fitout Crews", slug: "fitout-crews" },
-  { id: "plasterers", name: "Plasterers", slug: "plasterers" },
-  { id: "concreters", name: "Concreters", slug: "concreters" },
-  { id: "steel-fixers", name: "Steel Fixers", slug: "steel-fixers" },
+  { id: "building-cleaners", name: "Building Cleaners", slug: "building-cleaners" },
+  { id: "landscaping", name: "Landscaping Workers", slug: "landscaping" },
+  { id: "maintenance", name: "Maintenance Ground Workers", slug: "maintenance" },
 ] as const;
 
 export const DURATION_OPTIONS = [

@@ -1,60 +1,8 @@
 export const TRADE_DATA = {
-  carpenters: {
-    name: "Carpenters",
-    slug: "carpenters",
-    description: "Professional carpenter labour hire services for construction, fitout and maintenance projects across Gold Coast, Brisbane and Byron Bay.",
-    heroTitle: "Skilled Carpenters for Every Project",
-    heroSubtitle: "From residential builds to commercial fitouts, our carpenters deliver quality workmanship with attention to detail. Available for short-term or ongoing placements.",
-    roles: [
-      "Formwork carpentry",
-      "Residential framing",
-      "Commercial fitout",
-      "Timber flooring installation",
-      "Door and window installation",
-      "Cabinetry and joinery",
-      "Roof framing and trusses",
-      "Cladding installation",
-      "Stair construction",
-    ],
-    requirements: [
-      "White Card (Construction Induction)",
-      "Trade qualification or equivalent experience",
-      "Working at Heights certification",
-      "Own hand tools",
-      "PPE compliant",
-      "Valid driver's licence (preferred)",
-    ],
-    industries: [
-      "Residential builders",
-      "Commercial construction",
-      "Fitout contractors",
-      "Maintenance companies",
-      "Renovation specialists",
-      "Shop fitters",
-    ],
-    faqs: [
-      {
-        question: "What types of carpentry work can your workers handle?",
-        answer: "Our carpenters are skilled in formwork, residential and commercial framing, fitout work, flooring, doors, windows, cabinetry, roofing, cladding and general construction carpentry."
-      },
-      {
-        question: "Do your carpenters bring their own tools?",
-        answer: "Yes, all our carpenters come equipped with their own hand tools. Power tools and specialised equipment are typically provided by the host employer or can be arranged."
-      },
-      {
-        question: "How quickly can you supply carpenters?",
-        answer: "We can typically have carpenters on-site within 24-48 hours for urgent requirements. For planned projects, we recommend 3-5 days notice to ensure the best match."
-      },
-      {
-        question: "Are your carpenters qualified?",
-        answer: "Our carpenters range from experienced tradespersons with formal qualifications to skilled tradespeople with extensive on-the-job experience. We match the right skill level to your project requirements."
-      },
-    ],
-  },
   labourers: {
-    name: "Labourers",
+    name: "Skilled Labourers",
     slug: "labourers",
-    description: "Reliable construction labourers for hire across Gold Coast, Brisbane and Byron Bay. Site-ready workers for all project types.",
+    description: "Reliable construction labourers for hire across Gold Coast, Brisbane, Byron Bay, Tweed Heads and Logan. Site-ready workers for all project types.",
     heroTitle: "Reliable Labour When You Need It",
     heroSubtitle: "Our general labourers are the backbone of construction sites. Hardworking, reliable and ready to support your trades with whatever needs doing.",
     roles: [
@@ -104,9 +52,9 @@ export const TRADE_DATA = {
     ],
   },
   demolition: {
-    name: "Demolition",
+    name: "Demolition Crews",
     slug: "demolition",
-    description: "Experienced demolition workers for hire. Strip-outs, soft demo, and site clearing across Gold Coast, Brisbane and Byron Bay.",
+    description: "Experienced demolition workers for hire across Gold Coast, Brisbane, Byron Bay, Tweed Heads and Logan. Strip-outs, soft demo, and site clearing.",
     heroTitle: "Demolition Crews Ready to Work",
     heroSubtitle: "From internal strip-outs to full site clearing, our demolition workers know how to work safely and efficiently to get your site prepped.",
     roles: [
@@ -155,211 +103,211 @@ export const TRADE_DATA = {
       },
     ],
   },
-  "fitout-crews": {
-    name: "Fitout Crews",
-    slug: "fitout-crews",
-    description: "Professional fitout crews for commercial and retail projects. Complete teams for office, retail and hospitality fitouts.",
-    heroTitle: "Complete Fitout Crews On Demand",
-    heroSubtitle: "Need a full fitout team? We supply coordinated crews with the skills to deliver your commercial, retail or hospitality project on time.",
+  carpenters: {
+    name: "Carpenters",
+    slug: "carpenters",
+    description: "Professional carpenter labour hire services for construction, fitout and maintenance projects across Gold Coast, Brisbane, Byron Bay, Tweed Heads and Logan.",
+    heroTitle: "Skilled Carpenters for Every Project",
+    heroSubtitle: "From residential builds to commercial fitouts, our carpenters deliver quality workmanship with attention to detail. Available for short-term or ongoing placements.",
     roles: [
-      "Partition installation",
-      "Ceiling systems",
-      "Floor covering prep",
-      "Joinery installation",
-      "General fitout carpentry",
-      "Fixture installation",
-      "Painting and finishing",
-      "Hardware installation",
-      "Detail finishing",
+      "Formwork carpentry",
+      "Residential framing",
+      "Commercial fitout",
+      "Timber flooring installation",
+      "Door and window installation",
+      "Cabinetry and joinery",
+      "Roof framing and trusses",
+      "Cladding installation",
+      "Stair construction",
     ],
     requirements: [
       "White Card (Construction Induction)",
-      "Fitout experience (minimum 2 years)",
+      "Trade qualification or equivalent experience",
       "Working at Heights certification",
       "Own hand tools",
-      "Attention to detail",
-      "Ability to read plans",
-    ],
-    industries: [
-      "Commercial fitout contractors",
-      "Retail construction",
-      "Hospitality builders",
-      "Office fitout specialists",
-      "Shop fitters",
-      "Interior contractors",
-    ],
-    faqs: [
-      {
-        question: "Can you supply complete fitout teams?",
-        answer: "Yes, we can supply coordinated crews ranging from 2-10+ workers depending on project scale. Our teams work well together for efficient delivery."
-      },
-      {
-        question: "What types of fitouts do your crews handle?",
-        answer: "Our crews are experienced in office, retail, hospitality, medical, and general commercial fitouts. We match crew skills to project requirements."
-      },
-      {
-        question: "How do you ensure quality on fitout work?",
-        answer: "We only supply experienced fitout workers with proven track records. We also conduct site check-ins and welcome feedback on every placement."
-      },
-      {
-        question: "Can crews work after hours or weekends?",
-        answer: "Absolutely. Many fitout projects require after-hours or weekend work to minimise disruption. We have workers available for all shifts."
-      },
-    ],
-  },
-  plasterers: {
-    name: "Plasterers",
-    slug: "plasterers",
-    description: "Skilled plasterers for residential and commercial projects. Plasterboard installation, rendering and finishing across SEQ.",
-    heroTitle: "Professional Plasterers On Demand",
-    heroSubtitle: "From plasterboard installation to ornate rendering, our plasterers deliver smooth, professional finishes on every project.",
-    roles: [
-      "Plasterboard installation",
-      "Stopping and finishing",
-      "Cornice installation",
-      "Ceiling installation",
-      "Rendering (cement render)",
-      "Patching and repairs",
-      "Feature walls",
-      "Commercial plastering",
-      "High-volume residential",
-    ],
-    requirements: [
-      "White Card (Construction Induction)",
-      "Trade qualification or extensive experience",
-      "Working at Heights certification",
-      "Own hand tools",
-      "Scaffolding ticket (preferred)",
-      "Stilts experience (for some roles)",
+      "PPE compliant",
+      "Valid driver's licence (preferred)",
     ],
     industries: [
       "Residential builders",
       "Commercial construction",
-      "Rendering contractors",
-      "Renovation companies",
-      "Plastering contractors",
+      "Fitout contractors",
       "Maintenance companies",
+      "Renovation specialists",
+      "Shop fitters",
     ],
     faqs: [
       {
-        question: "Do you supply plasterers for residential or commercial?",
-        answer: "Both. We have plasterers experienced in high-volume residential as well as detailed commercial and fitout work. Tell us your project type."
+        question: "What types of carpentry work can your workers handle?",
+        answer: "Our carpenters are skilled in formwork, residential and commercial framing, fitout work, flooring, doors, windows, cabinetry, roofing, cladding and general construction carpentry."
       },
       {
-        question: "Can your plasterers do rendering?",
-        answer: "Some of our plasterers are skilled in cement rendering. Let us know if this is a requirement and we'll match appropriately."
+        question: "Do your carpenters bring their own tools?",
+        answer: "Yes, all our carpenters come equipped with their own hand tools. Power tools and specialised equipment are typically provided by the host employer or can be arranged."
       },
       {
-        question: "What's included with plasterer hire?",
-        answer: "Our plasterers come with their own hand tools. Materials, scaffolding and specialised equipment are typically provided by the host."
+        question: "How quickly can you supply carpenters?",
+        answer: "We can typically have carpenters on-site within 24-48 hours for urgent requirements. For planned projects, we recommend 3-5 days notice to ensure the best match."
       },
       {
-        question: "How do you ensure finish quality?",
-        answer: "We only place experienced plasterers with proven attention to detail. We also conduct follow-ups and track feedback on every placement."
+        question: "Are your carpenters qualified?",
+        answer: "Our carpenters range from experienced tradespersons with formal qualifications to skilled tradespeople with extensive on-the-job experience. We match the right skill level to your project requirements."
       },
     ],
   },
-  concreters: {
-    name: "Concreters",
-    slug: "concreters",
-    description: "Experienced concreters for residential, commercial and civil projects. Formwork, pouring and finishing across Gold Coast, Brisbane and Byron Bay.",
-    heroTitle: "Skilled Concreters for Every Pour",
-    heroSubtitle: "From residential slabs to commercial foundations, our concreters know how to prep, pour and finish to the highest standard.",
+  "building-cleaners": {
+    name: "Building Cleaners",
+    slug: "building-cleaners",
+    description: "Professional building and construction cleaners for hire across Gold Coast, Brisbane, Byron Bay, Tweed Heads and Logan. Post-construction and builders cleans.",
+    heroTitle: "Building Cleaners On Demand",
+    heroSubtitle: "Thorough post-construction and builders cleans to handover standard. Our cleaning crews deliver detailed work with documented processes.",
     roles: [
-      "Formwork construction",
-      "Steel fixing support",
-      "Concrete pouring",
-      "Screeding and levelling",
-      "Finishing and trowelling",
-      "Exposed aggregate",
-      "Decorative concrete",
-      "Kerb and channel",
-      "Civil concrete works",
+      "Post-construction cleaning",
+      "Builders clean (rough and final)",
+      "Window cleaning",
+      "Pressure washing",
+      "Debris removal",
+      "Floor scrubbing and polishing",
+      "Detail cleaning",
+      "Handover preparation",
+      "Commercial cleaning",
     ],
     requirements: [
       "White Card (Construction Induction)",
-      "Concrete experience (minimum 2 years)",
-      "Physical fitness for demanding work",
-      "Own hand tools",
-      "Early morning availability",
+      "Cleaning experience",
+      "Physical fitness",
+      "PPE compliant",
+      "Attention to detail",
       "Reliable transport",
     ],
     industries: [
       "Residential builders",
       "Commercial construction",
-      "Civil contractors",
-      "Concrete specialists",
-      "Pool builders",
-      "Landscaping contractors",
+      "Property developers",
+      "Body corporates",
+      "Facility managers",
+      "Real estate agents",
     ],
     faqs: [
       {
-        question: "Do your concreters work early starts?",
-        answer: "Yes, most concrete work requires early starts. Our concreters understand this and are available for 5am or 6am starts as needed."
+        question: "What's included in a builders clean?",
+        answer: "A builders clean typically includes removal of construction debris, window cleaning, floor cleaning, surface wiping, and detailed cleaning of all fixtures and fittings."
       },
       {
-        question: "Can you supply concreters for civil work?",
-        answer: "We have concreters experienced in civil works including kerb and channel, footpaths, stormwater and structural civil concrete."
+        question: "Do you provide cleaning equipment and supplies?",
+        answer: "Our cleaners come with basic equipment. For larger jobs, we can discuss equipment and supply arrangements to suit your project."
       },
       {
-        question: "What about decorative concrete?",
-        answer: "We can supply concreters skilled in exposed aggregate, stamped concrete and other decorative finishes. Specify your requirements when booking."
+        question: "How quickly can you mobilise a cleaning crew?",
+        answer: "We can typically have cleaners on-site within 24-48 hours. For scheduled handovers, we recommend 3-5 days notice."
       },
       {
-        question: "How do you handle pump day requirements?",
-        answer: "We understand the time-critical nature of pump days. We ensure workers are on-site early, briefed and ready to work when the pump arrives."
+        question: "Do you handle high-rise or difficult access cleaning?",
+        answer: "Yes, we have cleaners with Working at Heights and EWP tickets for multi-level and difficult access cleaning work."
       },
     ],
   },
-  "steel-fixers": {
-    name: "Steel Fixers",
-    slug: "steel-fixers",
-    description: "Professional steel fixers for reinforcement work on residential, commercial and civil projects across SEQ and Northern NSW.",
-    heroTitle: "Expert Steel Fixers Ready to Work",
-    heroSubtitle: "Precision reinforcement work for slabs, footings, columns and structural elements. Our steel fixers deliver quality that passes inspection first time.",
+  landscaping: {
+    name: "Landscaping Workers",
+    slug: "landscaping",
+    description: "Reliable landscaping and grounds maintenance workers for hire across Gold Coast, Brisbane, Byron Bay, Tweed Heads and Logan. Basic landscaping support.",
+    heroTitle: "Landscaping Workers Ready to Work",
+    heroSubtitle: "Basic landscaping and grounds maintenance for commercial properties and estates. Grass cutting, garden bed maintenance, and external area upkeep.",
     roles: [
-      "Slab reinforcement",
-      "Footing steel placement",
-      "Column and beam steel",
-      "Wall reinforcement",
-      "Stair steel fixing",
-      "Pre-fab cage assembly",
-      "Mesh installation",
-      "Post-tensioning support",
-      "Civil steel fixing",
+      "Grass cutting and mowing",
+      "Leaf and debris removal",
+      "Garden bed maintenance",
+      "Basic planting",
+      "Mulching and soil work",
+      "Hedge trimming",
+      "Irrigation assistance",
+      "Turf laying support",
+      "External common areas",
     ],
     requirements: [
-      "White Card (Construction Induction)",
-      "Steel fixing experience (minimum 2 years)",
-      "Ability to read reinforcement drawings",
-      "Own hand tools (tie wire, pliers, etc.)",
       "Physical fitness",
-      "Working at Heights (for some roles)",
+      "Basic landscaping experience",
+      "PPE compliant",
+      "Reliable transport",
+      "Early morning availability",
+      "Ability to work outdoors",
     ],
     industries: [
-      "Residential builders",
-      "Commercial construction",
-      "Civil contractors",
-      "Concrete contractors",
-      "Pre-cast manufacturers",
-      "Infrastructure projects",
+      "Property managers",
+      "Body corporates",
+      "Commercial estates",
+      "Landscaping contractors",
+      "Facilities managers",
+      "Golf courses and resorts",
     ],
     faqs: [
       {
-        question: "Can your steel fixers read drawings?",
-        answer: "Yes, our experienced steel fixers can read reinforcement schedules and drawings. We match skill level to project complexity."
+        question: "Do you provide licensed landscaping services?",
+        answer: "We provide basic landscaping labour support. For licensed structural landscaping works, we can support licensed landscapers or recommend specialists."
       },
       {
-        question: "Do you supply steel fixers for commercial projects?",
-        answer: "Absolutely. We supply steel fixers for everything from residential slabs to high-rise commercial and civil infrastructure projects."
+        question: "What equipment do your workers bring?",
+        answer: "Our landscaping workers typically come with basic hand tools. Larger equipment like mowers and blowers are usually provided by the host or can be arranged."
       },
       {
-        question: "What about pre-fab work?",
-        answer: "We have steel fixers experienced in both in-situ fixing and pre-fabricated cage assembly. Let us know your requirements."
+        question: "Can you support ongoing grounds maintenance contracts?",
+        answer: "Yes, we can provide regular crews for ongoing grounds maintenance. Many clients use us for weekly or fortnightly rotations."
       },
       {
-        question: "How quickly can you get steel fixers on site?",
-        answer: "For urgent pours, we can often have steel fixers on-site within 24 hours. For planned work, 2-3 days notice is ideal."
+        question: "Do your workers handle irrigation systems?",
+        answer: "Our workers can assist with basic irrigation maintenance and repairs under supervision. For complex irrigation work, we recommend a licensed specialist."
+      },
+    ],
+  },
+  maintenance: {
+    name: "Maintenance Ground Workers",
+    slug: "maintenance",
+    description: "General maintenance and facilities support workers for hire across Gold Coast, Brisbane, Byron Bay, Tweed Heads and Logan. Reliable support for ongoing needs.",
+    heroTitle: "Maintenance Workers On Demand",
+    heroSubtitle: "General maintenance and facilities support for property managers, commercial buildings and estates. Reliable support for all your maintenance needs.",
+    roles: [
+      "General repairs",
+      "Preventive maintenance",
+      "Building inspections support",
+      "Minor installations",
+      "Handyman services",
+      "Painting touch-ups",
+      "Fixture repairs",
+      "Common area maintenance",
+      "Emergency response support",
+    ],
+    requirements: [
+      "White Card (Construction Induction)",
+      "General maintenance experience",
+      "Basic hand tools",
+      "PPE compliant",
+      "Problem-solving ability",
+      "Good communication skills",
+    ],
+    industries: [
+      "Property managers",
+      "Commercial building owners",
+      "Facilities management companies",
+      "Body corporates",
+      "Shopping centres",
+      "Industrial estates",
+    ],
+    faqs: [
+      {
+        question: "What types of maintenance work can your workers handle?",
+        answer: "Our maintenance workers handle general repairs, preventive maintenance, minor installations, painting touch-ups, fixture repairs and common area upkeep. For licensed trade work, we can supply appropriate tradespeople."
+      },
+      {
+        question: "Can you provide ongoing maintenance support?",
+        answer: "Yes, many clients use us for regular maintenance rotations. We can provide dedicated workers for ongoing placements."
+      },
+      {
+        question: "Do your workers handle emergency call-outs?",
+        answer: "We can support emergency response with short-notice callouts. Contact us to discuss your after-hours requirements."
+      },
+      {
+        question: "What's the difference between maintenance workers and handymen?",
+        answer: "Our maintenance ground workers are focused on building and facilities maintenance. They handle a broad range of tasks but are not licensed tradespeople."
       },
     ],
   },
