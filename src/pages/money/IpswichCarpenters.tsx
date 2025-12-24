@@ -1,11 +1,11 @@
 import { MoneyPageTemplate } from "./MoneyPageTemplate";
 import { MONEY_PAGE_LOCATIONS, MONEY_PAGE_TRADES } from "@/data/moneyPages";
 
-export default function ByronBayFitoutCrews() {
+export default function IpswichCarpenters() {
   return (
     <MoneyPageTemplate
-      location={MONEY_PAGE_LOCATIONS["byron-bay"]}
-      trade={MONEY_PAGE_TRADES["fitout-crews"]}
+      location={MONEY_PAGE_LOCATIONS["ipswich"]}
+      trade={MONEY_PAGE_TRADES["carpenters"]}
     />
   );
 }

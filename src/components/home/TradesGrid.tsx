@@ -1,23 +1,23 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Hammer, HardHat, Wrench, Paintbrush, Building, Construction } from "lucide-react";
+import { ArrowRight, Hammer, HardHat, Wrench, Sparkles, Trees, Settings } from "lucide-react";
 
 export function TradesGrid() {
   const trades = [
+    { icon: HardHat, name: "Skilled Labourers", slug: "labourers", description: "General construction support" },
+    { icon: Wrench, name: "Demolition Crews", slug: "demolition", description: "Strip-outs & site clearing" },
     { icon: Hammer, name: "Carpenters", slug: "carpenters", description: "Framing, fitout & formwork" },
-    { icon: HardHat, name: "Labourers", slug: "labourers", description: "General construction support" },
-    { icon: Wrench, name: "Demolition", slug: "demolition", description: "Strip-outs & site clearing" },
-    { icon: Building, name: "Fitout Crews", slug: "fitout-crews", description: "Commercial & retail fitouts" },
-    { icon: Paintbrush, name: "Plasterers", slug: "plasterers", description: "Plasterboard & rendering" },
-    { icon: Construction, name: "Concreters", slug: "concreters", description: "Pouring & finishing" },
+    { icon: Sparkles, name: "Building Cleaners", slug: "building-cleaners", description: "Post-construction cleans" },
+    { icon: Trees, name: "Landscaping Workers", slug: "landscaping", description: "Grounds & garden maintenance" },
+    { icon: Settings, name: "Maintenance Workers", slug: "maintenance", description: "Facilities support" },
   ];
 
   return (
-    <section className="py-20 section-dark">
+    <section className="py-20 section-dark rounded-section">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="heading-lg text-concrete mb-4">Trades We Supply</h2>
+          <h2 className="heading-lg text-concrete mb-4">Services We Provide</h2>
           <p className="body-lg text-concrete/70 max-w-2xl mx-auto">
-            From skilled tradespeople to general labour, we've got your project covered.
+            From skilled tradespeople to general labour, we have got your project covered.
           </p>
         </div>
 
@@ -29,8 +29,8 @@ export function TradesGrid() {
               className="card-dark group"
             >
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center flex-shrink-0 group-hover:bg-gold/20 transition-colors">
-                  <trade.icon className="w-6 h-6 text-gold" />
+                <div className="w-14 h-14 rounded-2xl bg-gold/10 flex items-center justify-center flex-shrink-0 group-hover:bg-gold/20 transition-colors">
+                  <trade.icon className="w-7 h-7 text-gold" />
                 </div>
                 <div className="flex-1">
                   <h3 className="font-semibold text-concrete group-hover:text-gold transition-colors">
@@ -38,7 +38,7 @@ export function TradesGrid() {
                   </h3>
                   <p className="text-concrete/60 text-sm mt-1">{trade.description}</p>
                 </div>
-                <ArrowRight className="w-5 h-5 text-steel-blue group-hover:text-gold transition-colors mt-1" />
+                <ArrowRight className="w-5 h-5 text-roman-coffee group-hover:text-gold transition-colors mt-1" />
               </div>
             </Link>
           ))}
