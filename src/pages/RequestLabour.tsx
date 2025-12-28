@@ -1,12 +1,22 @@
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ArrowRight, Phone, CheckCircle, Clock, Shield, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { EmployerShortForm } from "@/components/forms/EmployerShortForm";
+import { QuoteCalculator } from "@/components/forms/QuoteCalculator";
 import { PHONE_HREF, PHONE_NUMBER, TRADES, LOCATIONS } from "@/lib/constants";
 
 export default function RequestLabour() {
+  const navigate = useNavigate();
+
+  const handleQuoteRequest = (data: { trade: string; location: string; workers: number; duration: string }) => {
+    // Scroll to the form and it will be pre-filled conceptually
+    const formSection = document.getElementById("request-form");
+    if (formSection) {
+      formSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   const schemaData = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -84,16 +94,40 @@ export default function RequestLabour() {
         </div>
       </section>
 
+      {/* Quote Calculator Section */}
+      <section className="py-20 bg-concrete relative overflow-hidden">
+        <div className="absolute top-0 left-0 right-0 h-16 bg-oil" style={{ borderRadius: '0 0 50% 50% / 0 0 100% 100%' }} />
+        <div className="absolute bottom-10 right-20 w-48 h-48 rounded-blob bg-gold/5 blur-2xl" />
+        
+        <div className="container mx-auto px-4 lg:px-8 pt-8">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 badge-gold mb-4">
+              Instant Estimates
+            </div>
+            <h2 className="heading-md text-navy mb-4">
+              Get a Quick Quote for Your Project
+            </h2>
+            <p className="text-charcoal/70 max-w-2xl mx-auto">
+              Use our calculator to get an instant estimate. For exact pricing tailored to your specific requirements, our team will follow up within hours.
+            </p>
+          </div>
+          
+          <div className="max-w-4xl mx-auto">
+            <QuoteCalculator onGetQuote={handleQuoteRequest} />
+          </div>
+        </div>
+      </section>
+
       {/* Trades We Supply */}
-      <section className="py-16 bg-concrete">
+      <section className="py-16 section-warm">
         <div className="container mx-auto px-4 lg:px-8">
           <h2 className="heading-md text-navy text-center mb-8">Trades We Supply</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {TRADES.map((trade) => (
               <Link
                 key={trade.id}
                 to={`/trades/${trade.slug}`}
-                className="bg-card rounded-lg p-4 text-center hover:shadow-md transition-shadow"
+                className="bg-card rounded-2xl p-5 text-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-border"
               >
                 <span className="font-medium text-navy">{trade.name}</span>
               </Link>
