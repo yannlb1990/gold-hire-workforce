@@ -8,57 +8,57 @@
 
 @layer base {
   :root {
-    /* Core Brand Colors - Warm Coffee Brown Palette */
-    --oil: 17 40% 14%;                    /* #2D1E17 - Primary Dark */
-    --judge-gray: 20 26% 26%;             /* #523F31 - Primary */
-    --roman-coffee: 18 20% 40%;           /* #796254 - Secondary */
-    --pale-oyster: 22 17% 55%;            /* #9D8A7C - Light accent */
-    --cream: 30 25% 95%;                  /* #F7F3EF - Background cream */
-    --warm-white: 30 20% 98%;             /* #FCFAF8 - Lighter background */
+    /* Core Brand Colors - Earthy Brown Palette */
+    --oil: 20 35% 12%;                    /* Deep earthy brown */
+    --judge-gray: 22 28% 24%;             /* Rich brown */
+    --roman-coffee: 20 25% 35%;           /* Warm earthy brown */
+    --pale-oyster: 22 20% 50%;            /* Earthy tan */
+    --cream: 28 22% 92%;                  /* Warm cream */
+    --warm-white: 28 18% 96%;             /* Off-white warm */
     
     /* Gold accents remain for CTA/highlights */
-    --gold: 41 49% 54%;
-    --gold-bright: 41 65% 58%;
-    --gold-dark: 41 45% 42%;
+    --gold: 38 55% 52%;
+    --gold-bright: 38 65% 56%;
+    --gold-dark: 38 50% 40%;
     
-    /* Legacy navy for compatibility */
-    --navy: 17 40% 14%;
-    --navy-light: 20 26% 26%;
-    --steel-blue: 18 20% 40%;
-    --steel-blue-light: 22 17% 55%;
-    --concrete: 30 25% 95%;
-    --concrete-dark: 30 15% 88%;
-    --charcoal: 20 15% 20%;
-    --charcoal-light: 20 10% 35%;
+    /* Legacy navy for compatibility - now earthy brown */
+    --navy: 20 35% 12%;
+    --navy-light: 22 28% 24%;
+    --steel-blue: 20 25% 35%;
+    --steel-blue-light: 22 20% 50%;
+    --concrete: 28 22% 92%;
+    --concrete-dark: 25 18% 85%;
+    --charcoal: 22 20% 18%;
+    --charcoal-light: 22 15% 32%;
     
     /* Semantic Tokens */
-    --background: 30 25% 97%;
-    --foreground: 17 40% 14%;
+    --background: 28 20% 94%;
+    --foreground: 20 35% 12%;
     
-    --card: 0 0% 100%;
-    --card-foreground: 17 40% 14%;
+    --card: 30 18% 98%;
+    --card-foreground: 20 35% 12%;
     
-    --popover: 0 0% 100%;
-    --popover-foreground: 17 40% 14%;
+    --popover: 30 18% 98%;
+    --popover-foreground: 20 35% 12%;
     
-    --primary: 41 49% 54%;
-    --primary-foreground: 17 40% 14%;
+    --primary: 38 55% 52%;
+    --primary-foreground: 20 35% 12%;
     
-    --secondary: 30 25% 95%;
-    --secondary-foreground: 17 40% 14%;
+    --secondary: 28 22% 92%;
+    --secondary-foreground: 20 35% 12%;
     
-    --muted: 30 15% 88%;
-    --muted-foreground: 20 15% 45%;
+    --muted: 25 18% 85%;
+    --muted-foreground: 22 20% 38%;
     
-    --accent: 18 20% 40%;
-    --accent-foreground: 30 25% 95%;
+    --accent: 20 25% 35%;
+    --accent-foreground: 28 22% 92%;
     
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
     
-    --border: 30 15% 85%;
-    --input: 30 15% 88%;
-    --ring: 41 49% 54%;
+    --border: 24 22% 70%;
+    --input: 26 20% 82%;
+    --ring: 38 55% 52%;
     
     --radius: 0.75rem;
     
