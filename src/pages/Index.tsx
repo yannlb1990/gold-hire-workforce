@@ -6,6 +6,7 @@ import { HowItWorks } from "@/components/home/HowItWorks";
 import { TradesGrid } from "@/components/home/TradesGrid";
 import { LocationsGrid } from "@/components/home/LocationsGrid";
 import { WhyUsSection } from "@/components/home/WhyUsSection";
+import { TestimonialsSection } from "@/components/home/TestimonialsSection";
 import { CandidateCTASection } from "@/components/home/CandidateCTASection";
 import { FinalCTA } from "@/components/home/FinalCTA";
 import { PHONE_NUMBER } from "@/lib/constants";
@@ -60,6 +61,7 @@ const Index = () => {
         <TradesGrid />
         <LocationsGrid />
         <WhyUsSection />
+        <TestimonialsSection />
         <CandidateCTASection />
         <FinalCTA />
       </Layout>

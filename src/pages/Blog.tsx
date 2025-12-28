@@ -4,6 +4,16 @@ import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Calendar, Clock } from "lucide-react";
 
+// Import blog images
+import pricingGuide from "@/assets/blog/pricing-guide.jpg";
+import hiringCarpenters from "@/assets/blog/hiring-carpenters.jpg";
+import complianceChecklist from "@/assets/blog/compliance-checklist.jpg";
+import shutdownMobilisation from "@/assets/blog/shutdown-mobilisation.jpg";
+import qldGuide from "@/assets/blog/qld-guide.jpg";
+import reliability from "@/assets/blog/reliability.jpg";
+import residentialCommercial from "@/assets/blog/residential-commercial.jpg";
+import whsSafety from "@/assets/blog/whs-safety.jpg";
+
 const articles = [
   {
     slug: "labour-hire-rates-gold-coast",
@@ -12,6 +22,7 @@ const articles = [
     category: "Pricing",
     date: "December 2024",
     readTime: "8 min read",
+    image: pricingGuide,
   },
   {
     slug: "hiring-carpenters-brisbane",
@@ -20,6 +31,7 @@ const articles = [
     category: "Hiring Guide",
     date: "December 2024",
     readTime: "10 min read",
+    image: hiringCarpenters,
   },
   {
     slug: "white-card-checklist-qld-nsw",
@@ -28,6 +40,7 @@ const articles = [
     category: "Compliance",
     date: "December 2024",
     readTime: "7 min read",
+    image: complianceChecklist,
   },
   {
     slug: "shutdown-crew-mobilisation",
@@ -36,6 +49,7 @@ const articles = [
     category: "Operations",
     date: "December 2024",
     readTime: "12 min read",
+    image: shutdownMobilisation,
   },
   {
     slug: "labour-hire-qld-guide",
@@ -44,6 +58,7 @@ const articles = [
     category: "Guides",
     date: "November 2024",
     readTime: "15 min read",
+    image: qldGuide,
   },
   {
     slug: "avoiding-no-shows",
@@ -52,6 +67,7 @@ const articles = [
     category: "Best Practices",
     date: "November 2024",
     readTime: "6 min read",
+    image: reliability,
   },
   {
     slug: "residential-vs-commercial",
@@ -60,6 +76,7 @@ const articles = [
     category: "Industry Insights",
     date: "November 2024",
     readTime: "9 min read",
+    image: residentialCommercial,
   },
   {
     slug: "whs-onboarding-checklist",
@@ -68,6 +85,7 @@ const articles = [
     category: "Safety",
     date: "October 2024",
     readTime: "8 min read",
+    image: whsSafety,
   },
 ];
 
@@ -117,29 +135,46 @@ const Blog = () => {
                 <Link 
                   to={`/blog/${article.slug}`} 
                   key={article.slug} 
-                  className="card-feature group block"
+                  className="card-feature group block overflow-hidden p-0"
                 >
-                  <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-gold-dark text-xs font-medium mb-4">
-                    {article.category}
+                  {/* Featured Image */}
+                  <div className="relative h-48 overflow-hidden">
+                    <img 
+                      src={article.image} 
+                      alt={article.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-oil/60 via-transparent to-transparent" />
+                    <div className="absolute top-4 left-4">
+                      <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold text-oil text-xs font-semibold">
+                        {article.category}
+                      </span>
+                    </div>
                   </div>
-                  <h2 className="font-heading font-bold text-navy text-xl mb-3 group-hover:text-gold transition-colors line-clamp-2">
-                    {article.title}
-                  </h2>
-                  <p className="text-charcoal/70 text-sm mb-4 line-clamp-3">
-                    {article.excerpt}
-                  </p>
-                  <div className="flex items-center gap-4 text-xs text-charcoal/50">
-                    <span className="flex items-center gap-1">
-                      <Calendar size={12} />
-                      {article.date}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <Clock size={12} />
-                      {article.readTime}
-                    </span>
-                  </div>
-                  <div className="mt-4 flex items-center gap-2 text-gold font-medium text-sm opacity-0 group-hover:opacity-100 transition-opacity">
-                    Read Article <ArrowRight size={16} />
+                  
+                  {/* Content */}
+                  <div className="p-6">
+                    <h2 className="font-heading font-bold text-navy text-xl mb-3 group-hover:text-gold transition-colors line-clamp-2">
+                      {article.title}
+                    </h2>
+                    <p className="text-charcoal/70 text-sm mb-4 line-clamp-2">
+                      {article.excerpt}
+                    </p>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3 text-xs text-charcoal/50">
+                        <span className="flex items-center gap-1">
+                          <Calendar size={12} />
+                          {article.date}
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <Clock size={12} />
+                          {article.readTime}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-1 text-gold font-medium text-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                        Read <ArrowRight size={14} />
+                      </div>
+                    </div>
                   </div>
                 </Link>
               ))}
