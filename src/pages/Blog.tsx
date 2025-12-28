@@ -12,6 +12,7 @@ const articles = [
     category: "Pricing",
     date: "December 2024",
     readTime: "8 min read",
+    image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&auto=format&fit=crop",
   },
   {
     slug: "hiring-carpenters-brisbane",
@@ -20,6 +21,7 @@ const articles = [
     category: "Hiring Guide",
     date: "December 2024",
     readTime: "10 min read",
+    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&auto=format&fit=crop",
   },
   {
     slug: "white-card-checklist-qld-nsw",
@@ -28,14 +30,16 @@ const articles = [
     category: "Compliance",
     date: "December 2024",
     readTime: "7 min read",
+    image: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=800&auto=format&fit=crop",
   },
   {
     slug: "shutdown-crew-mobilisation",
-    title: "Shutdown Crew Mobilisation: How to Plan Large-Scale Labour",
-    excerpt: "Step-by-step guide to mobilising large crews for shutdowns, turnarounds and major construction projects.",
+    title: "Shutdown Crew Mobilisation: How to Plan Large Scale Labour",
+    excerpt: "Step by step guide to mobilising large crews for shutdowns, turnarounds and major construction projects.",
     category: "Operations",
     date: "December 2024",
     readTime: "12 min read",
+    image: "https://images.unsplash.com/photo-1581094271901-8022df4466f9?w=800&auto=format&fit=crop",
   },
   {
     slug: "labour-hire-qld-guide",
@@ -44,14 +48,16 @@ const articles = [
     category: "Guides",
     date: "November 2024",
     readTime: "15 min read",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&auto=format&fit=crop",
   },
   {
     slug: "avoiding-no-shows",
-    title: "Avoiding No-Shows: How to Ensure Reliable Labour Hire",
-    excerpt: "Practical strategies to minimise no-shows and ensure your labour hire workers show up on time, every time.",
+    title: "Avoiding No Shows: How to Ensure Reliable Labour Hire",
+    excerpt: "Practical strategies to minimise no shows and ensure your labour hire workers show up on time, every time.",
     category: "Best Practices",
     date: "November 2024",
     readTime: "6 min read",
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&auto=format&fit=crop",
   },
   {
     slug: "residential-vs-commercial",
@@ -60,6 +66,7 @@ const articles = [
     category: "Industry Insights",
     date: "November 2024",
     readTime: "9 min read",
+    image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&auto=format&fit=crop",
   },
   {
     slug: "whs-onboarding-checklist",
@@ -68,6 +75,7 @@ const articles = [
     category: "Safety",
     date: "October 2024",
     readTime: "8 min read",
+    image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&auto=format&fit=crop",
   },
 ];
 
@@ -114,15 +122,27 @@ const Blog = () => {
           <div className="container mx-auto px-4 lg:px-8 pt-8">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {articles.map((article) => (
-                <Link 
-                  to={`/blog/${article.slug}`} 
-                  key={article.slug} 
-                  className="card-feature group block"
+                <Link
+                  to={`/blog/${article.slug}`}
+                  key={article.slug}
+                  className="card-feature group block overflow-hidden"
                 >
-                  <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-gold-dark text-xs font-medium mb-4">
-                    {article.category}
+                  {/* Featured Image */}
+                  <div className="relative h-48 mb-6 -mx-10 -mt-10 overflow-hidden">
+                    <img
+                      src={article.image}
+                      alt={article.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy/60 to-transparent"></div>
+                    <div className="absolute bottom-4 left-4">
+                      <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-earth-green text-white text-xs font-medium">
+                        {article.category}
+                      </div>
+                    </div>
                   </div>
-                  <h2 className="font-heading font-bold text-navy text-xl mb-3 group-hover:text-gold transition-colors line-clamp-2">
+
+                  <h2 className="font-heading font-bold text-navy text-xl mb-3 group-hover:text-earth-green transition-colors line-clamp-2">
                     {article.title}
                   </h2>
                   <p className="text-charcoal/70 text-sm mb-4 line-clamp-3">
@@ -138,7 +158,7 @@ const Blog = () => {
                       {article.readTime}
                     </span>
                   </div>
-                  <div className="mt-4 flex items-center gap-2 text-gold font-medium text-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div className="mt-4 flex items-center gap-2 text-earth-green font-medium text-sm opacity-0 group-hover:opacity-100 transition-opacity">
                     Read Article <ArrowRight size={16} />
                   </div>
                 </Link>

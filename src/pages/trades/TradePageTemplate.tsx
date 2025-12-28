@@ -103,55 +103,57 @@ export function TradePageTemplate({ trade }: TradePageProps) {
         </div>
       </section>
 
-      {/* Roles & Tasks */}
+      {/* Service Details - Two Column Layout */}
       <section className="py-20 bg-concrete">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="heading-lg text-navy mb-4">Typical Roles & Tasks</h2>
-            <p className="body-lg text-charcoal/70">
-              Our {trade.name.toLowerCase()} handle a wide range of responsibilities on site
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {trade.roles.map((role, index) => (
-              <div key={index} className="card-elevated flex items-start gap-4">
-                <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center flex-shrink-0">
-                  <CheckCircle className="w-5 h-5 text-gold" />
-                </div>
-                <p className="text-charcoal font-medium">{role}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Requirements */}
-      <section className="py-20 section-dark">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-12 max-w-7xl mx-auto">
+            {/* Left Column - Service Jobs */}
             <div>
-              <h2 className="heading-lg text-concrete mb-4">Tickets & Requirements</h2>
-              <p className="body-lg text-concrete/70 mb-8">
-                All our {trade.name.toLowerCase()} come with verified credentials and up-to-date tickets
+              <h2 className="heading-lg text-navy mb-6">What We Deliver</h2>
+              <p className="body-lg text-charcoal/70 mb-8">
+                Our {trade.name.toLowerCase()} handle a wide range of responsibilities on site
               </p>
               <div className="space-y-4">
-                {trade.requirements.map((req, index) => (
-                  <div key={index} className="flex items-center gap-3 text-concrete">
-                    <Shield className="w-5 h-5 text-gold flex-shrink-0" />
-                    <span>{req}</span>
+                {trade.roles.map((role, index) => (
+                  <div key={index} className="flex items-start gap-4 bg-white rounded-xl p-5 shadow-soft hover:shadow-elevated transition-all">
+                    <div className="w-10 h-10 rounded-lg bg-earth-green/10 flex items-center justify-center flex-shrink-0">
+                      <CheckCircle className="w-5 h-5 text-earth-green" />
+                    </div>
+                    <p className="text-charcoal font-medium flex-1 leading-relaxed">{role}</p>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="bg-navy-light/30 rounded-2xl p-8 border border-steel-blue/20">
-              <h3 className="heading-sm text-concrete mb-6">Best For These Industries</h3>
-              <div className="space-y-4">
-                {trade.industries.map((industry, index) => (
-                  <div key={index} className="flex items-center gap-3 text-concrete/80">
-                    <Users className="w-5 h-5 text-gold flex-shrink-0" />
-                    <span>{industry}</span>
-                  </div>
-                ))}
+
+            {/* Right Column - Requirements & Industries */}
+            <div className="space-y-8">
+              {/* Tickets & Requirements */}
+              <div className="bg-white rounded-2xl p-8 shadow-soft">
+                <h3 className="heading-sm text-navy mb-6">Tickets & Requirements</h3>
+                <p className="text-charcoal/70 mb-6">
+                  All our {trade.name.toLowerCase()} come with verified credentials and up-to-date tickets
+                </p>
+                <div className="space-y-4">
+                  {trade.requirements.map((req, index) => (
+                    <div key={index} className="flex items-center gap-3 text-charcoal">
+                      <Shield className="w-5 h-5 text-earth-green flex-shrink-0" />
+                      <span>{req}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Best For Industries */}
+              <div className="bg-gradient-green rounded-2xl p-8 shadow-green">
+                <h3 className="heading-sm text-white mb-6">Best For These Industries</h3>
+                <div className="space-y-4">
+                  {trade.industries.map((industry, index) => (
+                    <div key={index} className="flex items-center gap-3 text-white/90">
+                      <Users className="w-5 h-5 text-white flex-shrink-0" />
+                      <span>{industry}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

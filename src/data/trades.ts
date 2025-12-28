@@ -54,11 +54,11 @@ export const TRADE_DATA = {
   demolition: {
     name: "Demolition Crews",
     slug: "demolition",
-    description: "Experienced demolition workers for hire across Gold Coast, Brisbane, Byron Bay, Tweed Heads and Logan. Strip-outs, soft demo, and site clearing.",
+    description: "Experienced demolition workers for hire across Gold Coast, Brisbane, Byron Bay, Tweed Heads and Logan. Stripouts, soft demo, and site clearing.",
     heroTitle: "Demolition Crews Ready to Work",
-    heroSubtitle: "From internal strip-outs to full site clearing, our demolition workers know how to work safely and efficiently to get your site prepped.",
+    heroSubtitle: "From internal stripouts to full site clearing, our demolition workers know how to work safely and efficiently to get your site prepared.",
     roles: [
-      "Internal strip-out",
+      "Internal stripout",
       "Soft demolition",
       "Asbestos removal support",
       "Site clearing",
@@ -91,7 +91,7 @@ export const TRADE_DATA = {
       },
       {
         question: "What size demolition projects can you support?",
-        answer: "We supply workers for everything from small internal strip-outs to large-scale site clearing projects. We scale the crew to match your project."
+        answer: "We supply workers for everything from small internal stripouts to large scale site clearing projects. We scale the crew to match your project."
       },
       {
         question: "Do you supply equipment?",
@@ -108,7 +108,7 @@ export const TRADE_DATA = {
     slug: "carpenters",
     description: "Professional carpenter labour hire services for construction, fitout and maintenance projects across Gold Coast, Brisbane, Byron Bay, Tweed Heads and Logan.",
     heroTitle: "Skilled Carpenters for Every Project",
-    heroSubtitle: "From residential builds to commercial fitouts, our carpenters deliver quality workmanship with attention to detail. Available for short-term or ongoing placements.",
+    heroSubtitle: "From residential builds to commercial fitouts, our carpenters deliver quality workmanship with attention to detail. Available for short term or ongoing placements.",
     roles: [
       "Formwork carpentry",
       "Residential framing",
@@ -151,18 +151,18 @@ export const TRADE_DATA = {
       },
       {
         question: "Are your carpenters qualified?",
-        answer: "Our carpenters range from experienced tradespersons with formal qualifications to skilled tradespeople with extensive on-the-job experience. We match the right skill level to your project requirements."
+        answer: "Our carpenters range from experienced tradespersons with formal qualifications to skilled tradespeople with extensive on the job experience. We match the right skill level to your project requirements."
       },
     ],
   },
   "building-cleaners": {
     name: "Building Cleaners",
     slug: "building-cleaners",
-    description: "Professional building and construction cleaners for hire across Gold Coast, Brisbane, Byron Bay, Tweed Heads and Logan. Post-construction and builders cleans.",
-    heroTitle: "Building Cleaners On Demand",
-    heroSubtitle: "Thorough post-construction and builders cleans to handover standard. Our cleaning crews deliver detailed work with documented processes.",
+    description: "Professional building and construction cleaners for hire across Gold Coast, Brisbane, Byron Bay, Tweed Heads and Logan. Post construction and builders cleans.",
+    heroTitle: "Building Cleaners on Demand",
+    heroSubtitle: "Thorough post construction and builders cleans to handover standard. Our cleaning crews deliver detailed work with documented processes.",
     roles: [
-      "Post-construction cleaning",
+      "Post construction cleaning",
       "Builders clean (rough and final)",
       "Window cleaning",
       "Pressure washing",
@@ -263,7 +263,7 @@ export const TRADE_DATA = {
     name: "Maintenance Ground Workers",
     slug: "maintenance",
     description: "General maintenance and facilities support workers for hire across Gold Coast, Brisbane, Byron Bay, Tweed Heads and Logan. Reliable support for ongoing needs.",
-    heroTitle: "Maintenance Workers On Demand",
+    heroTitle: "Maintenance Workers on Demand",
     heroSubtitle: "General maintenance and facilities support for property managers, commercial buildings and estates. Reliable support for all your maintenance needs.",
     roles: [
       "General repairs",

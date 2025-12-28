@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       colors: {
-        // New Warm Brown Palette
+        // New Lighter Warm Brown Palette
         oil: {
           DEFAULT: "hsl(var(--oil))",
         },
@@ -29,6 +29,12 @@ export default {
         },
         cream: {
           DEFAULT: "hsl(var(--cream))",
+        },
+        // Earthy Green Colors
+        "earth-green": {
+          DEFAULT: "hsl(var(--earth-green))",
+          light: "hsl(var(--earth-green-light))",
+          dark: "hsl(var(--earth-green-dark))",
         },
         // Legacy Brand Colors (mapped to new palette)
         navy: {
@@ -114,6 +120,7 @@ export default {
         'floating': 'var(--shadow-lg)',
         'dramatic': 'var(--shadow-xl)',
         'gold': 'var(--shadow-gold)',
+        'green': 'var(--shadow-green)',
         'glow': 'var(--shadow-glow)',
       },
       keyframes: {
@@ -159,6 +166,7 @@ export default {
         'gradient-navy': 'var(--gradient-navy)',
         'gradient-hero': 'var(--gradient-hero)',
         'gradient-gold': 'var(--gradient-gold)',
+        'gradient-green': 'var(--gradient-green)',
         'gradient-card': 'var(--gradient-card)',
         'gradient-dark-card': 'var(--gradient-dark-card)',
         'gradient-warm': 'var(--gradient-warm)',
