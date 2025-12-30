@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       colors: {
-        // New Lighter Warm Brown Palette
+        // Industrial Slate & Blue Palette
         oil: {
           DEFAULT: "hsl(var(--oil))",
         },

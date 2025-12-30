@@ -108,7 +108,7 @@ const Services = () => {
   return (
     <>
       <Helmet>
-        <title>Labour Hire Services | Labourers, Carpenters, Demolition | The Gold Hire Company</title>
+        <title>Labour Hire Services | Labourers, Carpenters, Demolition | Precision Site Solutions</title>
         <meta
           name="description"
           content="Skilled labour hire services across Gold Coast, Brisbane & Byron Bay. Labourers, demolition crews, carpenters, building cleaners, landscaping and maintenance workers."

@@ -56,7 +56,7 @@ export function WhyUsSection() {
               <span className="text-gradient-gold">We Manage Outcomes</span>
             </h2>
             <p className="body-lg text-concrete/70 mb-8">
-              The Gold Hire Company is a management-led, systems-driven labour hire company. 
+              Precision Site Solutions is a management-led, systems-driven labour hire company. 
               Our strength is communication ownership across clients, supervisors, workers and management.
             </p>
             <div className="divider-gold mb-8" />

@@ -38,7 +38,7 @@ export function CandidateCTASection() {
               <span className="text-gradient-gold">Consistent Work?</span>
             </h2>
             <p className="body-lg text-concrete/70 mb-8">
-              The Gold Hire Company connects skilled workers with quality clients across 
+              Precision Site Solutions connects skilled workers with quality clients across 
               Gold Coast, Brisbane and Byron Bay. Join our team and experience a 
               communication-led, professional work environment.
             </p>

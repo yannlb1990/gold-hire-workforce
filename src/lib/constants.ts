@@ -2,8 +2,9 @@
 
 export const PHONE_NUMBER = "1300 XXX XXX";
 export const PHONE_HREF = "tel:1300XXXXXX";
-export const EMAIL = "enquiries@thegoldhirecompany.com.au";
+export const EMAIL = "enquiries@precisionsitesolutions.com.au";
 export const ABN = "XX XXX XXX XXX";
+export const COMPANY_NAME = "Precision Site Solutions";
 
 export const LOCATIONS = [
   { id: "gold-coast", name: "Gold Coast", slug: "gold-coast", state: "QLD" },
@@ -14,14 +15,12 @@ export const LOCATIONS = [
   { id: "tweed-heads", name: "Tweed Heads", slug: "tweed-heads", state: "NSW" },
 ] as const;
 
-// Updated to match correct 6 services
+// Core 4 services
 export const TRADES = [
   { id: "labourers", name: "Skilled Labourers", slug: "labourers" },
-  { id: "demolition", name: "Demolition Crews", slug: "demolition" },
   { id: "carpenters", name: "Carpenters", slug: "carpenters" },
   { id: "building-cleaners", name: "Building Cleaners", slug: "building-cleaners" },
-  { id: "landscaping", name: "Landscaping Workers", slug: "landscaping" },
-  { id: "maintenance", name: "Maintenance Ground Workers", slug: "maintenance" },
+  { id: "demolition", name: "Demolition Crews", slug: "demolition" },
 ] as const;
 
 export const DURATION_OPTIONS = [

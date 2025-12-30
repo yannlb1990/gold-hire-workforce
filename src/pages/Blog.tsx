@@ -83,7 +83,7 @@ const Blog = () => {
   return (
     <>
       <Helmet>
-        <title>Blog & Insights | Labour Hire Industry News | The Gold Hire Company</title>
+        <title>Blog & Insights | Labour Hire Industry News | Precision Site Solutions</title>
         <meta
           name="description"
           content="Industry insights, guides and news about labour hire in Queensland and NSW. Tips for hiring, compliance updates and workforce management."

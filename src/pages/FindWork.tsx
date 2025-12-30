@@ -14,7 +14,7 @@ export default function FindWork() {
     description: "Join our team of skilled construction workers. Carpenters, labourers, concreters and more needed across Gold Coast, Brisbane and Byron Bay.",
     hiringOrganization: {
       "@type": "Organization",
-      name: "The Gold Hire Company",
+      name: "Precision Site Solutions",
     },
     jobLocation: {
       "@type": "Place",
@@ -29,8 +29,8 @@ export default function FindWork() {
   return (
     <Layout>
       <Helmet>
-        <title>Find Construction Work | Join Our Workforce | The Gold Hire Company</title>
-        <meta name="description" content="Looking for construction work in Gold Coast, Brisbane or Byron Bay? Register with The Gold Hire Company for regular shifts and great rates." />
+        <title>Find Construction Work | Join Our Workforce | Precision Site Solutions</title>
+        <meta name="description" content="Looking for construction work in Gold Coast, Brisbane or Byron Bay? Register with Precision Site Solutions for regular shifts and great rates." />
         <link rel="canonical" href="https://thegoldhirecompany.com.au/find-work" />
         <script type="application/ld+json">{JSON.stringify(schemaData)}</script>
       </Helmet>

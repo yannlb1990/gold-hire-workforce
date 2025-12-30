@@ -92,10 +92,10 @@ const Careers = () => {
   return (
     <>
       <Helmet>
-        <title>Join Our Workforce | Labour Hire Jobs Gold Coast Brisbane | The Gold Hire Company</title>
+        <title>Join Our Workforce | Labour Hire Jobs Gold Coast Brisbane | Precision Site Solutions</title>
         <meta
           name="description"
-          content="Looking for consistent work? Join The Gold Hire Company workforce. Labour hire jobs across Gold Coast, Brisbane, Logan, Tweed Heads and Byron Bay."
+          content="Looking for consistent work? Join Precision Site Solutions workforce. Labour hire jobs across Gold Coast, Brisbane, Logan, Tweed Heads and Byron Bay."
         />
       </Helmet>
       <Layout>
@@ -115,7 +115,7 @@ const Careers = () => {
                 <span className="text-gradient-gold">Consistent Work?</span>
               </h1>
               <p className="body-lg text-concrete/70 mb-8">
-                The Gold Hire Company connects skilled workers with quality clients across 
+                Precision Site Solutions connects skilled workers with quality clients across 
                 Gold Coast, Brisbane, Logan, Ipswich, Tweed Heads and Byron Bay. Join our team 
                 and experience a communication-led, professional work environment.
               </p>

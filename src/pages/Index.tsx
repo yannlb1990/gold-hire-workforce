@@ -14,7 +14,7 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>Labour Hire Gold Coast, Brisbane & Byron Bay | The Gold Hire Company</title>
+        <title>Labour Hire Gold Coast, Brisbane & Byron Bay | Precision Site Solutions</title>
         <meta
           name="description"
           content="Skilled labour hire for construction across Gold Coast, Brisbane, Logan, Ipswich, Tweed Heads and Byron Bay. Labourers, demolition crews, carpenters, building cleaners, landscaping and maintenance workers. Fast response, fully insured."
@@ -28,7 +28,7 @@ const Index = () => {
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            "name": "The Gold Hire Company",
+            "name": "Precision Site Solutions",
             "description": "Labour hire and workforce solutions for construction across South-East Queensland and Northern NSW",
             "url": "https://thegoldhirecompany.com.au",
             "telephone": PHONE_NUMBER,

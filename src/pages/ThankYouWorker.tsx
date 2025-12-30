@@ -9,7 +9,7 @@ export default function ThankYouWorker() {
   return (
     <Layout>
       <Helmet>
-        <title>Registration Received | The Gold Hire Company</title>
+        <title>Registration Received | Precision Site Solutions</title>
         <meta name="robots" content="noindex" />
       </Helmet>
 
@@ -25,7 +25,7 @@ export default function ThankYouWorker() {
             </h1>
             
             <p className="body-lg text-concrete/80 mb-8">
-              Thanks for registering with The Gold Hire Company. We've got your details and will 
+              Thanks for registering with Precision Site Solutions. We've got your details and will 
               be in touch when we have work that matches your skills and availability.
             </p>
 

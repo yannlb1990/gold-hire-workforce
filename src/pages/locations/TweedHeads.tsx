@@ -40,7 +40,7 @@ const TweedHeads = () => {
   return (
     <>
       <Helmet>
-        <title>Labour Hire Tweed Heads | Cross-Border Workforce | The Gold Hire Company</title>
+        <title>Labour Hire Tweed Heads | Cross-Border Workforce | Precision Site Solutions</title>
         <meta
           name="description"
           content="Labour hire Tweed Heads and Tweed Shire. QLD and NSW licensed. Skilled labourers, trades, cleaning and grounds maintenance across the Tweed region."
@@ -51,7 +51,7 @@ const TweedHeads = () => {
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            "name": "The Gold Hire Company - Tweed Heads",
+            "name": "Precision Site Solutions - Tweed Heads",
             "description": "Cross-border labour hire services in Tweed Heads region",
             "url": "https://thegoldhirecompany.com.au/locations/tweed-heads",
             "telephone": "04XX XXX XXX",

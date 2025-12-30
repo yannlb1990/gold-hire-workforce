@@ -8,7 +8,7 @@ export default function LabourHireQldGuide() {
   return (
     <>
       <Helmet>
-        <title>How Labour Hire Works in QLD 2025 | Builder's Checklist | The Gold Hire Company</title>
+        <title>How Labour Hire Works in QLD 2025 | Builder's Checklist | Precision Site Solutions</title>
         <meta
           name="description"
           content="Complete guide to using labour hire in Queensland. Understand QLD labour hire licensing, legal obligations, and how to work effectively with labour hire providers in Brisbane and Gold Coast."
@@ -43,7 +43,7 @@ export default function LabourHireQldGuide() {
                 </span>
                 <span className="flex items-center gap-1">
                   <User className="w-4 h-4" />
-                  The Gold Hire Company
+                  Precision Site Solutions
                 </span>
               </div>
               <h1 className="heading-xl text-concrete mb-6">
@@ -174,7 +174,7 @@ export default function LabourHireQldGuide() {
 
               <div className="bg-oil rounded-3xl p-8 my-12 text-center">
                 <h3 className="heading-sm text-concrete mb-4">Need Labour Hire in Queensland?</h3>
-                <p className="text-concrete/70 mb-6">The Gold Hire Company is fully licensed in Queensland. We supply skilled workers across Gold Coast, Brisbane, Logan, and Ipswich.</p>
+                <p className="text-concrete/70 mb-6">Precision Site Solutions is fully licensed in Queensland. We supply skilled workers across Gold Coast, Brisbane, Logan, and Ipswich.</p>
                 <Button variant="gold" size="lg" asChild>
                   <Link to="/request-labour">
                     Request Workers

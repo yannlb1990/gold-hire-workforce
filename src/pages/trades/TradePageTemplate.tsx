@@ -34,7 +34,7 @@ export function TradePageTemplate({ trade }: TradePageProps) {
     description: trade.description,
     provider: {
       "@type": "LocalBusiness",
-      name: "The Gold Hire Company",
+      name: "Precision Site Solutions",
       areaServed: ["Gold Coast", "Brisbane", "Byron Bay", "Logan", "Ipswich", "Tweed Heads"],
     },
     serviceType: "Labour Hire",
@@ -43,7 +43,7 @@ export function TradePageTemplate({ trade }: TradePageProps) {
   return (
     <Layout>
       <Helmet>
-        <title>{trade.name} Labour Hire | Gold Coast, Brisbane, Byron Bay | The Gold Hire Company</title>
+        <title>{trade.name} Labour Hire | Gold Coast, Brisbane, Byron Bay | Precision Site Solutions</title>
         <meta name="description" content={`Hire skilled ${trade.name.toLowerCase()} for construction projects across Gold Coast, Brisbane and Byron Bay. Screened, compliant workers with rapid mobilisation.`} />
         <meta name="keywords" content={`${trade.name.toLowerCase()} hire, ${trade.name.toLowerCase()} labour hire, ${trade.name.toLowerCase()} Gold Coast, ${trade.name.toLowerCase()} Brisbane`} />
         <link rel="canonical" href={`https://thegoldhirecompany.com.au/trades/${trade.slug}`} />

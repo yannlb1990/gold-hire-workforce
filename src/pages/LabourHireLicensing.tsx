@@ -9,14 +9,14 @@ export default function LabourHireLicensing() {
   const schemaData = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    name: "Labour Hire Licensing | The Gold Hire Company",
+    name: "Labour Hire Licensing | Precision Site Solutions",
     description: "Licensed labour hire provider compliant with QLD Labour Hire Licensing Act and NSW requirements.",
   };
 
   return (
     <Layout>
       <Helmet>
-        <title>Labour Hire Licensing | Licensed Provider | The Gold Hire Company</title>
+        <title>Labour Hire Licensing | Licensed Provider | Precision Site Solutions</title>
         <meta name="description" content="Licensed labour hire provider compliant with Queensland Labour Hire Licensing Act. Operating legally across QLD and NSW." />
         <link rel="canonical" href="https://thegoldhirecompany.com.au/labour-hire-licensing" />
         <script type="application/ld+json">{JSON.stringify(schemaData)}</script>
@@ -49,7 +49,7 @@ export default function LabourHireLicensing() {
             <div>
               <h2 className="heading-md text-navy mb-6">Queensland Labour Hire Licence</h2>
               <p className="text-charcoal/70 mb-6">
-                The Gold Hire Company holds a current Queensland Labour Hire Licence 
+                Precision Site Solutions holds a current Queensland Labour Hire Licence 
                 as required under the Labour Hire Licensing Act 2017. This licence 
                 demonstrates our commitment to:
               </p>

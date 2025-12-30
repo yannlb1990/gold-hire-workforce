@@ -162,7 +162,7 @@ export function Footer() {
         <div className="container mx-auto px-4 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex flex-wrap items-center gap-4 text-sm text-concrete/60">
-              <span>© {new Date().getFullYear()} The Gold Hire Company</span>
+              <span>© {new Date().getFullYear()} Precision Site Solutions</span>
               <span className="hidden md:inline">•</span>
               <span>ABN: XX XXX XXX XXX</span>
             </div>

@@ -40,7 +40,7 @@ const ByronBay = () => {
   return (
     <>
       <Helmet>
-        <title>Labour Hire Byron Bay | Skilled Workers Northern NSW | The Gold Hire Company</title>
+        <title>Labour Hire Byron Bay | Skilled Workers Northern NSW | Precision Site Solutions</title>
         <meta
           name="description"
           content="Byron Bay labour hire specialists. Skilled labourers, carpenters, painters, commercial cleaners and grounds crews for Byron Shire projects."
@@ -51,7 +51,7 @@ const ByronBay = () => {
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            "name": "The Gold Hire Company - Byron Bay",
+            "name": "Precision Site Solutions - Byron Bay",
             "description": "Labour hire services in Byron Bay and Northern NSW",
             "url": "https://thegoldhirecompany.com.au/locations/byron-bay",
             "telephone": "04XX XXX XXX",

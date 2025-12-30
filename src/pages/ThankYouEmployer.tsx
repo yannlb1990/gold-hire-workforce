@@ -9,7 +9,7 @@ export default function ThankYouEmployer() {
   return (
     <Layout>
       <Helmet>
-        <title>Request Received | The Gold Hire Company</title>
+        <title>Request Received | Precision Site Solutions</title>
         <meta name="robots" content="noindex" />
       </Helmet>
 

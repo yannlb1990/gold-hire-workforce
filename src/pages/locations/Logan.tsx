@@ -41,7 +41,7 @@ const Logan = () => {
   return (
     <>
       <Helmet>
-        <title>Labour Hire Logan | Industrial & Construction Workers | The Gold Hire Company</title>
+        <title>Labour Hire Logan | Industrial & Construction Workers | Precision Site Solutions</title>
         <meta
           name="description"
           content="Labour hire Logan City and surrounds. Skilled labourers for construction, industrial, warehouse and commercial projects. Fast deployment, compliant workers."
@@ -52,7 +52,7 @@ const Logan = () => {
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            "name": "The Gold Hire Company - Logan",
+            "name": "Precision Site Solutions - Logan",
             "description": "Labour hire services in Logan City, Queensland",
             "url": "https://thegoldhirecompany.com.au/locations/logan",
             "telephone": "04XX XXX XXX",

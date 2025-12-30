@@ -53,7 +53,7 @@ const Locations = () => {
   return (
     <>
       <Helmet>
-        <title>Labour Hire Locations | Brisbane, Gold Coast, Byron Bay | The Gold Hire Company</title>
+        <title>Labour Hire Locations | Brisbane, Gold Coast, Byron Bay | Precision Site Solutions</title>
         <meta
           name="description"
           content="Labour hire across South-East Queensland and Northern NSW. Brisbane, Gold Coast, Tweed Heads, Byron Bay, Logan and Ipswich. Local workers, fast response."

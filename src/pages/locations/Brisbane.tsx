@@ -41,7 +41,7 @@ const Brisbane = () => {
   return (
     <>
       <Helmet>
-        <title>Labour Hire Brisbane | Skilled Workers & Trade Staff | The Gold Hire Company</title>
+        <title>Labour Hire Brisbane | Skilled Workers & Trade Staff | Precision Site Solutions</title>
         <meta
           name="description"
           content="Brisbane labour hire specialists. Skilled labourers, carpenters, painters, commercial cleaners and grounds maintenance crews. Fast response, compliant workers, management-led service."
@@ -52,7 +52,7 @@ const Brisbane = () => {
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            "name": "The Gold Hire Company - Brisbane",
+            "name": "Precision Site Solutions - Brisbane",
             "description": "Labour hire services in Brisbane, Queensland",
             "url": "https://thegoldhirecompany.com.au/locations/brisbane",
             "telephone": "04XX XXX XXX",
@@ -145,7 +145,7 @@ const Brisbane = () => {
                   </p>
                   <p>
                     What sets us apart is communication. Every placement comes with management-level accountability. 
-                    When you work with The Gold Hire Company, you're not just getting workers — you're getting 
+                    When you work with Precision Site Solutions, you're not just getting workers — you're getting 
                     a partner who takes ownership of outcomes.
                   </p>
                 </div>

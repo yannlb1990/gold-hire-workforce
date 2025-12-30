@@ -8,7 +8,7 @@ export default function HiringCarpentersBrisbane() {
   return (
     <>
       <Helmet>
-        <title>Hiring Carpenters for Fitouts Brisbane 2025 | Complete Guide | The Gold Hire Company</title>
+        <title>Hiring Carpenters for Fitouts Brisbane 2025 | Complete Guide | Precision Site Solutions</title>
         <meta
           name="description"
           content="Complete guide to hiring carpenters for commercial and retail fitouts in Brisbane. Find qualified carpenters in Fortitude Valley, South Brisbane, CBD and across SEQ."
@@ -43,7 +43,7 @@ export default function HiringCarpentersBrisbane() {
                 </span>
                 <span className="flex items-center gap-1">
                   <User className="w-4 h-4" />
-                  The Gold Hire Company
+                  Precision Site Solutions
                 </span>
               </div>
               <h1 className="heading-xl text-concrete mb-6">
@@ -192,10 +192,10 @@ export default function HiringCarpentersBrisbane() {
                 Regular site check-ins and progress reviews help identify issues early. For labour hire carpenters, maintaining communication with your labour hire provider about worker performance allows them to manage their team effectively and make replacements if workers are not meeting standards.
               </p>
 
-              <h2 className="heading-md text-foreground mt-12 mb-6">Working with The Gold Hire Company for Brisbane Fitouts</h2>
+              <h2 className="heading-md text-foreground mt-12 mb-6">Working with Precision Site Solutions for Brisbane Fitouts</h2>
               
               <p className="text-charcoal/80 leading-relaxed mb-6">
-                The Gold Hire Company supplies experienced carpenters for commercial and retail fitout projects across Brisbane. From the CBD to South Brisbane, Fortitude Valley to Newstead, we understand the local market and can provide carpenters with the specific skills your project requires.
+                Precision Site Solutions supplies experienced carpenters for commercial and retail fitout projects across Brisbane. From the CBD to South Brisbane, Fortitude Valley to Newstead, we understand the local market and can provide carpenters with the specific skills your project requires.
               </p>
 
               <p className="text-charcoal/80 leading-relaxed mb-6">

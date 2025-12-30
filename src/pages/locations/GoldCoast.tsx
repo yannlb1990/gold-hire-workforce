@@ -41,7 +41,7 @@ const GoldCoast = () => {
   return (
     <>
       <Helmet>
-        <title>Labour Hire Gold Coast | Skilled Workers & Trades | The Gold Hire Company</title>
+        <title>Labour Hire Gold Coast | Skilled Workers & Trades | Precision Site Solutions</title>
         <meta
           name="description"
           content="Gold Coast labour hire specialists. Skilled labourers, carpenters, painters, commercial cleaners and maintenance crews. Local workforce, fast response, compliance-first approach."
@@ -52,7 +52,7 @@ const GoldCoast = () => {
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            "name": "The Gold Hire Company - Gold Coast",
+            "name": "Precision Site Solutions - Gold Coast",
             "description": "Labour hire services on the Gold Coast, Queensland",
             "url": "https://thegoldhirecompany.com.au/locations/gold-coast",
             "telephone": "04XX XXX XXX",

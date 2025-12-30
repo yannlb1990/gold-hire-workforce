@@ -65,10 +65,10 @@ const Contact = () => {
   return (
     <>
       <Helmet>
-        <title>Contact Us | Request Labour | The Gold Hire Company</title>
+        <title>Contact Us | Request Labour | Precision Site Solutions</title>
         <meta
           name="description"
-          content="Contact The Gold Hire Company for labour hire enquiries. Request workers for Gold Coast, Brisbane, Logan, Ipswich, Tweed Heads and Byron Bay."
+          content="Contact Precision Site Solutions for labour hire enquiries. Request workers for Gold Coast, Brisbane, Logan, Ipswich, Tweed Heads and Byron Bay."
         />
       </Helmet>
       <Layout>

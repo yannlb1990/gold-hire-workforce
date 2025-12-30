@@ -31,10 +31,10 @@ const About = () => {
   return (
     <>
       <Helmet>
-        <title>About Us | Labour Hire Company Gold Coast Brisbane | The Gold Hire Company</title>
+        <title>About Us | Labour Hire Company Gold Coast Brisbane | Precision Site Solutions</title>
         <meta
           name="description"
-          content="The Gold Hire Company is a management-led, systems-driven labour hire company serving Gold Coast, Brisbane, Logan, Ipswich, Tweed Heads and Byron Bay."
+          content="Precision Site Solutions is a management-led, systems-driven labour hire company serving Gold Coast, Brisbane, Logan, Ipswich, Tweed Heads and Byron Bay."
         />
       </Helmet>
       <Layout>
@@ -51,7 +51,7 @@ const About = () => {
                 <span className="text-gradient-gold">Systems-Driven</span>
               </h1>
               <p className="body-lg text-concrete/70">
-                The Gold Hire Company is a labour hire company built on communication, 
+                Precision Site Solutions is a labour hire company built on communication, 
                 compliance and accountability. We don't just supply workers — we manage outcomes.
               </p>
             </div>
