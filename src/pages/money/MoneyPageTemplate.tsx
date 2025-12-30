@@ -20,9 +20,9 @@ interface MoneyPageProps {
 }
 
 export function MoneyPageTemplate({ location, trade }: MoneyPageProps) {
-  const pageTitle = `${trade.name} Labour Hire ${location.name} | The Gold Hire Company`;
+  const pageTitle = `${trade.name} Labour Hire ${location.name} | Precision Site Solutions`;
   const pageDescription = `Hire experienced ${trade.name.toLowerCase()} in ${location.name}. Reliable, qualified workers available for short-term or ongoing placements. Call now for fast response.`;
-  const canonicalUrl = `https://thegoldhirecompany.com.au/${location.slug}/${trade.slug}`;
+  const canonicalUrl = `https://precisionsitesolutions.com.au/${location.slug}/${trade.slug}`;
 
   const schemaData = {
     "@context": "https://schema.org",
@@ -31,7 +31,7 @@ export function MoneyPageTemplate({ location, trade }: MoneyPageProps) {
     description: pageDescription,
     provider: {
       "@type": "LocalBusiness",
-      name: "The Gold Hire Company",
+      name: "Precision Site Solutions",
     },
     areaServed: {
       "@type": "City",

@@ -51,7 +51,7 @@ const ClientTools = () => {
   return (
     <>
       <Helmet>
-        <title>Client Tools & Portal | Labour Hire Management | The Gold Hire Company</title>
+        <title>Client Tools & Portal | Labour Hire Management | Precision Site Solutions</title>
         <meta
           name="description"
           content="Manage your labour hire with our client portal. Labour requests, shift confirmations, worker profiles, issue escalation and transparent invoicing."

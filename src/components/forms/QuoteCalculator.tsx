@@ -12,8 +12,6 @@ const RATE_RANGES: Record<string, { min: number; max: number }> = {
   demolition: { min: 42, max: 55 },
   carpenters: { min: 55, max: 75 },
   "building-cleaners": { min: 35, max: 45 },
-  landscaping: { min: 38, max: 50 },
-  maintenance: { min: 40, max: 55 },
 };
 
 // Location multipliers (some areas have higher demand)

@@ -69,49 +69,16 @@ const services = [
     forWho: "Builders, developers, property managers and body corporates.",
     link: "/trades/building-cleaners",
   },
-  {
-    id: "landscaping",
-    icon: Trees,
-    title: "Landscaping Workers",
-    subtitle: "Grounds & Garden Maintenance",
-    description: "Reliable landscaping workers for commercial properties, estates and developments. Grass cutting, garden bed maintenance, debris removal and external area upkeep.",
-    features: [
-      "Grass cutting & mowing",
-      "Leaf & debris removal",
-      "Garden bed maintenance",
-      "Basic planting",
-      "External common areas",
-    ],
-    forWho: "Property managers, body corporates, commercial estates and facilities managers.",
-    note: "Note: We provide labour for landscaping teams, not licensed landscaping design.",
-    link: "/trades/landscaping",
-  },
-  {
-    id: "maintenance",
-    icon: Wrench,
-    title: "Maintenance Ground Workers",
-    subtitle: "General Maintenance & Facilities Support",
-    description: "General maintenance workers for property managers, commercial buildings and estates. Reliable support for ongoing maintenance, repairs and facilities upkeep.",
-    features: [
-      "General repairs",
-      "Preventive maintenance",
-      "Building inspections support",
-      "Minor installations",
-      "Handyman services",
-    ],
-    forWho: "Property managers, commercial building owners and facilities management companies.",
-    link: "/trades/maintenance",
-  },
 ];
 
 const Services = () => {
   return (
     <>
       <Helmet>
-        <title>Labour Hire Services | Labourers, Carpenters, Demolition | The Gold Hire Company</title>
+        <title>Labour Hire Services | Labourers, Carpenters, Demolition | Precision Site Solutions</title>
         <meta
           name="description"
-          content="Skilled labour hire services across Gold Coast, Brisbane & Byron Bay. Labourers, demolition crews, carpenters, building cleaners, landscaping and maintenance workers."
+          content="Skilled labour hire services across Gold Coast, Brisbane & Byron Bay. Labourers, demolition crews, carpenters and building cleaners."
         />
       </Helmet>
       <Layout>
@@ -171,9 +138,6 @@ const Services = () => {
                     <p className="text-charcoal/60 text-sm mb-6">
                       <strong className="text-navy">Who it's for:</strong> {service.forWho}
                     </p>
-                    {service.note && (
-                      <p className="text-charcoal/60 text-sm mb-6 italic">{service.note}</p>
-                    )}
                     <div className="flex flex-wrap gap-4">
                       <Button variant="gold" size="lg" asChild>
                         <Link to="/contact">

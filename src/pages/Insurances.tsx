@@ -9,16 +9,16 @@ export default function Insurances() {
   const schemaData = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    name: "Insurance Coverage | The Gold Hire Company",
+    name: "Insurance Coverage | Precision Site Solutions",
     description: "Comprehensive insurance coverage for labour hire including public liability, workers compensation, and professional indemnity.",
   };
 
   return (
     <Layout>
       <Helmet>
-        <title>Insurance Coverage | Labour Hire Insurance | The Gold Hire Company</title>
+        <title>Insurance Coverage | Labour Hire Insurance | Precision Site Solutions</title>
         <meta name="description" content="Fully insured labour hire with public liability, workers compensation and professional indemnity coverage. Certificates available on request." />
-        <link rel="canonical" href="https://thegoldhirecompany.com.au/insurances" />
+        <link rel="canonical" href="https://precisionsitesolutions.com.au/insurances" />
         <script type="application/ld+json">{JSON.stringify(schemaData)}</script>
       </Helmet>
 

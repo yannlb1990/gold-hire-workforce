@@ -15,25 +15,25 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>Labour Hire Gold Coast, Brisbane & Byron Bay | The Gold Hire Company</title>
+        <title>Labour Hire Gold Coast, Brisbane & Byron Bay | Precision Site Solutions</title>
         <meta
           name="description"
-          content="Skilled labour hire for construction across Gold Coast, Brisbane, Logan, Ipswich, Tweed Heads and Byron Bay. Labourers, demolition crews, carpenters, building cleaners, landscaping and maintenance workers. Fast response, fully insured."
+          content="Skilled labour hire for construction across Gold Coast, Brisbane, Logan, Ipswich, Tweed Heads and Byron Bay. Labourers, demolition crews, carpenters, building cleaners. Fast response, fully insured."
         />
         <meta
           name="keywords"
-          content="labour hire gold coast, labour hire brisbane, labour hire byron bay, construction workers, carpenters hire, labourers hire, demolition crews, building cleaners gold coast, landscaping workers brisbane"
+          content="labour hire gold coast, labour hire brisbane, labour hire byron bay, construction workers, carpenters hire, labourers hire, demolition crews, building cleaners gold coast"
         />
-        <link rel="canonical" href="https://thegoldhirecompany.com.au" />
+        <link rel="canonical" href="https://precisionsitesolutions.com.au" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            "name": "The Gold Hire Company",
+            "name": "Precision Site Solutions",
             "description": "Labour hire and workforce solutions for construction across South-East Queensland and Northern NSW",
-            "url": "https://thegoldhirecompany.com.au",
+            "url": "https://precisionsitesolutions.com.au",
             "telephone": PHONE_NUMBER,
-            "email": "enquiries@thegoldhirecompany.com.au",
+            "email": "enquiries@precisionsitesolutions.com.au",
             "areaServed": [
               { "@type": "City", "name": "Gold Coast" },
               { "@type": "City", "name": "Brisbane" },
@@ -47,9 +47,7 @@ const Index = () => {
               "Skilled Labourers",
               "Demolition Crews",
               "Carpenter Hire",
-              "Building Cleaners",
-              "Landscaping Workers",
-              "Maintenance Ground Workers"
+              "Building Cleaners"
             ]
           })}
         </script>

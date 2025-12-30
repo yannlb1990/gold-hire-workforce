@@ -65,10 +65,10 @@ const Contact = () => {
   return (
     <>
       <Helmet>
-        <title>Contact Us | Request Labour | The Gold Hire Company</title>
+        <title>Contact Us | Request Labour | Precision Site Solutions</title>
         <meta
           name="description"
-          content="Contact The Gold Hire Company for labour hire enquiries. Request workers for Gold Coast, Brisbane, Logan, Ipswich, Tweed Heads and Byron Bay."
+          content="Contact Precision Site Solutions for labour hire enquiries. Request workers for Gold Coast, Brisbane, Logan, Ipswich, Tweed Heads and Byron Bay."
         />
       </Helmet>
       <Layout>
@@ -172,8 +172,6 @@ const Contact = () => {
                           <option value="Demolition Crews">Demolition Crews</option>
                           <option value="Carpenters">Carpenters</option>
                           <option value="Building Cleaners">Building Cleaners</option>
-                          <option value="Landscaping Workers">Landscaping Workers</option>
-                          <option value="Maintenance Ground Workers">Maintenance Ground Workers</option>
                           <option value="Other">Other</option>
                         </select>
                       </div>
@@ -208,8 +206,6 @@ const Contact = () => {
                           <option value="Demolition">Demolition</option>
                           <option value="Carpenter">Carpenter</option>
                           <option value="Building Cleaner">Building Cleaner</option>
-                          <option value="Landscaping">Landscaping</option>
-                          <option value="Maintenance">Maintenance</option>
                           <option value="Other">Other</option>
                         </select>
                       </div>
@@ -279,7 +275,7 @@ const Contact = () => {
                       </div>
                     </a>
                     <a
-                      href="mailto:enquiries@thegoldhirecompany.com.au"
+                      href="mailto:enquiries@precisionsitesolutions.com.au"
                       className="flex items-start gap-4 text-concrete/80 hover:text-gold transition-colors"
                     >
                       <div className="w-14 h-14 rounded-2xl bg-gold/20 flex items-center justify-center shrink-0">
@@ -287,7 +283,7 @@ const Contact = () => {
                       </div>
                       <div>
                         <div className="font-medium text-concrete">Email</div>
-                        <div className="text-lg break-all">enquiries@thegoldhirecompany.com.au</div>
+                        <div className="text-lg break-all">enquiries@precisionsitesolutions.com.au</div>
                       </div>
                     </a>
                     <div className="flex items-start gap-4 text-concrete/80">

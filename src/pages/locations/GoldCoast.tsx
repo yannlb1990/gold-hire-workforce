@@ -8,9 +8,8 @@ const GoldCoast = () => {
   const services = [
     { name: "Skilled Labour Hire", href: "/services#labour" },
     { name: "Carpenters", href: "/services#carpenters" },
-    { name: "Painters", href: "/services#painters" },
     { name: "Commercial Cleaning", href: "/services#cleaning" },
-    { name: "Landscaping & Grounds", href: "/services#landscaping" },
+    { name: "Demolition Crews", href: "/services#demolition" },
   ];
 
   const suburbs = [
@@ -41,20 +40,20 @@ const GoldCoast = () => {
   return (
     <>
       <Helmet>
-        <title>Labour Hire Gold Coast | Skilled Workers & Trades | The Gold Hire Company</title>
+        <title>Labour Hire Gold Coast | Skilled Workers & Trades | Precision Site Solutions</title>
         <meta
           name="description"
-          content="Gold Coast labour hire specialists. Skilled labourers, carpenters, painters, commercial cleaners and maintenance crews. Local workforce, fast response, compliance-first approach."
+          content="Gold Coast labour hire specialists. Skilled labourers, carpenters, demolition crews and building cleaners. Local workforce, fast response, compliance-first approach."
         />
         <meta name="keywords" content="labour hire gold coast, gold coast labour hire, skilled labour gold coast, construction workers gold coast, cleaning labour gold coast" />
-        <link rel="canonical" href="https://thegoldhirecompany.com.au/locations/gold-coast" />
+        <link rel="canonical" href="https://precisionsitesolutions.com.au/locations/gold-coast" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            "name": "The Gold Hire Company - Gold Coast",
+            "name": "Precision Site Solutions - Gold Coast",
             "description": "Labour hire services on the Gold Coast, Queensland",
-            "url": "https://thegoldhirecompany.com.au/locations/gold-coast",
+            "url": "https://precisionsitesolutions.com.au/locations/gold-coast",
             "telephone": "04XX XXX XXX",
             "areaServed": {
               "@type": "City",
