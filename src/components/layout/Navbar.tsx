@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { Menu, X, Phone, ChevronDown } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -40,15 +40,15 @@ export function Navbar() {
         <nav className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-lg bg-gold flex items-center justify-center shadow-gold transition-transform duration-300 group-hover:scale-105">
-              <span className="text-navy font-heading font-bold text-xl">G</span>
+            <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center shadow-green transition-transform duration-300 group-hover:scale-105">
+              <span className="text-primary-foreground font-heading font-bold text-xl">PSS</span>
             </div>
             <div className="hidden sm:block">
               <span className="text-concrete font-heading font-bold text-lg leading-tight block">
-                The Gold Hire
+                Precision Site
               </span>
-              <span className="text-gold text-xs font-medium tracking-wider uppercase">
-                Company
+              <span className="text-primary text-xs font-medium tracking-wider uppercase">
+                Solutions
               </span>
             </div>
           </Link>
@@ -61,7 +61,7 @@ export function Navbar() {
                 to={link.href}
                 className={cn(
                   "nav-link text-sm",
-                  location.pathname === link.href && "text-gold after:w-full"
+                  location.pathname === link.href && "text-primary after:w-full"
                 )}
               >
                 {link.name}
@@ -73,12 +73,12 @@ export function Navbar() {
           <div className="hidden lg:flex items-center gap-4">
             <a
               href="tel:0400000000"
-              className="flex items-center gap-2 text-concrete/80 hover:text-gold transition-colors text-sm"
+              className="flex items-center gap-2 text-concrete/80 hover:text-primary transition-colors text-sm"
             >
               <Phone size={16} />
               <span className="font-medium">04XX XXX XXX</span>
             </a>
-            <Button variant="gold" size="lg" asChild>
+            <Button variant="default" size="lg" asChild>
               <Link to="/contact">Request Labour</Link>
             </Button>
           </div>
@@ -86,7 +86,7 @@ export function Navbar() {
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden text-concrete hover:text-gold transition-colors p-2"
+            className="lg:hidden text-concrete hover:text-primary transition-colors p-2"
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -109,14 +109,14 @@ export function Navbar() {
                   onClick={() => setIsMobileMenuOpen(false)}
                   className={cn(
                     "px-4 py-3 rounded-lg text-concrete/80 hover:text-concrete hover:bg-steel-blue/20 transition-all",
-                    location.pathname === link.href && "text-gold bg-steel-blue/20"
+                    location.pathname === link.href && "text-primary bg-steel-blue/20"
                   )}
                 >
                   {link.name}
                 </Link>
               ))}
               <hr className="border-steel-blue/20 my-2" />
-              <Button variant="gold" size="lg" className="w-full" asChild>
+              <Button variant="default" size="lg" className="w-full" asChild>
                 <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
                   Request Labour
                 </Link>
