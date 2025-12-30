@@ -4,11 +4,10 @@ import { Button } from "@/components/ui/button";
 
 const footerLinks = {
   services: [
-    { name: "Skilled Labour Hire", href: "/services#labour" },
-    { name: "Carpenters", href: "/services#carpenters" },
-    { name: "Painters", href: "/services#painters" },
-    { name: "Commercial Cleaning", href: "/services#cleaning" },
-    { name: "Landscaping & Grounds", href: "/services#landscaping" },
+    { name: "Skilled Labourers", href: "/trades/labourers" },
+    { name: "Carpenters", href: "/trades/carpenters" },
+    { name: "Building Cleaners", href: "/trades/building-cleaners" },
+    { name: "Demolition Crews", href: "/trades/demolition" },
   ],
   company: [
     { name: "About Us", href: "/about" },
@@ -42,20 +41,20 @@ export function Footer() {
           <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
             <div className="text-center lg:text-left">
               <h3 className="heading-md text-concrete mb-3">
-                Ready to Get <span className="text-gradient-gold">Labour Fast?</span>
+                Ready to Get <span className="text-gradient-green">Labour Fast?</span>
               </h3>
               <p className="text-concrete/70 text-lg max-w-xl">
                 Clear communication guaranteed. Systems-driven labour hire for Gold Coast, Brisbane & Byron Bay.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="gold" size="xl" asChild>
+              <Button variant="default" size="lg" asChild>
                 <Link to="/contact">
                   Request Labour
                   <ArrowRight className="ml-2" size={20} />
                 </Link>
               </Button>
-              <Button variant="hero" size="xl" asChild>
+              <Button variant="outline" size="lg" className="border-concrete/30 text-concrete hover:bg-concrete/10" asChild>
                 <Link to="/careers">Join Our Workforce</Link>
               </Button>
             </div>
@@ -69,15 +68,15 @@ export function Footer() {
           {/* Brand Column */}
           <div className="lg:col-span-2">
             <Link to="/" className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-lg bg-gold flex items-center justify-center shadow-gold">
-                <span className="text-navy font-heading font-bold text-2xl">G</span>
+              <div className="w-12 h-12 rounded-lg bg-primary flex items-center justify-center shadow-green">
+                <span className="text-primary-foreground font-heading font-bold text-lg">PSS</span>
               </div>
               <div>
                 <span className="text-concrete font-heading font-bold text-xl leading-tight block">
-                  The Gold Hire
+                  Precision Site
                 </span>
-                <span className="text-gold text-xs font-medium tracking-wider uppercase">
-                  Company
+                <span className="text-primary text-xs font-medium tracking-wider uppercase">
+                  Solutions
                 </span>
               </div>
             </Link>
@@ -90,20 +89,20 @@ export function Footer() {
             <div className="space-y-3">
               <a
                 href="tel:0400000000"
-                className="flex items-center gap-3 text-concrete/70 hover:text-gold transition-colors"
+                className="flex items-center gap-3 text-concrete/70 hover:text-primary transition-colors"
               >
-                <Phone size={18} className="text-gold" />
+                <Phone size={18} className="text-primary" />
                 <span>04XX XXX XXX</span>
               </a>
               <a
-                href="mailto:enquiries@thegoldhirecompany.com.au"
-                className="flex items-center gap-3 text-concrete/70 hover:text-gold transition-colors"
+                href="mailto:enquiries@precisionsitesolutions.com.au"
+                className="flex items-center gap-3 text-concrete/70 hover:text-primary transition-colors"
               >
-                <Mail size={18} className="text-gold" />
-                <span>enquiries@thegoldhirecompany.com.au</span>
+                <Mail size={18} className="text-primary" />
+                <span>enquiries@precisionsitesolutions.com.au</span>
               </a>
               <div className="flex items-start gap-3 text-concrete/70">
-                <MapPin size={18} className="text-gold mt-1" />
+                <MapPin size={18} className="text-primary mt-1" />
                 <span>Gold Coast | Brisbane | Logan | Ipswich | Tweed Heads | Byron Bay</span>
               </div>
             </div>
@@ -117,7 +116,7 @@ export function Footer() {
                 <li key={link.name}>
                   <Link
                     to={link.href}
-                    className="text-concrete/70 hover:text-gold transition-colors text-sm"
+                    className="text-concrete/70 hover:text-primary transition-colors text-sm"
                   >
                     {link.name}
                   </Link>
@@ -134,7 +133,7 @@ export function Footer() {
                 <li key={link.name}>
                   <Link
                     to={link.href}
-                    className="text-concrete/70 hover:text-gold transition-colors text-sm"
+                    className="text-concrete/70 hover:text-primary transition-colors text-sm"
                   >
                     {link.name}
                   </Link>
@@ -162,7 +161,7 @@ export function Footer() {
         <div className="container mx-auto px-4 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex flex-wrap items-center gap-4 text-sm text-concrete/60">
-              <span>© {new Date().getFullYear()} The Gold Hire Company</span>
+              <span>© {new Date().getFullYear()} Precision Site Solutions</span>
               <span className="hidden md:inline">•</span>
               <span>ABN: XX XXX XXX XXX</span>
             </div>
@@ -171,7 +170,7 @@ export function Footer() {
                 <Link
                   key={link.name}
                   to={link.href}
-                  className="text-sm text-concrete/60 hover:text-gold transition-colors"
+                  className="text-sm text-concrete/60 hover:text-primary transition-colors"
                 >
                   {link.name}
                 </Link>

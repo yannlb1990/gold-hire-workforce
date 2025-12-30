@@ -51,58 +51,6 @@ export const TRADE_DATA = {
       },
     ],
   },
-  demolition: {
-    name: "Demolition Crews",
-    slug: "demolition",
-    description: "Experienced demolition workers for hire across Gold Coast, Brisbane, Byron Bay, Tweed Heads and Logan. Strip-outs, soft demo, and site clearing.",
-    heroTitle: "Demolition Crews Ready to Work",
-    heroSubtitle: "From internal strip-outs to full site clearing, our demolition workers know how to work safely and efficiently to get your site prepped.",
-    roles: [
-      "Internal strip-out",
-      "Soft demolition",
-      "Asbestos removal support",
-      "Site clearing",
-      "Salvage and recycling",
-      "Concrete breaking",
-      "Rubbish removal",
-      "Material sorting",
-      "Equipment operation",
-    ],
-    requirements: [
-      "White Card (Construction Induction)",
-      "Asbestos Awareness certification",
-      "Working at Heights (for some roles)",
-      "Physical fitness",
-      "PPE compliant",
-      "Experience in demolition environments",
-    ],
-    industries: [
-      "Demolition contractors",
-      "Fitout companies",
-      "Renovation specialists",
-      "Commercial builders",
-      "Industrial contractors",
-      "Waste management companies",
-    ],
-    faqs: [
-      {
-        question: "Can your workers handle asbestos?",
-        answer: "Our demo workers have Asbestos Awareness training. For licensed asbestos removal, you'll need a licensed removalist, but our workers can assist under supervision."
-      },
-      {
-        question: "What size demolition projects can you support?",
-        answer: "We supply workers for everything from small internal strip-outs to large-scale site clearing projects. We scale the crew to match your project."
-      },
-      {
-        question: "Do you supply equipment?",
-        answer: "Our workers come equipped with PPE and basic hand tools. Specialised demolition equipment is typically provided by the host employer."
-      },
-      {
-        question: "How do you manage dust and debris?",
-        answer: "Our workers are trained in dust suppression and proper debris management. They'll follow your site protocols and maintain a safe working environment."
-      },
-    ],
-  },
   carpenters: {
     name: "Carpenters",
     slug: "carpenters",
@@ -207,107 +155,55 @@ export const TRADE_DATA = {
       },
     ],
   },
-  landscaping: {
-    name: "Landscaping Workers",
-    slug: "landscaping",
-    description: "Reliable landscaping and grounds maintenance workers for hire across Gold Coast, Brisbane, Byron Bay, Tweed Heads and Logan. Basic landscaping support.",
-    heroTitle: "Landscaping Workers Ready to Work",
-    heroSubtitle: "Basic landscaping and grounds maintenance for commercial properties and estates. Grass cutting, garden bed maintenance, and external area upkeep.",
+  demolition: {
+    name: "Demolition Crews",
+    slug: "demolition",
+    description: "Experienced demolition workers for hire across Gold Coast, Brisbane, Byron Bay, Tweed Heads and Logan. Strip-outs, soft demo, and site clearing.",
+    heroTitle: "Demolition Crews Ready to Work",
+    heroSubtitle: "From internal strip-outs to full site clearing, our demolition workers know how to work safely and efficiently to get your site prepped.",
     roles: [
-      "Grass cutting and mowing",
-      "Leaf and debris removal",
-      "Garden bed maintenance",
-      "Basic planting",
-      "Mulching and soil work",
-      "Hedge trimming",
-      "Irrigation assistance",
-      "Turf laying support",
-      "External common areas",
-    ],
-    requirements: [
-      "Physical fitness",
-      "Basic landscaping experience",
-      "PPE compliant",
-      "Reliable transport",
-      "Early morning availability",
-      "Ability to work outdoors",
-    ],
-    industries: [
-      "Property managers",
-      "Body corporates",
-      "Commercial estates",
-      "Landscaping contractors",
-      "Facilities managers",
-      "Golf courses and resorts",
-    ],
-    faqs: [
-      {
-        question: "Do you provide licensed landscaping services?",
-        answer: "We provide basic landscaping labour support. For licensed structural landscaping works, we can support licensed landscapers or recommend specialists."
-      },
-      {
-        question: "What equipment do your workers bring?",
-        answer: "Our landscaping workers typically come with basic hand tools. Larger equipment like mowers and blowers are usually provided by the host or can be arranged."
-      },
-      {
-        question: "Can you support ongoing grounds maintenance contracts?",
-        answer: "Yes, we can provide regular crews for ongoing grounds maintenance. Many clients use us for weekly or fortnightly rotations."
-      },
-      {
-        question: "Do your workers handle irrigation systems?",
-        answer: "Our workers can assist with basic irrigation maintenance and repairs under supervision. For complex irrigation work, we recommend a licensed specialist."
-      },
-    ],
-  },
-  maintenance: {
-    name: "Maintenance Ground Workers",
-    slug: "maintenance",
-    description: "General maintenance and facilities support workers for hire across Gold Coast, Brisbane, Byron Bay, Tweed Heads and Logan. Reliable support for ongoing needs.",
-    heroTitle: "Maintenance Workers On Demand",
-    heroSubtitle: "General maintenance and facilities support for property managers, commercial buildings and estates. Reliable support for all your maintenance needs.",
-    roles: [
-      "General repairs",
-      "Preventive maintenance",
-      "Building inspections support",
-      "Minor installations",
-      "Handyman services",
-      "Painting touch-ups",
-      "Fixture repairs",
-      "Common area maintenance",
-      "Emergency response support",
+      "Internal strip-out",
+      "Soft demolition",
+      "Asbestos removal support",
+      "Site clearing",
+      "Salvage and recycling",
+      "Concrete breaking",
+      "Rubbish removal",
+      "Material sorting",
+      "Equipment operation",
     ],
     requirements: [
       "White Card (Construction Induction)",
-      "General maintenance experience",
-      "Basic hand tools",
+      "Asbestos Awareness certification",
+      "Working at Heights (for some roles)",
+      "Physical fitness",
       "PPE compliant",
-      "Problem-solving ability",
-      "Good communication skills",
+      "Experience in demolition environments",
     ],
     industries: [
-      "Property managers",
-      "Commercial building owners",
-      "Facilities management companies",
-      "Body corporates",
-      "Shopping centres",
-      "Industrial estates",
+      "Demolition contractors",
+      "Fitout companies",
+      "Renovation specialists",
+      "Commercial builders",
+      "Industrial contractors",
+      "Waste management companies",
     ],
     faqs: [
       {
-        question: "What types of maintenance work can your workers handle?",
-        answer: "Our maintenance workers handle general repairs, preventive maintenance, minor installations, painting touch-ups, fixture repairs and common area upkeep. For licensed trade work, we can supply appropriate tradespeople."
+        question: "Can your workers handle asbestos?",
+        answer: "Our demo workers have Asbestos Awareness training. For licensed asbestos removal, you'll need a licensed removalist, but our workers can assist under supervision."
       },
       {
-        question: "Can you provide ongoing maintenance support?",
-        answer: "Yes, many clients use us for regular maintenance rotations. We can provide dedicated workers for ongoing placements."
+        question: "What size demolition projects can you support?",
+        answer: "We supply workers for everything from small internal strip-outs to large-scale site clearing projects. We scale the crew to match your project."
       },
       {
-        question: "Do your workers handle emergency call-outs?",
-        answer: "We can support emergency response with short-notice callouts. Contact us to discuss your after-hours requirements."
+        question: "Do you supply equipment?",
+        answer: "Our workers come equipped with PPE and basic hand tools. Specialised demolition equipment is typically provided by the host employer."
       },
       {
-        question: "What's the difference between maintenance workers and handymen?",
-        answer: "Our maintenance ground workers are focused on building and facilities maintenance. They handle a broad range of tasks but are not licensed tradespeople."
+        question: "How do you manage dust and debris?",
+        answer: "Our workers are trained in dust suppression and proper debris management. They'll follow your site protocols and maintain a safe working environment."
       },
     ],
   },
