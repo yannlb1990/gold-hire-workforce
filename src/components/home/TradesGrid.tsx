@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Hammer, HardHat, Wrench, Sparkles, Trees, Settings } from "lucide-react";
+import { ArrowRight, Hammer, HardHat, Wrench, Sparkles } from "lucide-react";
 
 export function TradesGrid() {
   const trades = [
@@ -7,8 +7,6 @@ export function TradesGrid() {
     { icon: Wrench, name: "Demolition Crews", slug: "demolition", description: "Strip-outs & site clearing" },
     { icon: Hammer, name: "Carpenters", slug: "carpenters", description: "Framing, fitout & formwork" },
     { icon: Sparkles, name: "Building Cleaners", slug: "building-cleaners", description: "Post-construction cleans" },
-    { icon: Trees, name: "Landscaping Workers", slug: "landscaping", description: "Grounds & garden maintenance" },
-    { icon: Settings, name: "Maintenance Workers", slug: "maintenance", description: "Facilities support" },
   ];
 
   return (
@@ -21,7 +19,7 @@ export function TradesGrid() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
           {trades.map((trade, index) => (
             <Link
               key={index}
