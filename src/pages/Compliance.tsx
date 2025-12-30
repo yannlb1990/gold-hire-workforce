@@ -12,16 +12,16 @@ export default function Compliance() {
   const schemaData = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    name: "Compliance & Safety | The Gold Hire Company",
+    name: "Compliance & Safety | Precision Site Solutions",
     description: "Our commitment to WHS, worker screening, and regulatory compliance in construction labour hire.",
   };
 
   return (
     <Layout>
       <Helmet>
-        <title>Compliance & Safety | Labour Hire Standards | The Gold Hire Company</title>
+        <title>Compliance & Safety | Labour Hire Standards | Precision Site Solutions</title>
         <meta name="description" content="Learn about our commitment to WHS, worker screening, induction verification and regulatory compliance. Fully licensed and insured labour hire." />
-        <link rel="canonical" href="https://thegoldhirecompany.com.au/compliance" />
+        <link rel="canonical" href="https://precisionsitesolutions.com.au/compliance" />
         <script type="application/ld+json">{JSON.stringify(schemaData)}</script>
       </Helmet>
 

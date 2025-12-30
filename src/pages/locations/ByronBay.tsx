@@ -8,9 +8,8 @@ const ByronBay = () => {
   const services = [
     { name: "Skilled Labour Hire", href: "/services#labour" },
     { name: "Carpenters", href: "/services#carpenters" },
-    { name: "Painters", href: "/services#painters" },
     { name: "Commercial Cleaning", href: "/services#cleaning" },
-    { name: "Landscaping & Grounds", href: "/services#landscaping" },
+    { name: "Demolition Crews", href: "/services#demolition" },
   ];
 
   const areas = [
@@ -40,20 +39,20 @@ const ByronBay = () => {
   return (
     <>
       <Helmet>
-        <title>Labour Hire Byron Bay | Skilled Workers Northern NSW | The Gold Hire Company</title>
+        <title>Labour Hire Byron Bay | Skilled Workers Northern NSW | Precision Site Solutions</title>
         <meta
           name="description"
-          content="Byron Bay labour hire specialists. Skilled labourers, carpenters, painters, commercial cleaners and grounds crews for Byron Shire projects."
+          content="Byron Bay labour hire specialists. Skilled labourers, carpenters, demolition crews and building cleaners for Byron Shire projects."
         />
         <meta name="keywords" content="labour hire byron bay, byron bay workers, northern nsw labour hire, construction workers byron, cleaning crews byron bay" />
-        <link rel="canonical" href="https://thegoldhirecompany.com.au/locations/byron-bay" />
+        <link rel="canonical" href="https://precisionsitesolutions.com.au/locations/byron-bay" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            "name": "The Gold Hire Company - Byron Bay",
+            "name": "Precision Site Solutions - Byron Bay",
             "description": "Labour hire services in Byron Bay and Northern NSW",
-            "url": "https://thegoldhirecompany.com.au/locations/byron-bay",
+            "url": "https://precisionsitesolutions.com.au/locations/byron-bay",
             "telephone": "04XX XXX XXX",
             "areaServed": {
               "@type": "City",

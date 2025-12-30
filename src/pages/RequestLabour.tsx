@@ -23,7 +23,7 @@ export default function RequestLabour() {
     name: "Labour Hire Request",
     provider: {
       "@type": "LocalBusiness",
-      name: "The Gold Hire Company",
+      name: "Precision Site Solutions",
       telephone: PHONE_NUMBER,
     },
   };
@@ -31,9 +31,9 @@ export default function RequestLabour() {
   return (
     <Layout>
       <Helmet>
-        <title>Request Labour | Construction Labour Hire | The Gold Hire Company</title>
-        <meta name="description" content="Request skilled construction labour for your project. Carpenters, labourers, concreters and more available across Gold Coast, Brisbane and Byron Bay." />
-        <link rel="canonical" href="https://thegoldhirecompany.com.au/request-labour" />
+        <title>Request Labour | Construction Labour Hire | Precision Site Solutions</title>
+        <meta name="description" content="Request skilled construction labour for your project. Carpenters, labourers, demolition crews and building cleaners available across Gold Coast, Brisbane and Byron Bay." />
+        <link rel="canonical" href="https://precisionsitesolutions.com.au/request-labour" />
         <script type="application/ld+json">{JSON.stringify(schemaData)}</script>
       </Helmet>
 

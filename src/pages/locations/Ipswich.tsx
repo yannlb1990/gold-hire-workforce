@@ -8,9 +8,8 @@ const Ipswich = () => {
   const services = [
     { name: "Skilled Labour Hire", href: "/services#labour" },
     { name: "Carpenters", href: "/services#carpenters" },
-    { name: "Painters", href: "/services#painters" },
     { name: "Commercial Cleaning", href: "/services#cleaning" },
-    { name: "Landscaping & Grounds", href: "/services#landscaping" },
+    { name: "Demolition Crews", href: "/services#demolition" },
   ];
 
   const suburbs = [
@@ -41,20 +40,20 @@ const Ipswich = () => {
   return (
     <>
       <Helmet>
-        <title>Labour Hire Ipswich | Western Corridor Workers | The Gold Hire Company</title>
+        <title>Labour Hire Ipswich | Western Corridor Workers | Precision Site Solutions</title>
         <meta
           name="description"
           content="Labour hire Ipswich and western corridor. Skilled labourers for construction, industrial and commercial projects in Ipswich, Springfield and surrounds."
         />
         <meta name="keywords" content="labour hire ipswich, ipswich workers, springfield labour hire, western corridor labour, construction workers ipswich" />
-        <link rel="canonical" href="https://thegoldhirecompany.com.au/locations/ipswich" />
+        <link rel="canonical" href="https://precisionsitesolutions.com.au/locations/ipswich" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            "name": "The Gold Hire Company - Ipswich",
+            "name": "Precision Site Solutions - Ipswich",
             "description": "Labour hire services in Ipswich and Western Corridor, Queensland",
-            "url": "https://thegoldhirecompany.com.au/locations/ipswich",
+            "url": "https://precisionsitesolutions.com.au/locations/ipswich",
             "telephone": "04XX XXX XXX",
             "areaServed": {
               "@type": "City",

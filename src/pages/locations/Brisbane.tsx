@@ -8,9 +8,8 @@ const Brisbane = () => {
   const services = [
     { name: "Skilled Labour Hire", href: "/services#labour" },
     { name: "Carpenters", href: "/services#carpenters" },
-    { name: "Painters", href: "/services#painters" },
     { name: "Commercial Cleaning", href: "/services#cleaning" },
-    { name: "Landscaping & Grounds", href: "/services#landscaping" },
+    { name: "Demolition Crews", href: "/services#demolition" },
   ];
 
   const suburbs = [
@@ -41,27 +40,27 @@ const Brisbane = () => {
   return (
     <>
       <Helmet>
-        <title>Labour Hire Brisbane | Skilled Workers & Trade Staff | The Gold Hire Company</title>
+        <title>Labour Hire Brisbane | Skilled Workers & Trade Staff | Precision Site Solutions</title>
         <meta
           name="description"
-          content="Brisbane labour hire specialists. Skilled labourers, carpenters, painters, commercial cleaners and grounds maintenance crews. Fast response, compliant workers, management-led service."
+          content="Brisbane labour hire specialists. Skilled labourers, carpenters, demolition crews and building cleaners. Fast response, compliant workers, management-led service."
         />
         <meta name="keywords" content="labour hire brisbane, hiring company brisbane, skilled labour hire brisbane, construction labour brisbane, commercial cleaning brisbane" />
-        <link rel="canonical" href="https://thegoldhirecompany.com.au/locations/brisbane" />
+        <link rel="canonical" href="https://precisionsitesolutions.com.au/locations/brisbane" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            "name": "The Gold Hire Company - Brisbane",
+            "name": "Precision Site Solutions - Brisbane",
             "description": "Labour hire services in Brisbane, Queensland",
-            "url": "https://thegoldhirecompany.com.au/locations/brisbane",
+            "url": "https://precisionsitesolutions.com.au/locations/brisbane",
             "telephone": "04XX XXX XXX",
             "areaServed": {
               "@type": "City",
               "name": "Brisbane",
               "containedIn": "Queensland, Australia"
             },
-            "serviceType": ["Labour Hire", "Carpentry", "Painting", "Commercial Cleaning", "Landscaping"]
+            "serviceType": ["Labour Hire", "Carpentry", "Demolition", "Building Cleaning"]
           })}
         </script>
       </Helmet>
@@ -135,8 +134,8 @@ const Brisbane = () => {
                 <div className="prose prose-lg max-w-none text-charcoal/70">
                   <p className="mb-4">
                     As Brisbane continues to grow with major infrastructure projects, commercial developments 
-                    and urban renewal, the demand for reliable skilled labour has never been higher. The Gold 
-                    Hire Company delivers workforce solutions that keep Brisbane projects running on schedule.
+                    and urban renewal, the demand for reliable skilled labour has never been higher. Precision 
+                    Site Solutions delivers workforce solutions that keep Brisbane projects running on schedule.
                   </p>
                   <p className="mb-4">
                     From the CBD high-rises to suburban construction sites, from Fortitude Valley renovations 
@@ -145,7 +144,7 @@ const Brisbane = () => {
                   </p>
                   <p>
                     What sets us apart is communication. Every placement comes with management-level accountability. 
-                    When you work with The Gold Hire Company, you're not just getting workers — you're getting 
+                    When you work with Precision Site Solutions, you're not just getting workers — you're getting 
                     a partner who takes ownership of outcomes.
                   </p>
                 </div>

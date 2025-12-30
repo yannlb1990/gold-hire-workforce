@@ -8,9 +8,8 @@ const TweedHeads = () => {
   const services = [
     { name: "Skilled Labour Hire", href: "/services#labour" },
     { name: "Carpenters", href: "/services#carpenters" },
-    { name: "Painters", href: "/services#painters" },
     { name: "Commercial Cleaning", href: "/services#cleaning" },
-    { name: "Landscaping & Grounds", href: "/services#landscaping" },
+    { name: "Demolition Crews", href: "/services#demolition" },
   ];
 
   const areas = [
@@ -40,20 +39,20 @@ const TweedHeads = () => {
   return (
     <>
       <Helmet>
-        <title>Labour Hire Tweed Heads | Cross-Border Workforce | The Gold Hire Company</title>
+        <title>Labour Hire Tweed Heads | Cross-Border Workforce | Precision Site Solutions</title>
         <meta
           name="description"
-          content="Labour hire Tweed Heads and Tweed Shire. QLD and NSW licensed. Skilled labourers, trades, cleaning and grounds maintenance across the Tweed region."
+          content="Labour hire Tweed Heads and Tweed Shire. QLD and NSW licensed. Skilled labourers, trades, cleaning and demolition crews across the Tweed region."
         />
         <meta name="keywords" content="labour hire tweed heads, tweed shire labour hire, cross border labour hire, construction workers tweed, kingscliff labour hire" />
-        <link rel="canonical" href="https://thegoldhirecompany.com.au/locations/tweed-heads" />
+        <link rel="canonical" href="https://precisionsitesolutions.com.au/locations/tweed-heads" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            "name": "The Gold Hire Company - Tweed Heads",
+            "name": "Precision Site Solutions - Tweed Heads",
             "description": "Cross-border labour hire services in Tweed Heads region",
-            "url": "https://thegoldhirecompany.com.au/locations/tweed-heads",
+            "url": "https://precisionsitesolutions.com.au/locations/tweed-heads",
             "telephone": "04XX XXX XXX",
             "areaServed": {
               "@type": "City",

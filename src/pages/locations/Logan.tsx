@@ -8,9 +8,8 @@ const Logan = () => {
   const services = [
     { name: "Skilled Labour Hire", href: "/services#labour" },
     { name: "Carpenters", href: "/services#carpenters" },
-    { name: "Painters", href: "/services#painters" },
     { name: "Commercial Cleaning", href: "/services#cleaning" },
-    { name: "Landscaping & Grounds", href: "/services#landscaping" },
+    { name: "Demolition Crews", href: "/services#demolition" },
   ];
 
   const suburbs = [
@@ -41,20 +40,20 @@ const Logan = () => {
   return (
     <>
       <Helmet>
-        <title>Labour Hire Logan | Industrial & Construction Workers | The Gold Hire Company</title>
+        <title>Labour Hire Logan | Industrial & Construction Workers | Precision Site Solutions</title>
         <meta
           name="description"
           content="Labour hire Logan City and surrounds. Skilled labourers for construction, industrial, warehouse and commercial projects. Fast deployment, compliant workers."
         />
         <meta name="keywords" content="labour hire logan, logan city workers, industrial labour hire logan, construction workers logan, warehouse labour logan" />
-        <link rel="canonical" href="https://thegoldhirecompany.com.au/locations/logan" />
+        <link rel="canonical" href="https://precisionsitesolutions.com.au/locations/logan" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            "name": "The Gold Hire Company - Logan",
+            "name": "Precision Site Solutions - Logan",
             "description": "Labour hire services in Logan City, Queensland",
-            "url": "https://thegoldhirecompany.com.au/locations/logan",
+            "url": "https://precisionsitesolutions.com.au/locations/logan",
             "telephone": "04XX XXX XXX",
             "areaServed": {
               "@type": "City",

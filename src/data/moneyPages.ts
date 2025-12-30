@@ -72,16 +72,6 @@ export const MONEY_PAGE_TRADES = {
     slug: "building-cleaners",
     singularName: "Building Cleaner",
   },
-  "landscaping": {
-    name: "Landscaping Workers",
-    slug: "landscaping",
-    singularName: "Landscaping Worker",
-  },
-  "maintenance": {
-    name: "Maintenance Ground Workers",
-    slug: "maintenance",
-    singularName: "Maintenance Worker",
-  },
 } as const;
 
 export type MoneyPageLocationSlug = keyof typeof MONEY_PAGE_LOCATIONS;
