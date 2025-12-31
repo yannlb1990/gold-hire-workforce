@@ -5,6 +5,7 @@ import { TrustBar } from "@/components/home/TrustBar";
 import { HowItWorks } from "@/components/home/HowItWorks";
 import { TradesGrid } from "@/components/home/TradesGrid";
 import { LocationsGrid } from "@/components/home/LocationsGrid";
+import { CalculatorPreview } from "@/components/home/CalculatorPreview";
 import { WhyUsSection } from "@/components/home/WhyUsSection";
 import { TestimonialsSection } from "@/components/home/TestimonialsSection";
 import { CandidateCTASection } from "@/components/home/CandidateCTASection";
@@ -58,6 +59,7 @@ const Index = () => {
         <HowItWorks />
         <TradesGrid />
         <LocationsGrid />
+        <CalculatorPreview />
         <WhyUsSection />
         <TestimonialsSection />
         <CandidateCTASection />
