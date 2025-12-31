@@ -8,7 +8,7 @@ export default function WhiteCardChecklist() {
   return (
     <>
       <Helmet>
-        <title>White Card & Construction Tickets Checklist QLD NSW 2025 | The Gold Hire Company</title>
+        <title>White Card & Construction Tickets Checklist QLD NSW 2025 | Precision Site Solutions</title>
         <meta
           name="description"
           content="Complete checklist of construction tickets and certifications required in Queensland and NSW. White Card, Working at Heights, EWP, and more for Gold Coast, Brisbane, Byron Bay workers."
@@ -17,7 +17,7 @@ export default function WhiteCardChecklist() {
           name="keywords"
           content="white card queensland, construction induction, building tickets, working at heights qld, ewp ticket, construction certifications australia"
         />
-        <link rel="canonical" href="https://thegoldhirecompany.com.au/blog/white-card-checklist-qld-nsw" />
+        <link rel="canonical" href="https://precisionsitesolutions.com.au/blog/white-card-checklist-qld-nsw" />
       </Helmet>
       <Layout>
         {/* Hero */}
@@ -43,7 +43,7 @@ export default function WhiteCardChecklist() {
                 </span>
                 <span className="flex items-center gap-1">
                   <User className="w-4 h-4" />
-                  The Gold Hire Company
+                  Precision Site Solutions
                 </span>
               </div>
               <h1 className="heading-xl text-concrete mb-6">

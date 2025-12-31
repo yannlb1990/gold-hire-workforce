@@ -8,7 +8,7 @@ export default function AvoidingNoShows() {
   return (
     <>
       <Helmet>
-        <title>Avoiding No-Shows: Labour Hire Reliability Systems 2025 | The Gold Hire Company</title>
+        <title>Avoiding No-Shows: Labour Hire Reliability Systems 2025 | Precision Site Solutions</title>
         <meta
           name="description"
           content="How to ensure reliable attendance from labour hire workers. Strategies for construction companies in Gold Coast, Brisbane, and Byron Bay to minimise no-shows and workforce disruptions."
@@ -17,7 +17,7 @@ export default function AvoidingNoShows() {
           name="keywords"
           content="reliable labour hire, construction no shows, workforce management, labour hire reliability, construction attendance"
         />
-        <link rel="canonical" href="https://thegoldhirecompany.com.au/blog/avoiding-no-shows" />
+        <link rel="canonical" href="https://precisionsitesolutions.com.au/blog/avoiding-no-shows" />
       </Helmet>
       <Layout>
         {/* Hero */}
@@ -43,7 +43,7 @@ export default function AvoidingNoShows() {
                 </span>
                 <span className="flex items-center gap-1">
                   <User className="w-4 h-4" />
-                  The Gold Hire Company
+                  Precision Site Solutions
                 </span>
               </div>
               <h1 className="heading-xl text-concrete mb-6">

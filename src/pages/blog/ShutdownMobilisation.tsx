@@ -8,7 +8,7 @@ export default function ShutdownMobilisation() {
   return (
     <>
       <Helmet>
-        <title>Shutdown Crew Mobilisation Checklist 2025 | Turnaround Labour Planning | The Gold Hire Company</title>
+        <title>Shutdown Crew Mobilisation Checklist 2025 | Turnaround Labour Planning | Precision Site Solutions</title>
         <meta
           name="description"
           content="Complete checklist for mobilising shutdown and turnaround crews in SEQ. Planning labour for maintenance shutdowns across Gold Coast, Brisbane, and industrial sites."
@@ -17,7 +17,7 @@ export default function ShutdownMobilisation() {
           name="keywords"
           content="shutdown labour hire, maintenance shutdown, turnaround crews, industrial labour hire, shutdown planning checklist"
         />
-        <link rel="canonical" href="https://thegoldhirecompany.com.au/blog/shutdown-crew-mobilisation" />
+        <link rel="canonical" href="https://precisionsitesolutions.com.au/blog/shutdown-crew-mobilisation" />
       </Helmet>
       <Layout>
         {/* Hero */}
@@ -43,7 +43,7 @@ export default function ShutdownMobilisation() {
                 </span>
                 <span className="flex items-center gap-1">
                   <User className="w-4 h-4" />
-                  The Gold Hire Company
+                  Precision Site Solutions
                 </span>
               </div>
               <h1 className="heading-xl text-concrete mb-6">

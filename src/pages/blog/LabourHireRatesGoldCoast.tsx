@@ -8,7 +8,7 @@ export default function LabourHireRatesGoldCoast() {
   return (
     <>
       <Helmet>
-        <title>Labour Hire Rates Gold Coast 2025 | Complete Pricing Guide | The Gold Hire Company</title>
+        <title>Labour Hire Rates Gold Coast 2025 | Complete Pricing Guide | Precision Site Solutions</title>
         <meta
           name="description"
           content="Comprehensive guide to labour hire rates on the Gold Coast in 2025. Compare hourly rates for labourers, carpenters, demolition crews across Southport, Robina, Surfers Paradise and more."
@@ -17,7 +17,7 @@ export default function LabourHireRatesGoldCoast() {
           name="keywords"
           content="labour hire rates gold coast, construction workers gold coast, hourly rates SEQ, gold coast labour hire prices, construction labour costs 2025"
         />
-        <link rel="canonical" href="https://thegoldhirecompany.com.au/blog/labour-hire-rates-gold-coast" />
+        <link rel="canonical" href="https://precisionsitesolutions.com.au/blog/labour-hire-rates-gold-coast" />
       </Helmet>
       <Layout>
         {/* Hero */}
@@ -43,7 +43,7 @@ export default function LabourHireRatesGoldCoast() {
                 </span>
                 <span className="flex items-center gap-1">
                   <User className="w-4 h-4" />
-                  The Gold Hire Company
+                  Precision Site Solutions
                 </span>
               </div>
               <h1 className="heading-xl text-concrete mb-6">
@@ -196,10 +196,10 @@ export default function LabourHireRatesGoldCoast() {
                 A quality labour hire company should be able to provide workers who arrive on time, understand site protocols, have current and verified certifications, and can integrate smoothly into your existing team. The administrative burden of managing compliance, payroll, and workers compensation should be entirely handled by the labour hire company, allowing you to focus on delivering your project.
               </p>
 
-              <h2 className="heading-md text-foreground mt-12 mb-6">Working with The Gold Hire Company on the Gold Coast</h2>
+              <h2 className="heading-md text-foreground mt-12 mb-6">Working with Precision Site Solutions on the Gold Coast</h2>
               
               <p className="text-charcoal/80 leading-relaxed mb-6">
-                The Gold Hire Company provides skilled labourers, demolition crews, carpenters, building cleaners, landscaping workers, and maintenance ground workers across the entire Gold Coast region. From Coomera to Coolangatta, we understand the local market and can provide competitive rates backed by reliable service and quality workers.
+                Precision Site Solutions provides skilled labourers, demolition crews, carpenters, and building cleaners across the entire Gold Coast region. From Coomera to Coolangatta, we understand the local market and can provide competitive rates backed by reliable service and quality workers.
               </p>
 
               <p className="text-charcoal/80 leading-relaxed mb-6">
