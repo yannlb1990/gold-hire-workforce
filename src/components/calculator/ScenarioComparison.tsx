@@ -25,6 +25,11 @@ interface ScenarioComparisonProps {
     weeksPerYear: number;
     expenseRate: number;
     includeSuper: boolean;
+    fifoEnabled?: boolean;
+    fifoRoster?: string;
+    overtimeEnabled?: boolean;
+    overtimeHours?: number;
+    overtimeMultiplier?: string;
   };
   onLoadScenario?: (scenario: SavedScenario) => void;
 }

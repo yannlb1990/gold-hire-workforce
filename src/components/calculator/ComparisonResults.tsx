@@ -8,6 +8,8 @@ import { cn } from "@/lib/utils";
 interface ComparisonResultsProps {
   tfnResult: TFNCalculationResult;
   abnResult: ABNCalculationResult;
+  fifoEnabled?: boolean;
+  overtimeEnabled?: boolean;
 }
 
 interface ComparisonRowProps {
@@ -97,6 +99,8 @@ function ComparisonRow({
 export function ComparisonResults({
   tfnResult,
   abnResult,
+  fifoEnabled = false,
+  overtimeEnabled = false,
 }: ComparisonResultsProps) {
   const netDifference = abnResult.netTakeHome - tfnResult.netTakeHome;
   const abnBetter = netDifference > 0;

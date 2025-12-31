@@ -9,6 +9,13 @@ export interface TradePreset {
   typicalHours: number;
   typicalExpenseRate: number;
   description: string;
+  // FIFO settings
+  fifoEnabled?: boolean;
+  fifoRoster?: string;
+  // Overtime settings
+  overtimeEnabled?: boolean;
+  overtimeHours?: number;
+  overtimeMultiplier?: string;
 }
 
 export const TRADE_PRESETS: TradePreset[] = [
@@ -92,6 +99,94 @@ export const TRADE_PRESETS: TradePreset[] = [
     typicalExpenseRate: 0.12,
     description: "Scaffold erection & dismantling",
   },
+  // FIFO Presets
+  {
+    id: "fifo-labourer-2-1",
+    name: "FIFO Labourer (2-1)",
+    hourlyRateMin: 35,
+    hourlyRateMax: 55,
+    defaultHourlyRate: 45,
+    typicalHours: 50,
+    typicalExpenseRate: 0.12,
+    description: "2 weeks on / 1 week off FIFO roster",
+    fifoEnabled: true,
+    fifoRoster: "2-1",
+    overtimeEnabled: true,
+    overtimeHours: 10,
+    overtimeMultiplier: "1.5x",
+  },
+  {
+    id: "fifo-carpenter-4-2",
+    name: "FIFO Carpenter (4-2)",
+    hourlyRateMin: 50,
+    hourlyRateMax: 80,
+    defaultHourlyRate: 65,
+    typicalHours: 50,
+    typicalExpenseRate: 0.18,
+    description: "4 weeks on / 2 weeks off WA mining",
+    fifoEnabled: true,
+    fifoRoster: "4-2",
+    overtimeEnabled: true,
+    overtimeHours: 12,
+    overtimeMultiplier: "1.5x",
+  },
+  {
+    id: "fifo-electrician-3-1",
+    name: "FIFO Electrician (3-1)",
+    hourlyRateMin: 55,
+    hourlyRateMax: 100,
+    defaultHourlyRate: 78,
+    typicalHours: 50,
+    typicalExpenseRate: 0.15,
+    description: "3 weeks on / 1 week off QLD mining",
+    fifoEnabled: true,
+    fifoRoster: "3-1",
+    overtimeEnabled: true,
+    overtimeHours: 10,
+    overtimeMultiplier: "1.5x",
+  },
+  {
+    id: "remote-mine-worker",
+    name: "Remote Mine Worker (8-6)",
+    hourlyRateMin: 45,
+    hourlyRateMax: 75,
+    defaultHourlyRate: 58,
+    typicalHours: 56,
+    typicalExpenseRate: 0.10,
+    description: "8 weeks on / 6 weeks off remote project",
+    fifoEnabled: true,
+    fifoRoster: "8-6",
+    overtimeEnabled: true,
+    overtimeHours: 16,
+    overtimeMultiplier: "1.5x",
+  },
+  // Overtime Presets
+  {
+    id: "builder-overtime",
+    name: "Builder with Overtime",
+    hourlyRateMin: 45,
+    hourlyRateMax: 75,
+    defaultHourlyRate: 58,
+    typicalHours: 40,
+    typicalExpenseRate: 0.18,
+    description: "Standard builder with regular overtime",
+    overtimeEnabled: true,
+    overtimeHours: 10,
+    overtimeMultiplier: "1.5x",
+  },
+  {
+    id: "weekend-tradie",
+    name: "Weekend Tradie",
+    hourlyRateMin: 40,
+    hourlyRateMax: 65,
+    defaultHourlyRate: 52,
+    typicalHours: 38,
+    typicalExpenseRate: 0.15,
+    description: "Trades with regular weekend work at double time",
+    overtimeEnabled: true,
+    overtimeHours: 16,
+    overtimeMultiplier: "2.0x",
+  },
 ];
 
 export interface SavedScenario {
@@ -104,6 +199,13 @@ export interface SavedScenario {
   expenseRate: number;
   includeSuper: boolean;
   timestamp: number;
+  // FIFO settings
+  fifoEnabled?: boolean;
+  fifoRoster?: string;
+  // Overtime settings
+  overtimeEnabled?: boolean;
+  overtimeHours?: number;
+  overtimeMultiplier?: string;
 }
 
 export function generateScenarioId(): string {

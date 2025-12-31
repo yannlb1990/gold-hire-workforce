@@ -6,6 +6,8 @@ import {
   SUPER_GUARANTEE_RATE,
   calculateGrossAnnual,
 } from "./taxCalculations";
+import { calculateFIFODeductions, calculateFIFOWorkingWeeks } from "./fifoCalculations";
+import { calculateOvertimePay } from "./overtimeCalculations";
 
 export interface ABNCalculationResult {
   grossAnnual: number;
@@ -20,6 +22,12 @@ export interface ABNCalculationResult {
   weeklyTakeHome: number;
   effectiveTaxRate: number;
   totalCostsExcludingTax: number;
+  // FIFO fields
+  fifoDeductions: number;
+  fifoRoster: string | null;
+  actualWorkingWeeks: number;
+  // Overtime fields
+  overtimePay: number;
 }
 
 // Default expense percentages
@@ -38,6 +46,14 @@ export function calculateInsuranceCosts(grossAnnual: number): number {
   return PUBLIC_LIABILITY_INSURANCE + incomeProtection;
 }
 
+export interface ABNScenarioOptions {
+  fifoEnabled?: boolean;
+  fifoRoster?: string;
+  overtimeEnabled?: boolean;
+  overtimeHours?: number;
+  overtimeMultiplier?: string;
+}
+
 /**
  * Calculate full ABN/contractor scenario
  */
@@ -46,16 +62,43 @@ export function calculateABNScenario(
   hoursPerWeek: number,
   weeksPerYear: number,
   businessExpenseRate: number = DEFAULT_BUSINESS_EXPENSE_RATE,
-  includeSuperContribution: boolean = true
+  includeSuperContribution: boolean = true,
+  options: ABNScenarioOptions = {}
 ): ABNCalculationResult {
-  // Gross annual income
-  const grossAnnual = calculateGrossAnnual(hourlyRate, hoursPerWeek, weeksPerYear);
+  const {
+    fifoEnabled = false,
+    fifoRoster = "2-1",
+    overtimeEnabled = false,
+    overtimeHours = 0,
+    overtimeMultiplier = "1.5x",
+  } = options;
+
+  // Calculate actual working weeks (FIFO adjusts this)
+  const actualWorkingWeeks = fifoEnabled
+    ? calculateFIFOWorkingWeeks(fifoRoster)
+    : weeksPerYear;
+
+  // Base gross annual income
+  const baseGross = calculateGrossAnnual(hourlyRate, hoursPerWeek, actualWorkingWeeks);
+
+  // Calculate overtime pay
+  const overtimePay = overtimeEnabled
+    ? calculateOvertimePay(hourlyRate, overtimeHours, overtimeMultiplier, actualWorkingWeeks)
+    : 0;
+
+  // Total gross including overtime
+  const grossAnnual = baseGross + overtimePay;
 
   // GST collected (if registered for GST - required if > $75k)
   const gstCollected = grossAnnual * GST_RATE;
 
   // Business expenses (deductible)
   const businessExpenses = grossAnnual * businessExpenseRate;
+
+  // FIFO-specific deductions (travel, accommodation)
+  const fifoDeductions = fifoEnabled
+    ? calculateFIFODeductions(grossAnnual, fifoRoster)
+    : 0;
 
   // Insurance costs
   const insuranceCosts = calculateInsuranceCosts(grossAnnual);
@@ -69,7 +112,7 @@ export function calculateABNScenario(
   // Note: Super contributions to your own fund are deductible
   const taxableIncome = Math.max(
     0,
-    grossAnnual - businessExpenses - insuranceCosts - selfFundedSuper
+    grossAnnual - businessExpenses - fifoDeductions - insuranceCosts - selfFundedSuper
   );
 
   // Tax calculations on taxable income
@@ -78,7 +121,7 @@ export function calculateABNScenario(
 
   // Total costs excluding tax (for comparison)
   const totalCostsExcludingTax =
-    businessExpenses + insuranceCosts + selfFundedSuper;
+    businessExpenses + fifoDeductions + insuranceCosts + selfFundedSuper;
 
   // Net take-home after all deductions and tax
   // GST is collected and remitted, so not included in take-home
@@ -105,5 +148,9 @@ export function calculateABNScenario(
     weeklyTakeHome,
     effectiveTaxRate,
     totalCostsExcludingTax,
+    fifoDeductions,
+    fifoRoster: fifoEnabled ? fifoRoster : null,
+    actualWorkingWeeks,
+    overtimePay,
   };
 }
