@@ -8,7 +8,7 @@ export default function WhsOnboarding() {
   return (
     <>
       <Helmet>
-        <title>Safe Onboarding WHS Checklist 2025 | Construction Induction Guide | The Gold Hire Company</title>
+        <title>Safe Onboarding WHS Checklist 2025 | Construction Induction Guide | Precision Site Solutions</title>
         <meta
           name="description"
           content="Complete WHS onboarding checklist for construction workers in Queensland and NSW. Safe induction procedures for Gold Coast, Brisbane, Byron Bay, and Tweed Heads sites."
@@ -17,7 +17,7 @@ export default function WhsOnboarding() {
           name="keywords"
           content="whs checklist, workplace safety, construction induction, safe onboarding, construction safety australia"
         />
-        <link rel="canonical" href="https://thegoldhirecompany.com.au/blog/whs-onboarding-checklist" />
+        <link rel="canonical" href="https://precisionsitesolutions.com.au/blog/whs-onboarding-checklist" />
       </Helmet>
       <Layout>
         {/* Hero */}
@@ -43,7 +43,7 @@ export default function WhsOnboarding() {
                 </span>
                 <span className="flex items-center gap-1">
                   <User className="w-4 h-4" />
-                  The Gold Hire Company
+                  Precision Site Solutions
                 </span>
               </div>
               <h1 className="heading-xl text-concrete mb-6">

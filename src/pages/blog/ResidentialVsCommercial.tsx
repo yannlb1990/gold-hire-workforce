@@ -8,7 +8,7 @@ export default function ResidentialVsCommercial() {
   return (
     <>
       <Helmet>
-        <title>Residential vs Commercial Labour Hire 2025 | Key Differences | The Gold Hire Company</title>
+        <title>Residential vs Commercial Labour Hire 2025 | Key Differences | Precision Site Solutions</title>
         <meta
           name="description"
           content="Understand the key differences between residential and commercial labour hire for construction. Guide for Brisbane, Gold Coast, and Byron Bay builders choosing the right workers."
@@ -17,7 +17,7 @@ export default function ResidentialVsCommercial() {
           name="keywords"
           content="residential builders, commercial construction, labour hire differences, construction labour types, building workforce"
         />
-        <link rel="canonical" href="https://thegoldhirecompany.com.au/blog/residential-vs-commercial" />
+        <link rel="canonical" href="https://precisionsitesolutions.com.au/blog/residential-vs-commercial" />
       </Helmet>
       <Layout>
         {/* Hero */}
@@ -43,7 +43,7 @@ export default function ResidentialVsCommercial() {
                 </span>
                 <span className="flex items-center gap-1">
                   <User className="w-4 h-4" />
-                  The Gold Hire Company
+                  Precision Site Solutions
                 </span>
               </div>
               <h1 className="heading-xl text-concrete mb-6">
