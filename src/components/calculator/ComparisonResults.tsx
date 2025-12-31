@@ -1,6 +1,21 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { TrendingUp, TrendingDown, DollarSign, PiggyBank, AlertCircle } from "lucide-react";
+import {
+  TrendingUp,
+  TrendingDown,
+  DollarSign,
+  PiggyBank,
+  AlertCircle,
+  Briefcase,
+  Clock,
+  Gift,
+  Plane,
+  Car,
+  Wrench,
+  UtensilsCrossed,
+  ShieldCheck,
+  Receipt
+} from "lucide-react";
 import type { TFNResults } from "@/lib/calculator/tfnCalculations";
 import type { ABNResults } from "@/lib/calculator/abnCalculations";
 
@@ -41,38 +56,174 @@ const ComparisonResults = ({ tfnResults, abnResults, inputs }: ComparisonResults
             <p className="text-sm text-muted-foreground">per week take-home</p>
           </CardHeader>
           <CardContent className="pt-6 space-y-4">
-            {/* Gross Income */}
-            <div>
-              <div className="flex justify-between items-center mb-2">
-                <span className="text-sm text-muted-foreground">Gross Income</span>
-                <span className="font-semibold">
-                  ${tfnResults.grossAnnual.toLocaleString("en-AU")}
-                </span>
-              </div>
-              <div className="text-xs text-muted-foreground">
-                ${inputs.tfnHourlyRate}/hr × {inputs.hoursPerWeek}hrs × {inputs.weeksPerYear} weeks
+            {/* Income Breakdown */}
+            <div className="space-y-2">
+              <h4 className="font-semibold text-sm flex items-center gap-2">
+                <Briefcase className="w-4 h-4" />
+                Income Breakdown
+              </h4>
+              <div className="pl-6 space-y-1.5">
+                <div className="flex justify-between text-sm">
+                  <span className="text-muted-foreground">Base Wages</span>
+                  <span className="font-medium">
+                    ${tfnResults.baseIncome.toLocaleString("en-AU")}
+                  </span>
+                </div>
+                {tfnResults.overtimeIncome > 0 && (
+                  <div className="flex justify-between text-sm">
+                    <span className="text-muted-foreground flex items-center gap-1">
+                      <Clock className="w-3 h-3" />
+                      Overtime Pay
+                    </span>
+                    <span className="font-medium text-earth-green">
+                      +${tfnResults.overtimeIncome.toLocaleString("en-AU")}
+                    </span>
+                  </div>
+                )}
+                {tfnResults.publicHolidayIncome > 0 && (
+                  <div className="flex justify-between text-sm">
+                    <span className="text-muted-foreground">Public Holiday Pay</span>
+                    <span className="font-medium text-earth-green">
+                      +${tfnResults.publicHolidayIncome.toLocaleString("en-AU")}
+                    </span>
+                  </div>
+                )}
+                {tfnResults.fifoBenefits > 0 && (
+                  <div className="flex justify-between text-sm">
+                    <span className="text-muted-foreground flex items-center gap-1">
+                      <Plane className="w-3 h-3" />
+                      FIFO Benefits
+                    </span>
+                    <span className="font-medium text-earth-green">
+                      +${tfnResults.fifoBenefits.toLocaleString("en-AU")}
+                    </span>
+                  </div>
+                )}
+                <div className="border-t pt-1.5 flex justify-between font-semibold">
+                  <span>Gross Wages</span>
+                  <span>${tfnResults.grossAnnual.toLocaleString("en-AU")}</span>
+                </div>
               </div>
             </div>
 
+            {/* Allowances (if any) */}
+            {tfnResults.totalAllowances > 0 && (
+              <div className="bg-gold/10 rounded-lg p-3">
+                <div className="flex items-center gap-2 mb-2">
+                  <Gift className="w-4 h-4 text-gold" />
+                  <span className="text-sm font-semibold">Allowances</span>
+                </div>
+                <div className="space-y-1 text-xs">
+                  {tfnResults.taxFreeAllowances > 0 && (
+                    <div className="flex justify-between">
+                      <span className="text-muted-foreground flex items-center gap-1">
+                        <ShieldCheck className="w-3 h-3 text-earth-green" />
+                        Tax-Free Allowances
+                      </span>
+                      <span className="font-semibold text-earth-green">
+                        +${tfnResults.taxFreeAllowances.toLocaleString("en-AU")}
+                      </span>
+                    </div>
+                  )}
+                  {tfnResults.taxableAllowances > 0 && (
+                    <div className="flex justify-between">
+                      <span className="text-muted-foreground">Taxable Allowances</span>
+                      <span className="font-medium">
+                        ${tfnResults.taxableAllowances.toLocaleString("en-AU")}
+                      </span>
+                    </div>
+                  )}
+                  <div className="border-t pt-1 flex justify-between font-semibold">
+                    <span>Total Allowances</span>
+                    <span>${tfnResults.totalAllowances.toLocaleString("en-AU")}</span>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* FIFO Details (if applicable) */}
+            {(tfnResults.accommodationValue > 0 || tfnResults.mealsValue > 0) && (
+              <div className="bg-navy/10 rounded-lg p-3">
+                <div className="flex items-center gap-2 mb-2">
+                  <Plane className="w-4 h-4 text-navy" />
+                  <span className="text-sm font-semibold">FIFO Non-Cash Benefits</span>
+                </div>
+                <div className="space-y-1 text-xs">
+                  {tfnResults.accommodationValue > 0 && (
+                    <div className="flex justify-between">
+                      <span className="text-muted-foreground">Accommodation Provided</span>
+                      <span className="font-medium">
+                        ${tfnResults.accommodationValue.toLocaleString("en-AU")}
+                      </span>
+                    </div>
+                  )}
+                  {tfnResults.mealsValue > 0 && (
+                    <div className="flex justify-between">
+                      <span className="text-muted-foreground">Meals Provided</span>
+                      <span className="font-medium">
+                        ${tfnResults.mealsValue.toLocaleString("en-AU")}
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+
             {/* Tax Breakdown */}
             <div className="space-y-2">
-              <div className="flex justify-between text-sm">
-                <span className="text-muted-foreground">Income Tax</span>
-                <span className="text-destructive">
-                  -${tfnResults.incomeTax.toLocaleString("en-AU")}
-                </span>
-              </div>
-              <div className="flex justify-between text-sm">
-                <span className="text-muted-foreground">Medicare Levy</span>
-                <span className="text-destructive">
-                  -${tfnResults.medicareLevy.toLocaleString("en-AU")}
-                </span>
-              </div>
-              <div className="border-t pt-2 flex justify-between font-semibold">
-                <span>Total Tax ({tfnResults.effectiveTaxRate.toFixed(1)}%)</span>
-                <span className="text-destructive">
-                  -${tfnResults.totalTax.toLocaleString("en-AU")}
-                </span>
+              <h4 className="font-semibold text-sm flex items-center gap-2">
+                <Receipt className="w-4 h-4" />
+                Tax Breakdown
+              </h4>
+              <div className="pl-6 space-y-1.5">
+                <div className="flex justify-between text-sm">
+                  <span className="text-muted-foreground">Taxable Income</span>
+                  <span className="font-medium">
+                    ${tfnResults.taxableIncome.toLocaleString("en-AU")}
+                  </span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-muted-foreground">Income Tax</span>
+                  <span className="text-destructive">
+                    -${tfnResults.incomeTax.toLocaleString("en-AU")}
+                  </span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-muted-foreground">Medicare Levy (2%)</span>
+                  <span className="text-destructive">
+                    -${tfnResults.medicareLevy.toLocaleString("en-AU")}
+                  </span>
+                </div>
+                {tfnResults.medicareLevySurcharge > 0 && (
+                  <div className="flex justify-between text-sm">
+                    <span className="text-muted-foreground">Medicare Levy Surcharge</span>
+                    <span className="text-destructive">
+                      -${tfnResults.medicareLevySurcharge.toLocaleString("en-AU")}
+                    </span>
+                  </div>
+                )}
+                {tfnResults.hecsRepayment > 0 && (
+                  <div className="flex justify-between text-sm">
+                    <span className="text-muted-foreground">HECS-HELP Repayment</span>
+                    <span className="text-destructive">
+                      -${tfnResults.hecsRepayment.toLocaleString("en-AU")}
+                    </span>
+                  </div>
+                )}
+                {tfnResults.taxOffsets > 0 && (
+                  <div className="flex justify-between text-sm">
+                    <span className="text-muted-foreground">Tax Offsets (LITO)</span>
+                    <span className="text-earth-green">
+                      +${tfnResults.taxOffsets.toLocaleString("en-AU")}
+                    </span>
+                  </div>
+                )}
+                <div className="border-t pt-1.5 flex justify-between font-semibold">
+                  <span>Total Tax ({tfnResults.effectiveTaxRate.toFixed(1)}%)</span>
+                  <span className="text-destructive">
+                    -${tfnResults.totalTax.toLocaleString("en-AU")}
+                  </span>
+                </div>
               </div>
             </div>
 
@@ -146,59 +297,130 @@ const ComparisonResults = ({ tfnResults, abnResults, inputs }: ComparisonResults
             <p className="text-sm text-muted-foreground">per week take-home</p>
           </CardHeader>
           <CardContent className="pt-6 space-y-4">
-            {/* Gross Income */}
-            <div>
-              <div className="flex justify-between items-center mb-2">
-                <span className="text-sm text-muted-foreground">Gross Income</span>
-                <span className="font-semibold">
-                  ${abnResults.grossAnnual.toLocaleString("en-AU")}
-                </span>
-              </div>
-              <div className="text-xs text-muted-foreground">
-                ${inputs.abnHourlyRate}/hr × {inputs.hoursPerWeek}hrs × {inputs.weeksPerYear} weeks
+            {/* Income Breakdown */}
+            <div className="space-y-2">
+              <h4 className="font-semibold text-sm flex items-center gap-2">
+                <Briefcase className="w-4 h-4" />
+                Income Breakdown
+              </h4>
+              <div className="pl-6 space-y-1.5">
+                <div className="flex justify-between text-sm">
+                  <span className="text-muted-foreground">Base Income</span>
+                  <span className="font-medium">
+                    ${abnResults.baseIncome.toLocaleString("en-AU")}
+                  </span>
+                </div>
+                {abnResults.overtimeIncome > 0 && (
+                  <div className="flex justify-between text-sm">
+                    <span className="text-muted-foreground flex items-center gap-1">
+                      <Clock className="w-3 h-3" />
+                      Overtime Pay
+                    </span>
+                    <span className="font-medium text-earth-green">
+                      +${abnResults.overtimeIncome.toLocaleString("en-AU")}
+                    </span>
+                  </div>
+                )}
+                {abnResults.publicHolidayIncome > 0 && (
+                  <div className="flex justify-between text-sm">
+                    <span className="text-muted-foreground">Public Holiday Pay</span>
+                    <span className="font-medium text-earth-green">
+                      +${abnResults.publicHolidayIncome.toLocaleString("en-AU")}
+                    </span>
+                  </div>
+                )}
+                {abnResults.fifoBenefits > 0 && (
+                  <div className="flex justify-between text-sm">
+                    <span className="text-muted-foreground flex items-center gap-1">
+                      <Plane className="w-3 h-3" />
+                      FIFO Paid Travel
+                    </span>
+                    <span className="font-medium text-earth-green">
+                      +${abnResults.fifoBenefits.toLocaleString("en-AU")}
+                    </span>
+                  </div>
+                )}
+                <div className="border-t pt-1.5 flex justify-between font-semibold">
+                  <span>Gross Income</span>
+                  <span>${abnResults.grossAnnual.toLocaleString("en-AU")}</span>
+                </div>
               </div>
             </div>
 
             {/* Business Expenses */}
-            <div>
-              <div className="flex justify-between text-sm">
-                <span className="text-muted-foreground">Business Expenses</span>
-                <span className="text-destructive">
-                  -${abnResults.businessExpenses.toLocaleString("en-AU")}
-                </span>
+            <div className="bg-gold/10 rounded-lg p-3">
+              <div className="flex items-center gap-2 mb-2">
+                <Receipt className="w-4 h-4 text-gold" />
+                <span className="text-sm font-semibold">Business Deductions</span>
               </div>
-              <div className="text-xs text-muted-foreground">
-                Tax-deductible expenses
+              <div className="space-y-1 text-xs">
+                <div className="flex justify-between">
+                  <span className="text-muted-foreground">Tax-Deductible Expenses</span>
+                  <span className="font-semibold text-destructive">
+                    -${abnResults.businessExpenses.toLocaleString("en-AU")}
+                  </span>
+                </div>
+                <p className="text-muted-foreground italic">
+                  Tools, vehicle, insurance, phone, etc.
+                </p>
               </div>
             </div>
 
             {/* Tax Breakdown */}
             <div className="space-y-2">
-              <div className="flex justify-between text-sm">
-                <span className="text-muted-foreground">
-                  Taxable Income
-                </span>
-                <span className="font-semibold">
-                  ${abnResults.taxableIncome.toLocaleString("en-AU")}
-                </span>
-              </div>
-              <div className="flex justify-between text-sm">
-                <span className="text-muted-foreground">Income Tax</span>
-                <span className="text-destructive">
-                  -${abnResults.incomeTax.toLocaleString("en-AU")}
-                </span>
-              </div>
-              <div className="flex justify-between text-sm">
-                <span className="text-muted-foreground">Medicare Levy</span>
-                <span className="text-destructive">
-                  -${abnResults.medicareLevy.toLocaleString("en-AU")}
-                </span>
-              </div>
-              <div className="border-t pt-2 flex justify-between font-semibold">
-                <span>Total Tax ({abnResults.effectiveTaxRate.toFixed(1)}%)</span>
-                <span className="text-destructive">
-                  -${abnResults.totalTax.toLocaleString("en-AU")}
-                </span>
+              <h4 className="font-semibold text-sm flex items-center gap-2">
+                <Receipt className="w-4 h-4" />
+                Tax Breakdown
+              </h4>
+              <div className="pl-6 space-y-1.5">
+                <div className="flex justify-between text-sm">
+                  <span className="text-muted-foreground">Taxable Income</span>
+                  <span className="font-medium">
+                    ${abnResults.taxableIncome.toLocaleString("en-AU")}
+                  </span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-muted-foreground">Income Tax</span>
+                  <span className="text-destructive">
+                    -${abnResults.incomeTax.toLocaleString("en-AU")}
+                  </span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-muted-foreground">Medicare Levy (2%)</span>
+                  <span className="text-destructive">
+                    -${abnResults.medicareLevy.toLocaleString("en-AU")}
+                  </span>
+                </div>
+                {abnResults.medicareLevySurcharge > 0 && (
+                  <div className="flex justify-between text-sm">
+                    <span className="text-muted-foreground">Medicare Levy Surcharge</span>
+                    <span className="text-destructive">
+                      -${abnResults.medicareLevySurcharge.toLocaleString("en-AU")}
+                    </span>
+                  </div>
+                )}
+                {abnResults.hecsRepayment > 0 && (
+                  <div className="flex justify-between text-sm">
+                    <span className="text-muted-foreground">HECS-HELP Repayment</span>
+                    <span className="text-destructive">
+                      -${abnResults.hecsRepayment.toLocaleString("en-AU")}
+                    </span>
+                  </div>
+                )}
+                {abnResults.taxOffsets > 0 && (
+                  <div className="flex justify-between text-sm">
+                    <span className="text-muted-foreground">Tax Offsets (LITO)</span>
+                    <span className="text-earth-green">
+                      +${abnResults.taxOffsets.toLocaleString("en-AU")}
+                    </span>
+                  </div>
+                )}
+                <div className="border-t pt-1.5 flex justify-between font-semibold">
+                  <span>Total Tax ({abnResults.effectiveTaxRate.toFixed(1)}%)</span>
+                  <span className="text-destructive">
+                    -${abnResults.totalTax.toLocaleString("en-AU")}
+                  </span>
+                </div>
               </div>
             </div>
 
