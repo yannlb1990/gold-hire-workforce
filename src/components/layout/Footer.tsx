@@ -73,7 +73,7 @@ export function Footer() {
               <img 
                 src={logo} 
                 alt="Precision Site Solutions" 
-                className="h-20 w-auto"
+                className="h-60 w-auto"
               />
             </Link>
             <p className="text-concrete/70 mb-6 max-w-sm">
