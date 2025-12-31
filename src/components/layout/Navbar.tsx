@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import logo from "@/assets/logo.png";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -39,18 +40,12 @@ export function Navbar() {
       <div className="container mx-auto px-4 lg:px-8">
         <nav className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center shadow-green transition-transform duration-300 group-hover:scale-105">
-              <span className="text-primary-foreground font-heading font-bold text-xl">PSS</span>
-            </div>
-            <div className="hidden sm:block">
-              <span className="text-concrete font-heading font-bold text-lg leading-tight block">
-                Precision Site
-              </span>
-              <span className="text-primary text-xs font-medium tracking-wider uppercase">
-                Solutions
-              </span>
-            </div>
+          <Link to="/" className="flex items-center group">
+            <img 
+              src={logo} 
+              alt="Precision Site Solutions" 
+              className="h-12 w-auto transition-transform duration-300 group-hover:scale-105"
+            />
           </Link>
 
           {/* Desktop Navigation */}

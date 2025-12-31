@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/logo.png";
 
 const footerLinks = {
   services: [
@@ -68,18 +69,12 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand Column */}
           <div className="lg:col-span-2">
-            <Link to="/" className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-lg bg-primary flex items-center justify-center shadow-green">
-                <span className="text-primary-foreground font-heading font-bold text-lg">PSS</span>
-              </div>
-              <div>
-                <span className="text-concrete font-heading font-bold text-xl leading-tight block">
-                  Precision Site
-                </span>
-                <span className="text-primary text-xs font-medium tracking-wider uppercase">
-                  Solutions
-                </span>
-              </div>
+            <Link to="/" className="mb-6 inline-block">
+              <img 
+                src={logo} 
+                alt="Precision Site Solutions" 
+                className="h-14 w-auto"
+              />
             </Link>
             <p className="text-concrete/70 mb-6 max-w-sm">
               A management-led, systems-driven labour hire company delivering skilled workers 
