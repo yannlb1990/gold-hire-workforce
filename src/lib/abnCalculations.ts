@@ -3,10 +3,11 @@
 import {
   calculateTotalTax,
   calculateMedicareLevy,
+  calculateLITO,
   SUPER_GUARANTEE_RATE,
   calculateGrossAnnual,
 } from "./taxCalculations";
-import { calculateFIFODeductions, calculateFIFOWorkingWeeks } from "./fifoCalculations";
+import { calculateFIFODeductions, calculateFIFOWorkingWeeks, ABN_FIFO_TRAVEL_EXPENSE_RATE, ABN_FIFO_ACCOMMODATION_RATE } from "./fifoCalculations";
 import { calculateOvertimePay } from "./overtimeCalculations";
 
 export interface ABNCalculationResult {
@@ -28,6 +29,13 @@ export interface ABNCalculationResult {
   actualWorkingWeeks: number;
   // Overtime fields
   overtimePay: number;
+  // NEW: Detailed breakdown fields
+  baseIncome: number;
+  fifoPaidTravel: number;
+  fifoAccommodation: number;
+  litoOffset: number;
+  publicLiabilityInsurance: number;
+  incomeProtection: number;
 }
 
 // Default expense percentages
@@ -39,11 +47,15 @@ export const PUBLIC_LIABILITY_INSURANCE = 800; // $800 p.a.
 export const INCOME_PROTECTION_RATE = 0.02; // 2% of gross income
 
 /**
- * Calculate insurance costs for ABN holders
+ * Calculate insurance costs for ABN holders with breakdown
  */
-export function calculateInsuranceCosts(grossAnnual: number): number {
+export function calculateInsuranceCosts(grossAnnual: number): { total: number; publicLiability: number; incomeProtection: number } {
   const incomeProtection = grossAnnual * INCOME_PROTECTION_RATE;
-  return PUBLIC_LIABILITY_INSURANCE + incomeProtection;
+  return {
+    total: PUBLIC_LIABILITY_INSURANCE + incomeProtection,
+    publicLiability: PUBLIC_LIABILITY_INSURANCE,
+    incomeProtection,
+  };
 }
 
 export interface ABNScenarioOptions {
@@ -78,8 +90,8 @@ export function calculateABNScenario(
     ? calculateFIFOWorkingWeeks(fifoRoster)
     : weeksPerYear;
 
-  // Base gross annual income
-  const baseGross = calculateGrossAnnual(hourlyRate, hoursPerWeek, actualWorkingWeeks);
+  // Base gross annual income (before overtime)
+  const baseIncome = calculateGrossAnnual(hourlyRate, hoursPerWeek, actualWorkingWeeks);
 
   // Calculate overtime pay
   const overtimePay = overtimeEnabled
@@ -87,7 +99,7 @@ export function calculateABNScenario(
     : 0;
 
   // Total gross including overtime
-  const grossAnnual = baseGross + overtimePay;
+  const grossAnnual = baseIncome + overtimePay;
 
   // GST collected (if registered for GST - required if > $75k)
   const gstCollected = grossAnnual * GST_RATE;
@@ -95,13 +107,19 @@ export function calculateABNScenario(
   // Business expenses (deductible)
   const businessExpenses = grossAnnual * businessExpenseRate;
 
-  // FIFO-specific deductions (travel, accommodation)
-  const fifoDeductions = fifoEnabled
-    ? calculateFIFODeductions(grossAnnual, fifoRoster)
-    : 0;
+  // FIFO-specific deductions breakdown
+  let fifoPaidTravel = 0;
+  let fifoAccommodation = 0;
+  let fifoDeductions = 0;
+  if (fifoEnabled) {
+    fifoPaidTravel = grossAnnual * ABN_FIFO_TRAVEL_EXPENSE_RATE;
+    fifoAccommodation = grossAnnual * ABN_FIFO_ACCOMMODATION_RATE;
+    fifoDeductions = fifoPaidTravel + fifoAccommodation;
+  }
 
-  // Insurance costs
-  const insuranceCosts = calculateInsuranceCosts(grossAnnual);
+  // Insurance costs with breakdown
+  const insuranceBreakdown = calculateInsuranceCosts(grossAnnual);
+  const insuranceCosts = insuranceBreakdown.total;
 
   // Self-funded super (optional but recommended)
   const selfFundedSuper = includeSuperContribution
@@ -118,6 +136,9 @@ export function calculateABNScenario(
   // Tax calculations on taxable income
   const taxPayable = calculateTotalTax(taxableIncome);
   const medicareLevy = calculateMedicareLevy(taxableIncome);
+  
+  // LITO offset (already factored into taxPayable, but we calculate for display)
+  const litoOffset = calculateLITO(taxableIncome);
 
   // Total costs excluding tax (for comparison)
   const totalCostsExcludingTax =
@@ -152,5 +173,12 @@ export function calculateABNScenario(
     fifoRoster: fifoEnabled ? fifoRoster : null,
     actualWorkingWeeks,
     overtimePay,
+    // NEW detailed fields
+    baseIncome,
+    fifoPaidTravel,
+    fifoAccommodation,
+    litoOffset,
+    publicLiabilityInsurance: insuranceBreakdown.publicLiability,
+    incomeProtection: insuranceBreakdown.incomeProtection,
   };
 }
