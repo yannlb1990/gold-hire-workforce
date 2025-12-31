@@ -12,6 +12,7 @@ const footerLinks = {
   company: [
     { name: "About Us", href: "/about" },
     { name: "Client Tools", href: "/client-tools" },
+    { name: "Wage Calculator", href: "/wage-calculator" },
     { name: "Join Our Team", href: "/careers" },
     { name: "Blog & Insights", href: "/blog" },
     { name: "Contact", href: "/contact" },

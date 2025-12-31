@@ -72,6 +72,7 @@ import IpswichLabourers from "./pages/money/IpswichLabourers";
 import IpswichCarpenters from "./pages/money/IpswichCarpenters";
 import IpswichBuildingCleaners from "./pages/money/IpswichBuildingCleaners";
 import IpswichDemolition from "./pages/money/IpswichDemolition";
+import WageCalculator from "./pages/WageCalculator";
 
 const queryClient = new QueryClient();
 
@@ -112,6 +113,9 @@ const App = () => (
             <Route path="/compliance" element={<Compliance />} />
             <Route path="/insurances" element={<Insurances />} />
             <Route path="/labour-hire-licensing" element={<LabourHireLicensing />} />
+            
+            {/* Tools */}
+            <Route path="/wage-calculator" element={<WageCalculator />} />
             
             {/* Trade Pages - Core 4 Services */}
             <Route path="/trades/labourers" element={<Labourers />} />
