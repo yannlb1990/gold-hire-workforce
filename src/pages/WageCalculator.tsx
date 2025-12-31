@@ -177,13 +177,13 @@ export default function WageCalculator() {
 
                   {/* Hourly Rate */}
                   <div className="space-y-3">
-                    <div className="flex items-center justify-between">
-                      <Label className="text-sm font-medium flex items-center gap-2">
+                    <div className="flex items-center justify-between gap-4">
+                      <Label className="text-sm font-medium flex items-center gap-1.5 min-w-0">
                         Hourly Rate
-                        <DollarSign className="w-3.5 h-3.5 text-muted-foreground" />
+                        <DollarSign className="w-3.5 h-3.5 text-muted-foreground shrink-0" />
                       </Label>
-                      <div className="flex items-center gap-1">
-                        <span className="text-2xl font-bold text-primary">
+                      <div className="flex items-center gap-1 shrink-0">
+                        <span className="text-xl font-bold text-primary">
                           ${hourlyRate}
                         </span>
                         <span className="text-sm text-muted-foreground">/hr</span>
@@ -205,12 +205,12 @@ export default function WageCalculator() {
 
                   {/* Hours Per Week */}
                   <div className="space-y-3">
-                    <div className="flex items-center justify-between">
-                      <Label className="text-sm font-medium flex items-center gap-2">
+                    <div className="flex items-center justify-between gap-4">
+                      <Label className="text-sm font-medium flex items-center gap-1.5 min-w-0">
                         Hours Per Week
-                        <Clock className="w-3.5 h-3.5 text-muted-foreground" />
+                        <Clock className="w-3.5 h-3.5 text-muted-foreground shrink-0" />
                       </Label>
-                      <span className="text-lg font-semibold text-foreground">
+                      <span className="text-lg font-semibold text-foreground shrink-0">
                         {hoursPerWeek} hrs
                       </span>
                     </div>
@@ -230,12 +230,12 @@ export default function WageCalculator() {
 
                   {/* Weeks Per Year */}
                   <div className="space-y-3">
-                    <div className="flex items-center justify-between">
-                      <Label className="text-sm font-medium flex items-center gap-2">
+                    <div className="flex items-center justify-between gap-4">
+                      <Label className="text-sm font-medium flex items-center gap-1.5 min-w-0">
                         Weeks Per Year
-                        <Calendar className="w-3.5 h-3.5 text-muted-foreground" />
+                        <Calendar className="w-3.5 h-3.5 text-muted-foreground shrink-0" />
                       </Label>
-                      <span className="text-lg font-semibold text-foreground">
+                      <span className="text-lg font-semibold text-foreground shrink-0">
                         {weeksPerYear} wks
                       </span>
                     </div>
@@ -261,12 +261,12 @@ export default function WageCalculator() {
 
                     {/* Business Expenses */}
                     <div className="space-y-3">
-                      <div className="flex items-center justify-between">
-                        <Label className="text-sm font-medium flex items-center gap-2">
+                      <div className="flex items-center justify-between gap-4">
+                        <Label className="text-sm font-medium flex items-center gap-1.5 min-w-0">
                           Business Expenses
                           <InfoTooltip tooltipKey="businessExpenses" />
                         </Label>
-                        <span className="text-lg font-semibold text-foreground">
+                        <span className="text-lg font-semibold text-foreground shrink-0">
                           {(expenseRate * 100).toFixed(0)}%
                         </span>
                       </div>
@@ -285,14 +285,14 @@ export default function WageCalculator() {
                     </div>
 
                     {/* Include Super */}
-                    <div className="flex items-center justify-between py-2">
-                      <div className="flex items-center gap-2">
+                    <div className="flex items-center justify-between gap-4 py-2">
+                      <div className="flex items-center gap-1.5 min-w-0">
                         <Label className="text-sm font-medium">
                           Self-fund Super (11.5%)
                         </Label>
                         <InfoTooltip tooltipKey="super" />
                       </div>
-                      <Switch
+                      <Switch className="shrink-0"
                         checked={includeSuper}
                         onCheckedChange={setIncludeSuper}
                       />

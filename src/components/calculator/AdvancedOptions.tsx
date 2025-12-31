@@ -69,13 +69,14 @@ export function AdvancedOptions({
       <div className="space-y-6">
         {/* FIFO Toggle Section */}
         <div className="space-y-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <Plane className="w-4 h-4 text-amber-500" />
+          <div className="flex items-center justify-between gap-4">
+            <div className="flex items-center gap-1.5 min-w-0">
+              <Plane className="w-4 h-4 text-amber-500 shrink-0" />
               <Label className="text-sm font-medium">FIFO (Fly-In Fly-Out)</Label>
               <InfoTooltip tooltipKey="fifo" />
             </div>
             <Switch
+              className="shrink-0"
               checked={fifoEnabled}
               onCheckedChange={onFifoEnabledChange}
             />
@@ -115,13 +116,14 @@ export function AdvancedOptions({
 
         {/* Overtime Toggle Section */}
         <div className="space-y-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <Clock className="w-4 h-4 text-amber-500" />
+          <div className="flex items-center justify-between gap-4">
+            <div className="flex items-center gap-1.5 min-w-0">
+              <Clock className="w-4 h-4 text-amber-500 shrink-0" />
               <Label className="text-sm font-medium">Overtime</Label>
               <InfoTooltip tooltipKey="overtime" />
             </div>
             <Switch
+              className="shrink-0"
               checked={overtimeEnabled}
               onCheckedChange={onOvertimeEnabledChange}
             />
@@ -131,9 +133,9 @@ export function AdvancedOptions({
             <div className="pl-6 space-y-4 border-l-2 border-amber-500/20">
               {/* Overtime Hours Slider */}
               <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <Label className="text-sm text-muted-foreground">Hours Per Week</Label>
-                  <span className="text-lg font-semibold text-foreground">
+                <div className="flex items-center justify-between gap-4">
+                  <Label className="text-sm text-muted-foreground min-w-0">Hours Per Week</Label>
+                  <span className="text-lg font-semibold text-foreground shrink-0">
                     {overtimeHours} hrs
                   </span>
                 </div>
