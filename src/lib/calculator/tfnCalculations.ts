@@ -5,24 +5,60 @@ import {
   calculateEffectiveTaxRate,
   calculateMarginalTaxRate,
   SUPER_GUARANTEE_RATE,
+  type TaxOptions,
 } from "./taxCalculations";
+import {
+  calculateOvertimeEarnings,
+  calculateAllowances,
+  calculateFIFOBenefits,
+  type OvertimeConfig,
+  type AllowancesConfig,
+  type FIFOConfig,
+} from "./allowancesAndOvertime";
 
 export interface TFNInputs {
   hourlyRate: number;
   hoursPerWeek: number;
   weeksPerYear: number;
+
+  // Advanced options
+  overtimeConfig?: OvertimeConfig;
+  allowancesConfig?: AllowancesConfig;
+  fifoConfig?: FIFOConfig;
+  taxOptions?: TaxOptions;
 }
 
 export interface TFNResults {
-  // Gross income
+  // Gross income (base + overtime)
   grossAnnual: number;
   grossWeekly: number;
   grossFortnightly: number;
   grossMonthly: number;
 
+  // Income breakdown
+  baseIncome: number;
+  overtimeIncome: number;
+  publicHolidayIncome: number;
+
+  // Allowances
+  totalAllowances: number;
+  taxFreeAllowances: number;
+  taxableAllowances: number;
+
+  // FIFO benefits
+  fifoBenefits: number;
+  accommodationValue: number;
+  mealsValue: number;
+
+  // Taxable income (gross + taxable allowances)
+  taxableIncome: number;
+
   // Tax breakdown
   incomeTax: number;
   medicareLevy: number;
+  medicareLevySurcharge: number;
+  hecsRepayment: number;
+  taxOffsets: number;
   totalTax: number;
 
   // Net income (after tax)
@@ -39,48 +75,128 @@ export interface TFNResults {
   effectiveTaxRate: number;
   marginalTaxRate: number;
 
-  // Total package (gross + super)
+  // Total package (gross + super + allowances + FIFO benefits)
   totalPackage: number;
+  actualWorkingWeeks: number;
 }
 
 /**
  * Calculate TFN (employee) wages and deductions
  */
 export function calculateTFN(inputs: TFNInputs): TFNResults {
-  // Calculate gross income
-  const grossAnnual = inputs.hourlyRate * inputs.hoursPerWeek * inputs.weeksPerYear;
-  const grossWeekly = grossAnnual / inputs.weeksPerYear;
-  const grossFortnightly = grossWeekly * 2;
-  const grossMonthly = grossAnnual / 12;
+  // Handle FIFO roster adjustments
+  const fifoResults = inputs.fifoConfig
+    ? calculateFIFOBenefits(
+        inputs.fifoConfig,
+        inputs.hourlyRate,
+        inputs.hoursPerWeek,
+        inputs.weeksPerYear
+      )
+    : {
+        actualWorkingWeeks: inputs.weeksPerYear,
+        lafhaAccommodation: 0,
+        lafhaFood: 0,
+        totalLAFHA: 0,
+        paidTravelEarnings: 0,
+        totalFIFOBenefits: 0,
+        accommodationValue: 0,
+        mealsValue: 0,
+      };
 
-  // Calculate tax
-  const { incomeTax, medicareLevy, totalTax } = calculateTotalTax(grossAnnual);
+  const actualWeeks = fifoResults.actualWorkingWeeks;
 
-  // Calculate net income
-  const netAnnual = grossAnnual - totalTax;
-  const netWeekly = netAnnual / inputs.weeksPerYear;
+  // Calculate base income + overtime
+  const overtimeResults = inputs.overtimeConfig
+    ? calculateOvertimeEarnings(inputs.hourlyRate, inputs.overtimeConfig, actualWeeks)
+    : {
+        regularEarnings: inputs.hourlyRate * inputs.hoursPerWeek * actualWeeks,
+        overtimeEarnings: 0,
+        publicHolidayEarnings: 0,
+        totalEarnings: inputs.hourlyRate * inputs.hoursPerWeek * actualWeeks,
+        effectiveHourlyRate: inputs.hourlyRate,
+      };
+
+  const baseIncome = overtimeResults.regularEarnings;
+  const overtimeIncome = overtimeResults.overtimeEarnings;
+  const publicHolidayIncome = overtimeResults.publicHolidayEarnings;
+  const wageIncome = overtimeResults.totalEarnings;
+
+  // Calculate allowances
+  const allowancesResults = inputs.allowancesConfig
+    ? calculateAllowances(inputs.allowancesConfig, actualWeeks)
+    : {
+        carAllowance: 0,
+        toolAllowance: 0,
+        mealAllowance: 0,
+        travelAllowance: 0,
+        otherAllowances: 0,
+        totalAllowances: 0,
+        taxFreeAllowances: 0,
+        taxableAllowances: 0,
+      };
+
+  // Gross income = wages + FIFO paid travel
+  const grossAnnual = wageIncome + fifoResults.paidTravelEarnings;
+
+  // Taxable income = gross + taxable allowances (tax-free allowances excluded)
+  const taxableIncome = grossAnnual + allowancesResults.taxableAllowances;
+
+  // Calculate tax with advanced options
+  const taxResults = calculateTotalTax(taxableIncome, inputs.taxOptions || {});
+
+  // Net income = gross + tax-free allowances + FIFO benefits - tax
+  const netAnnual =
+    grossAnnual +
+    allowancesResults.taxFreeAllowances +
+    fifoResults.totalLAFHA -
+    taxResults.totalTax;
+
+  const netWeekly = netAnnual / actualWeeks;
   const netFortnightly = netWeekly * 2;
   const netMonthly = netAnnual / 12;
 
+  const grossWeekly = grossAnnual / actualWeeks;
+  const grossFortnightly = grossWeekly * 2;
+  const grossMonthly = grossAnnual / 12;
+
   // Calculate superannuation (employer contribution on top of gross salary)
   const superAnnual = grossAnnual * SUPER_GUARANTEE_RATE;
-  const superWeekly = superAnnual / inputs.weeksPerYear;
+  const superWeekly = superAnnual / actualWeeks;
 
   // Calculate tax rates
-  const effectiveTaxRate = calculateEffectiveTaxRate(grossAnnual, totalTax);
-  const marginalTaxRate = calculateMarginalTaxRate(grossAnnual);
+  const effectiveTaxRate = calculateEffectiveTaxRate(taxableIncome, taxResults.totalTax);
+  const marginalTaxRate = calculateMarginalTaxRate(taxableIncome);
 
-  // Total package value
-  const totalPackage = grossAnnual + superAnnual;
+  // Total package value (all benefits)
+  const totalPackage =
+    grossAnnual +
+    superAnnual +
+    allowancesResults.totalAllowances +
+    fifoResults.totalLAFHA +
+    fifoResults.accommodationValue +
+    fifoResults.mealsValue;
 
   return {
     grossAnnual,
     grossWeekly,
     grossFortnightly,
     grossMonthly,
-    incomeTax,
-    medicareLevy,
-    totalTax,
+    baseIncome,
+    overtimeIncome,
+    publicHolidayIncome,
+    totalAllowances: allowancesResults.totalAllowances,
+    taxFreeAllowances: allowancesResults.taxFreeAllowances,
+    taxableAllowances: allowancesResults.taxableAllowances,
+    fifoBenefits: fifoResults.totalLAFHA + fifoResults.paidTravelEarnings,
+    accommodationValue: fifoResults.accommodationValue,
+    mealsValue: fifoResults.mealsValue,
+    taxableIncome,
+    incomeTax: taxResults.incomeTax,
+    medicareLevy: taxResults.medicareLevy,
+    medicareLevySurcharge: taxResults.medicareLevySurcharge,
+    hecsRepayment: taxResults.hecsRepayment,
+    taxOffsets: taxResults.taxOffsets,
+    totalTax: taxResults.totalTax,
     netAnnual,
     netWeekly,
     netFortnightly,
@@ -90,6 +206,7 @@ export function calculateTFN(inputs: TFNInputs): TFNResults {
     effectiveTaxRate,
     marginalTaxRate,
     totalPackage,
+    actualWorkingWeeks: actualWeeks,
   };
 }
 

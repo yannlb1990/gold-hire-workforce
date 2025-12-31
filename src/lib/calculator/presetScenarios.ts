@@ -12,6 +12,14 @@ export interface PresetScenario {
   weeksPerYear: number;
   estimatedBusinessExpenses: number;
   recommendedSuperContribution: number;
+
+  // Advanced features
+  isFIFO?: boolean;
+  fifoRosterPattern?: "2-1" | "3-1" | "4-2" | "8-6";
+  hasOvertime?: boolean;
+  overtimeHoursPerWeek?: number;
+  overtimeRate?: number;
+  hasAllowances?: boolean;
 }
 
 export const PRESET_SCENARIOS: PresetScenario[] = [
@@ -80,6 +88,72 @@ export const PRESET_SCENARIOS: PresetScenario[] = [
     weeksPerYear: 45,
     estimatedBusinessExpenses: 5000,
     recommendedSuperContribution: 8,
+  },
+  {
+    id: "fifo-labourer",
+    name: "FIFO Labourer (2-1 Roster)",
+    description: "Fly-in fly-out worker, 2 weeks on / 1 week off",
+    tfnHourlyRate: 42,
+    abnHourlyRate: 58,
+    hoursPerWeek: 60, // Long days on site (12hr days)
+    weeksPerYear: 52,
+    estimatedBusinessExpenses: 12000,
+    recommendedSuperContribution: 12,
+    isFIFO: true,
+    fifoRosterPattern: "2-1",
+    hasOvertime: true,
+    overtimeHoursPerWeek: 22,
+    overtimeRate: 1.5,
+    hasAllowances: true,
+  },
+  {
+    id: "fifo-carpenter-4-2",
+    name: "FIFO Carpenter (4-2 Roster)",
+    description: "Remote site carpenter, 4 weeks on / 2 weeks off",
+    tfnHourlyRate: 48,
+    abnHourlyRate: 68,
+    hoursPerWeek: 70, // Long roster includes extra hours
+    weeksPerYear: 52,
+    estimatedBusinessExpenses: 15000,
+    recommendedSuperContribution: 15,
+    isFIFO: true,
+    fifoRosterPattern: "4-2",
+    hasOvertime: true,
+    overtimeHoursPerWeek: 32,
+    overtimeRate: 1.5,
+    hasAllowances: true,
+  },
+  {
+    id: "fifo-demolition-8-6",
+    name: "FIFO Demolition (8-6 Mining)",
+    description: "Remote mining demolition, 8 weeks on / 6 weeks off",
+    tfnHourlyRate: 55,
+    abnHourlyRate: 78,
+    hoursPerWeek: 72,
+    weeksPerYear: 52,
+    estimatedBusinessExpenses: 18000,
+    recommendedSuperContribution: 15,
+    isFIFO: true,
+    fifoRosterPattern: "8-6",
+    hasOvertime: true,
+    overtimeHoursPerWeek: 34,
+    overtimeRate: 2.0,
+    hasAllowances: true,
+  },
+  {
+    id: "overtime-builder",
+    name: "Builder with Regular Overtime",
+    description: "Standard builder with consistent overtime hours",
+    tfnHourlyRate: 38,
+    abnHourlyRate: 52,
+    hoursPerWeek: 38,
+    weeksPerYear: 48,
+    estimatedBusinessExpenses: 10000,
+    recommendedSuperContribution: 10,
+    hasOvertime: true,
+    overtimeHoursPerWeek: 10,
+    overtimeRate: 1.5,
+    hasAllowances: true,
   },
 ];
 

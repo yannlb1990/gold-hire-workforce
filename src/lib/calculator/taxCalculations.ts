@@ -26,6 +26,93 @@ export const MEDICARE_LEVY_SURCHARGE_THRESHOLD = 90000; // Single, no dependents
 // Superannuation Guarantee Rate 2024-25
 export const SUPER_GUARANTEE_RATE = 0.115; // 11.5%
 
+// HECS-HELP Repayment Thresholds 2024-25
+export const HECS_THRESHOLDS = [
+  { min: 0, max: 54435, rate: 0 },
+  { min: 54436, max: 62850, rate: 0.01 },
+  { min: 62851, max: 66620, rate: 0.02 },
+  { min: 66621, max: 70618, rate: 0.025 },
+  { min: 70619, max: 74855, rate: 0.03 },
+  { min: 74856, max: 79346, rate: 0.035 },
+  { min: 79347, max: 84107, rate: 0.04 },
+  { min: 84108, max: 89154, rate: 0.045 },
+  { min: 89155, max: 94503, rate: 0.05 },
+  { min: 94504, max: 100174, rate: 0.055 },
+  { min: 100175, max: 106184, rate: 0.06 },
+  { min: 106185, max: 112556, rate: 0.065 },
+  { min: 112557, max: 119309, rate: 0.07 },
+  { min: 119310, max: 126468, rate: 0.075 },
+  { min: 126469, max: 134056, rate: 0.08 },
+  { min: 134057, max: 142100, rate: 0.085 },
+  { min: 142101, max: null, rate: 0.10 },
+];
+
+// Low Income Tax Offset (LITO) 2024-25
+export const LITO_MAX = 700;
+export const LITO_THRESHOLD_LOW = 37500;
+export const LITO_THRESHOLD_HIGH = 45000;
+export const LITO_PHASE_OUT_RATE = 0.05;
+
+// Medicare Levy Surcharge (MLS) rates for those without private health insurance
+export const MLS_RATES = [
+  { min: 0, max: 90000, rate: 0 }, // No surcharge
+  { min: 90001, max: 105000, rate: 0.01 }, // 1%
+  { min: 105001, max: 140000, rate: 0.0125 }, // 1.25%
+  { min: 140001, max: null, rate: 0.015 }, // 1.5%
+];
+
+/**
+ * Calculate HECS-HELP repayment based on repayment income
+ */
+export function calculateHECSRepayment(repaymentIncome: number): number {
+  if (repaymentIncome <= 0) return 0;
+
+  for (const threshold of HECS_THRESHOLDS) {
+    if (threshold.max === null || repaymentIncome <= threshold.max) {
+      if (repaymentIncome >= threshold.min) {
+        return repaymentIncome * threshold.rate;
+      }
+    }
+  }
+  return 0;
+}
+
+/**
+ * Calculate Low Income Tax Offset (LITO)
+ */
+export function calculateLITO(taxableIncome: number): number {
+  if (taxableIncome <= LITO_THRESHOLD_LOW) {
+    return LITO_MAX;
+  }
+
+  if (taxableIncome >= LITO_THRESHOLD_HIGH) {
+    return 0;
+  }
+
+  // Phase out between thresholds
+  const excess = taxableIncome - LITO_THRESHOLD_LOW;
+  const reduction = excess * LITO_PHASE_OUT_RATE;
+  return Math.max(0, LITO_MAX - reduction);
+}
+
+/**
+ * Calculate Medicare Levy Surcharge
+ */
+export function calculateMedicareLevySurcharge(
+  taxableIncome: number,
+  hasPrivateHealth: boolean
+): number {
+  if (hasPrivateHealth || taxableIncome <= 0) return 0;
+
+  for (let i = MLS_RATES.length - 1; i >= 0; i--) {
+    const tier = MLS_RATES[i];
+    if (taxableIncome >= tier.min) {
+      return taxableIncome * tier.rate;
+    }
+  }
+  return 0;
+}
+
 /**
  * Calculate income tax based on taxable income
  */
@@ -84,20 +171,50 @@ export function calculateMedicareLevy(taxableIncome: number): number {
 }
 
 /**
- * Calculate total tax (income tax + Medicare levy)
+ * Advanced tax calculation options
  */
-export function calculateTotalTax(taxableIncome: number): {
+export interface TaxOptions {
+  hasHECS?: boolean;
+  hasPrivateHealth?: boolean;
+  applyLITO?: boolean;
+}
+
+/**
+ * Calculate total tax (income tax + Medicare levy + optional HECS and MLS)
+ */
+export function calculateTotalTax(
+  taxableIncome: number,
+  options: TaxOptions = {}
+): {
   incomeTax: number;
   medicareLevy: number;
+  medicareLevySurcharge: number;
+  hecsRepayment: number;
+  taxOffsets: number;
   totalTax: number;
 } {
-  const incomeTax = calculateIncomeTax(taxableIncome);
+  let incomeTax = calculateIncomeTax(taxableIncome);
   const medicareLevy = calculateMedicareLevy(taxableIncome);
+  const medicareLevySurcharge = calculateMedicareLevySurcharge(
+    taxableIncome,
+    options.hasPrivateHealth ?? false
+  );
+  const hecsRepayment = options.hasHECS ? calculateHECSRepayment(taxableIncome) : 0;
+  const taxOffsets = options.applyLITO ? calculateLITO(taxableIncome) : 0;
+
+  // Apply tax offsets to reduce income tax (but not below zero)
+  incomeTax = Math.max(0, incomeTax - taxOffsets);
+
+  const totalTax =
+    incomeTax + medicareLevy + medicareLevySurcharge + hecsRepayment;
 
   return {
     incomeTax,
     medicareLevy,
-    totalTax: incomeTax + medicareLevy,
+    medicareLevySurcharge,
+    hecsRepayment,
+    taxOffsets,
+    totalTax,
   };
 }
 

@@ -4,7 +4,14 @@ import {
   calculateTotalTax,
   calculateEffectiveTaxRate,
   calculateMarginalTaxRate,
+  type TaxOptions,
 } from "./taxCalculations";
+import {
+  calculateOvertimeEarnings,
+  calculateFIFOBenefits,
+  type OvertimeConfig,
+  type FIFOConfig,
+} from "./allowancesAndOvertime";
 
 export interface ABNInputs {
   hourlyRate: number;
@@ -16,6 +23,11 @@ export interface ABNInputs {
   superContribution: number; // 0-100 (percentage)
   // Whether to account for unpaid leave
   accountForLeave: boolean;
+
+  // Advanced options
+  overtimeConfig?: OvertimeConfig;
+  fifoConfig?: FIFOConfig;
+  taxOptions?: TaxOptions;
 }
 
 export interface ABNResults {
@@ -25,6 +37,14 @@ export interface ABNResults {
   grossFortnightly: number;
   grossMonthly: number;
 
+  // Income breakdown
+  baseIncome: number;
+  overtimeIncome: number;
+  publicHolidayIncome: number;
+
+  // FIFO benefits (contractors can claim these as deductions, not as tax-free income)
+  fifoBenefits: number;
+
   // Business deductions
   businessExpenses: number;
   // Taxable income (gross - expenses)
@@ -33,6 +53,9 @@ export interface ABNResults {
   // Tax breakdown
   incomeTax: number;
   medicareLevy: number;
+  medicareLevySurcharge: number;
+  hecsRepayment: number;
+  taxOffsets: number;
   totalTax: number;
 
   // After tax, before super
@@ -58,39 +81,80 @@ export interface ABNResults {
 
   // Comparison metrics
   netIncomeBeforeSuper: number; // For fairer comparison with TFN
+  actualWorkingWeeks: number;
 }
 
 /**
  * Calculate ABN (contractor) wages and deductions
  */
 export function calculateABN(inputs: ABNInputs): ABNResults {
+  // Handle FIFO roster adjustments (for contractors, FIFO mainly affects deductions)
+  const fifoResults = inputs.fifoConfig
+    ? calculateFIFOBenefits(
+        inputs.fifoConfig,
+        inputs.hourlyRate,
+        inputs.hoursPerWeek,
+        inputs.weeksPerYear
+      )
+    : {
+        actualWorkingWeeks: inputs.weeksPerYear,
+        lafhaAccommodation: 0,
+        lafhaFood: 0,
+        totalLAFHA: 0,
+        paidTravelEarnings: 0,
+        totalFIFOBenefits: 0,
+        accommodationValue: 0,
+        mealsValue: 0,
+      };
+
+  const actualWeeks = fifoResults.actualWorkingWeeks;
+
+  // Calculate base income + overtime
+  const overtimeResults = inputs.overtimeConfig
+    ? calculateOvertimeEarnings(inputs.hourlyRate, inputs.overtimeConfig, actualWeeks)
+    : {
+        regularEarnings: inputs.hourlyRate * inputs.hoursPerWeek * actualWeeks,
+        overtimeEarnings: 0,
+        publicHolidayEarnings: 0,
+        totalEarnings: inputs.hourlyRate * inputs.hoursPerWeek * actualWeeks,
+        effectiveHourlyRate: inputs.hourlyRate,
+      };
+
+  const baseIncome = overtimeResults.regularEarnings;
+  const overtimeIncome = overtimeResults.overtimeEarnings;
+  const publicHolidayIncome = overtimeResults.publicHolidayEarnings;
+
   // Calculate gross income
-  const grossAnnual = inputs.hourlyRate * inputs.hoursPerWeek * inputs.weeksPerYear;
-  const grossWeekly = grossAnnual / inputs.weeksPerYear;
+  const grossAnnual = overtimeResults.totalEarnings + fifoResults.paidTravelEarnings;
+  const grossWeekly = grossAnnual / actualWeeks;
   const grossFortnightly = grossWeekly * 2;
   const grossMonthly = grossAnnual / 12;
 
-  // Calculate taxable income (gross - business expenses)
-  const taxableIncome = Math.max(0, grossAnnual - inputs.businessExpenses);
+  // For contractors, FIFO accommodation/meals are business expenses (can be claimed as deductions)
+  // Add FIFO costs to business expenses
+  const totalBusinessExpenses = inputs.businessExpenses + fifoResults.accommodationValue + fifoResults.mealsValue;
 
-  // Calculate tax on taxable income
-  const { incomeTax, medicareLevy, totalTax } = calculateTotalTax(taxableIncome);
+  // Calculate taxable income (gross - business expenses)
+  const taxableIncome = Math.max(0, grossAnnual - totalBusinessExpenses);
+
+  // Calculate tax on taxable income with advanced options
+  const taxResults = calculateTotalTax(taxableIncome, inputs.taxOptions || {});
 
   // After-tax income (before super contribution)
-  const afterTaxIncome = taxableIncome - totalTax;
+  const afterTaxIncome = taxableIncome - taxResults.totalTax;
 
   // Calculate self-funded superannuation contribution
   const superAnnual = (afterTaxIncome * inputs.superContribution) / 100;
-  const superWeekly = superAnnual / inputs.weeksPerYear;
+  const superWeekly = superAnnual / actualWeeks;
 
   // Calculate net income (after tax and super)
   const netAnnual = afterTaxIncome - superAnnual;
-  const netWeekly = netAnnual / inputs.weeksPerYear;
+  const netWeekly = netAnnual / actualWeeks;
   const netFortnightly = netWeekly * 2;
   const netMonthly = netAnnual / 12;
 
   // Calculate tax rates (based on taxable income)
-  const effectiveTaxRate = calculateEffectiveTaxRate(taxableIncome, totalTax);
+  const effectiveTaxRate = calculateEffectiveTaxRate(taxableIncome, taxResults.totalTax);
   const marginalTaxRate = calculateMarginalTaxRate(taxableIncome);
 
   // Estimate unpaid leave opportunity cost (4 weeks annual + 2 weeks sick)
@@ -100,18 +164,25 @@ export function calculateABN(inputs: ABNInputs): ABNResults {
     : 0;
 
   // Total costs (expenses + opportunity cost of leave)
-  const totalCosts = inputs.businessExpenses + estimatedUnpaidLeave;
+  const totalCosts = totalBusinessExpenses + estimatedUnpaidLeave;
 
   return {
     grossAnnual,
     grossWeekly,
     grossFortnightly,
     grossMonthly,
-    businessExpenses: inputs.businessExpenses,
+    baseIncome,
+    overtimeIncome,
+    publicHolidayIncome,
+    fifoBenefits: fifoResults.totalLAFHA,
+    businessExpenses: totalBusinessExpenses,
     taxableIncome,
-    incomeTax,
-    medicareLevy,
-    totalTax,
+    incomeTax: taxResults.incomeTax,
+    medicareLevy: taxResults.medicareLevy,
+    medicareLevySurcharge: taxResults.medicareLevySurcharge,
+    hecsRepayment: taxResults.hecsRepayment,
+    taxOffsets: taxResults.taxOffsets,
+    totalTax: taxResults.totalTax,
     afterTaxIncome,
     superAnnual,
     superWeekly,
@@ -124,6 +195,7 @@ export function calculateABN(inputs: ABNInputs): ABNResults {
     estimatedUnpaidLeave,
     totalCosts,
     netIncomeBeforeSuper: afterTaxIncome, // For comparison
+    actualWorkingWeeks: actualWeeks,
   };
 }
 
