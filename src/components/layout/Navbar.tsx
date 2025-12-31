@@ -40,11 +40,11 @@ export function Navbar() {
       <div className="container mx-auto px-4 lg:px-8">
         <nav className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center group">
+          <Link to="/" className="flex items-center group overflow-hidden h-16 md:h-20">
             <img 
               src={logo} 
               alt="Precision Site Solutions" 
-              className="h-48 md:h-60 w-auto transition-transform duration-300 group-hover:scale-105"
+              className="h-48 md:h-60 w-auto transition-transform duration-300 group-hover:scale-105 -my-16 md:-my-20"
             />
           </Link>
 
