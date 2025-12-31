@@ -9,7 +9,8 @@ import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Calculator, TrendingUp, AlertCircle, Plus, Trash2, Save } from "lucide-react";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { Calculator, TrendingUp, AlertCircle, Plus, Trash2, Save, ChevronDown, Plane, Clock } from "lucide-react";
 import { calculateTFN } from "@/lib/calculator/tfnCalculations";
 import { calculateABN } from "@/lib/calculator/abnCalculations";
 import { PRESET_SCENARIOS, type PresetScenario } from "@/lib/calculator/presetScenarios";
@@ -29,6 +30,13 @@ interface CalculatorInputs {
   businessExpenses: number;
   superContribution: number;
   accountForLeave: boolean;
+
+  // Simplified advanced options
+  enableFIFO: boolean;
+  fifoRoster: "2-1" | "3-1" | "4-2" | "8-6";
+  enableOvertime: boolean;
+  overtimeHours: number;
+  overtimeRate: number;
 }
 
 interface SavedScenario extends CalculatorInputs {
@@ -45,6 +53,11 @@ const WageCalculator = () => {
     businessExpenses: 10000,
     superContribution: 10,
     accountForLeave: true,
+    enableFIFO: false,
+    fifoRoster: "2-1",
+    enableOvertime: false,
+    overtimeHours: 10,
+    overtimeRate: 1.5,
   });
 
   const [savedScenarios, setSavedScenarios] = useState<SavedScenario[]>([]);
@@ -71,6 +84,11 @@ const WageCalculator = () => {
         businessExpenses: preset.estimatedBusinessExpenses,
         superContribution: preset.recommendedSuperContribution,
         accountForLeave: true,
+        enableFIFO: preset.isFIFO || false,
+        fifoRoster: preset.fifoRosterPattern || "2-1",
+        enableOvertime: preset.hasOvertime || false,
+        overtimeHours: preset.overtimeHoursPerWeek || 10,
+        overtimeRate: preset.overtimeRate || 1.5,
       });
     }
   };
@@ -99,6 +117,21 @@ const WageCalculator = () => {
     hourlyRate: inputs.tfnHourlyRate,
     hoursPerWeek: inputs.hoursPerWeek,
     weeksPerYear: inputs.weeksPerYear,
+    overtimeConfig: inputs.enableOvertime
+      ? {
+          regularHoursPerWeek: inputs.hoursPerWeek,
+          overtimeHoursPerWeek: inputs.overtimeHours,
+          overtimeRate: inputs.overtimeRate,
+        }
+      : undefined,
+    fifoConfig: inputs.enableFIFO
+      ? {
+          enabled: true,
+          rosterPattern: inputs.fifoRoster,
+          accommodationProvided: true,
+          mealsProvided: true,
+        }
+      : undefined,
   });
 
   const abnResults = calculateABN({
@@ -108,6 +141,21 @@ const WageCalculator = () => {
     businessExpenses: inputs.businessExpenses,
     superContribution: inputs.superContribution,
     accountForLeave: inputs.accountForLeave,
+    overtimeConfig: inputs.enableOvertime
+      ? {
+          regularHoursPerWeek: inputs.hoursPerWeek,
+          overtimeHoursPerWeek: inputs.overtimeHours,
+          overtimeRate: inputs.overtimeRate,
+        }
+      : undefined,
+    fifoConfig: inputs.enableFIFO
+      ? {
+          enabled: true,
+          rosterPattern: inputs.fifoRoster,
+          accommodationProvided: false,
+          mealsProvided: false,
+        }
+      : undefined,
   });
 
   return (
@@ -338,6 +386,122 @@ const WageCalculator = () => {
                           Includes 6 weeks unpaid leave opportunity cost
                         </p>
                       )}
+                    </CardContent>
+                  </Card>
+
+                  {/* Advanced Options */}
+                  <Card className="shadow-elevated border-2 border-gold/30">
+                    <CardHeader className="bg-gold/5">
+                      <CardTitle className="text-lg flex items-center gap-2">
+                        <Calculator className="w-5 h-5 text-gold" />
+                        Advanced Options
+                      </CardTitle>
+                      <CardDescription>FIFO, overtime, and more</CardDescription>
+                    </CardHeader>
+                    <CardContent className="pt-6 space-y-4">
+                      {/* FIFO Toggle */}
+                      <Collapsible>
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2">
+                            <Plane className="w-4 h-4 text-earth-green" />
+                            <Label htmlFor="enable-fifo" className="font-semibold">
+                              FIFO (Fly-In Fly-Out)
+                            </Label>
+                          </div>
+                          <Switch
+                            id="enable-fifo"
+                            checked={inputs.enableFIFO}
+                            onCheckedChange={(checked) =>
+                              setInputs({ ...inputs, enableFIFO: checked })
+                            }
+                          />
+                        </div>
+
+                        {inputs.enableFIFO && (
+                          <CollapsibleContent className="mt-4 space-y-3 pl-6 border-l-2 border-earth-green/30">
+                            <div>
+                              <Label htmlFor="roster">Roster Pattern</Label>
+                              <Select
+                                value={inputs.fifoRoster}
+                                onValueChange={(value: any) =>
+                                  setInputs({ ...inputs, fifoRoster: value })
+                                }
+                              >
+                                <SelectTrigger id="roster">
+                                  <SelectValue />
+                                </SelectTrigger>
+                                <SelectContent>
+                                  <SelectItem value="2-1">2 weeks on, 1 week off</SelectItem>
+                                  <SelectItem value="3-1">3 weeks on, 1 week off</SelectItem>
+                                  <SelectItem value="4-2">4 weeks on, 2 weeks off</SelectItem>
+                                  <SelectItem value="8-6">8 weeks on, 6 weeks off</SelectItem>
+                                </SelectContent>
+                              </Select>
+                              <p className="text-xs text-muted-foreground mt-1">
+                                Includes LAFHA (tax-free for TFN, deductible for ABN)
+                              </p>
+                            </div>
+                          </CollapsibleContent>
+                        )}
+                      </Collapsible>
+
+                      {/* Overtime Toggle */}
+                      <div className="border-t pt-4">
+                        <Collapsible>
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-2">
+                              <Clock className="w-4 h-4 text-earth-green" />
+                              <Label htmlFor="enable-overtime" className="font-semibold">
+                                Overtime
+                              </Label>
+                            </div>
+                            <Switch
+                              id="enable-overtime"
+                              checked={inputs.enableOvertime}
+                              onCheckedChange={(checked) =>
+                                setInputs({ ...inputs, enableOvertime: checked })
+                              }
+                            />
+                          </div>
+
+                          {inputs.enableOvertime && (
+                            <CollapsibleContent className="mt-4 space-y-3 pl-6 border-l-2 border-earth-green/30">
+                              <div>
+                                <Label htmlFor="ot-hours">Overtime Hours per Week</Label>
+                                <Input
+                                  id="ot-hours"
+                                  type="number"
+                                  value={inputs.overtimeHours}
+                                  onChange={(e) =>
+                                    setInputs({ ...inputs, overtimeHours: Number(e.target.value) })
+                                  }
+                                  min="0"
+                                  max="40"
+                                  step="1"
+                                />
+                              </div>
+                              <div>
+                                <Label htmlFor="ot-rate">Overtime Rate Multiplier</Label>
+                                <Select
+                                  value={inputs.overtimeRate.toString()}
+                                  onValueChange={(value) =>
+                                    setInputs({ ...inputs, overtimeRate: Number(value) })
+                                  }
+                                >
+                                  <SelectTrigger id="ot-rate">
+                                    <SelectValue />
+                                  </SelectTrigger>
+                                  <SelectContent>
+                                    <SelectItem value="1.5">Time and a half (1.5x)</SelectItem>
+                                    <SelectItem value="2.0">Double time (2x)</SelectItem>
+                                    <SelectItem value="2.5">Double time and a half (2.5x)</SelectItem>
+                                  </SelectContent>
+                                </Select>
+                              </div>
+                            </CollapsibleContent>
+                          )}
+                        </Collapsible>
+                      </div>
                     </CardContent>
                   </Card>
 
