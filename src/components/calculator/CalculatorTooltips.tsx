@@ -72,6 +72,44 @@ export const CALCULATOR_TOOLTIPS: Record<string, TooltipItem> = {
     content:
       "A 2% levy on taxable income to help fund Australia's public health system. Low-income earners may receive a reduction or exemption.",
   },
+  // FIFO tooltips
+  fifo: {
+    id: "fifo",
+    title: "FIFO (Fly-In Fly-Out)",
+    content:
+      "FIFO arrangements involve flying to remote work sites for set periods (e.g., 2 weeks on, 1 week off). TFN employees often receive tax-free LAFHA (Living Away From Home Allowance), while ABN contractors can claim travel and accommodation as deductions.",
+  },
+  lafha: {
+    id: "lafha",
+    title: "LAFHA (Living Away From Home Allowance)",
+    content:
+      "A tax-free allowance for TFN employees who temporarily live away from home for work. Covers accommodation (~$280/day) and meals (~$120/day). Must maintain a home elsewhere to qualify.",
+  },
+  rosterPattern: {
+    id: "rosterPattern",
+    title: "Roster Pattern",
+    content:
+      "The work schedule for FIFO roles showing weeks on-site vs off-site. Common patterns: 2-1 (2 weeks on, 1 off), 3-1, 4-2, and 8-6. Longer on-site periods typically mean higher pay but more time away from home.",
+  },
+  // Overtime tooltips
+  overtime: {
+    id: "overtime",
+    title: "Overtime",
+    content:
+      "Additional hours worked beyond the standard 38-hour week. Overtime is typically paid at higher rates: time-and-a-half (1.5x), double-time (2x), or double-time-and-a-half (2.5x) for public holidays.",
+  },
+  overtimeMultiplier: {
+    id: "overtimeMultiplier",
+    title: "Overtime Rate Multiplier",
+    content:
+      "The pay rate for overtime hours. Time-and-a-half (1.5x) is standard for weekday overtime, double-time (2x) for Sundays, and double-time-and-a-half (2.5x) for public holidays.",
+  },
+  fifoDeductions: {
+    id: "fifoDeductions",
+    title: "FIFO Deductions (ABN)",
+    content:
+      "As an ABN contractor on FIFO work, you can claim travel costs, flights, accommodation, and meal expenses as tax-deductible business expenses. Keep detailed records and receipts.",
+  },
 };
 
 interface InfoTooltipProps {

@@ -18,7 +18,8 @@ import { calculateABNScenario } from "@/lib/abnCalculations";
 import { ComparisonResults } from "@/components/calculator/ComparisonResults";
 import { ScenarioComparison } from "@/components/calculator/ScenarioComparison";
 import { EducationalSection, InfoTooltip } from "@/components/calculator/CalculatorTooltips";
-import { Calculator, DollarSign, Clock, Calendar, Percent, ArrowRight } from "lucide-react";
+import { AdvancedOptions } from "@/components/calculator/AdvancedOptions";
+import { Calculator, DollarSign, Clock, Calendar, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function WageCalculator() {
@@ -29,6 +30,15 @@ export default function WageCalculator() {
   const [weeksPerYear, setWeeksPerYear] = useState(48);
   const [expenseRate, setExpenseRate] = useState(0.15);
   const [includeSuper, setIncludeSuper] = useState(true);
+
+  // FIFO state
+  const [fifoEnabled, setFifoEnabled] = useState(false);
+  const [fifoRoster, setFifoRoster] = useState("2-1");
+
+  // Overtime state
+  const [overtimeEnabled, setOvertimeEnabled] = useState(false);
+  const [overtimeHours, setOvertimeHours] = useState(0);
+  const [overtimeMultiplier, setOvertimeMultiplier] = useState("1.5x");
 
   // Get trade preset
   const tradePreset = getTradePreset(selectedTrade);
@@ -41,6 +51,15 @@ export default function WageCalculator() {
       setHourlyRate(preset.defaultHourlyRate);
       setHoursPerWeek(preset.typicalHours);
       setExpenseRate(preset.typicalExpenseRate);
+      
+      // Apply FIFO settings from preset
+      setFifoEnabled(preset.fifoEnabled ?? false);
+      setFifoRoster(preset.fifoRoster ?? "2-1");
+      
+      // Apply overtime settings from preset
+      setOvertimeEnabled(preset.overtimeEnabled ?? false);
+      setOvertimeHours(preset.overtimeHours ?? 0);
+      setOvertimeMultiplier(preset.overtimeMultiplier ?? "1.5x");
     }
   };
 
@@ -52,30 +71,51 @@ export default function WageCalculator() {
     setWeeksPerYear(scenario.weeksPerYear);
     setExpenseRate(scenario.expenseRate);
     setIncludeSuper(scenario.includeSuper);
+    
+    // Load FIFO settings
+    setFifoEnabled(scenario.fifoEnabled ?? false);
+    setFifoRoster(scenario.fifoRoster ?? "2-1");
+    
+    // Load overtime settings
+    setOvertimeEnabled(scenario.overtimeEnabled ?? false);
+    setOvertimeHours(scenario.overtimeHours ?? 0);
+    setOvertimeMultiplier(scenario.overtimeMultiplier ?? "1.5x");
   };
 
-  // Calculate results
+  // Calculate results with advanced options
   const tfnResult = useMemo(
-    () => calculateTFNScenario(hourlyRate, hoursPerWeek, weeksPerYear),
-    [hourlyRate, hoursPerWeek, weeksPerYear]
+    () => calculateTFNScenario(hourlyRate, hoursPerWeek, weeksPerYear, {
+      fifoEnabled,
+      fifoRoster,
+      overtimeEnabled,
+      overtimeHours,
+      overtimeMultiplier,
+    }),
+    [hourlyRate, hoursPerWeek, weeksPerYear, fifoEnabled, fifoRoster, overtimeEnabled, overtimeHours, overtimeMultiplier]
   );
 
   const abnResult = useMemo(
-    () => calculateABNScenario(hourlyRate, hoursPerWeek, weeksPerYear, expenseRate, includeSuper),
-    [hourlyRate, hoursPerWeek, weeksPerYear, expenseRate, includeSuper]
+    () => calculateABNScenario(hourlyRate, hoursPerWeek, weeksPerYear, expenseRate, includeSuper, {
+      fifoEnabled,
+      fifoRoster,
+      overtimeEnabled,
+      overtimeHours,
+      overtimeMultiplier,
+    }),
+    [hourlyRate, hoursPerWeek, weeksPerYear, expenseRate, includeSuper, fifoEnabled, fifoRoster, overtimeEnabled, overtimeHours, overtimeMultiplier]
   );
 
   return (
     <Layout>
       <Helmet>
-        <title>ABN vs TFN Calculator Australia 2024-25 | Compare Take-Home Pay | Precision Site Solutions</title>
+        <title>ABN vs TFN Calculator Australia 2024-25 | FIFO & Overtime | Precision Site Solutions</title>
         <meta
           name="description"
-          content="Free ABN vs TFN wage calculator for Australian tradies. Compare contractor vs employee take-home pay with 2024-25 tax rates, super, and leave entitlements."
+          content="Free ABN vs TFN wage calculator with FIFO rosters and overtime. Compare contractor vs employee take-home pay with 2024-25 tax rates, LAFHA, super, and leave."
         />
         <meta
           name="keywords"
-          content="ABN vs TFN calculator, contractor vs employee calculator, Australian tax calculator, tradie wage calculator, labour hire rates"
+          content="ABN vs TFN calculator, FIFO calculator, overtime calculator, contractor vs employee, Australian tax calculator, tradie wage calculator, LAFHA calculator"
         />
         <link rel="canonical" href="https://precisionsitesolutions.com.au/wage-calculator" />
       </Helmet>
@@ -94,7 +134,7 @@ export default function WageCalculator() {
             </h1>
             <p className="text-lg text-concrete/70 max-w-2xl mx-auto">
               Compare your take-home pay as a contractor (ABN) versus employee (TFN). 
-              See exactly how tax, super, leave, and expenses affect your bottom line.
+              Now with FIFO rosters, LAFHA, and overtime calculations.
             </p>
           </div>
         </div>
@@ -105,7 +145,7 @@ export default function WageCalculator() {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid gap-8 lg:grid-cols-12">
             {/* Input Panel */}
-            <div className="lg:col-span-5">
+            <div className="lg:col-span-5 space-y-6">
               <div className="bg-card border border-border rounded-2xl p-6 sticky top-24">
                 <h2 className="font-heading font-bold text-xl text-foreground mb-6 flex items-center gap-2">
                   <DollarSign className="w-5 h-5 text-primary" />
@@ -260,11 +300,32 @@ export default function WageCalculator() {
                   </div>
                 </div>
               </div>
+
+              {/* Advanced Options Card */}
+              <AdvancedOptions
+                fifoEnabled={fifoEnabled}
+                onFifoEnabledChange={setFifoEnabled}
+                fifoRoster={fifoRoster}
+                onFifoRosterChange={setFifoRoster}
+                overtimeEnabled={overtimeEnabled}
+                onOvertimeEnabledChange={setOvertimeEnabled}
+                overtimeHours={overtimeHours}
+                onOvertimeHoursChange={setOvertimeHours}
+                overtimeMultiplier={overtimeMultiplier}
+                onOvertimeMultiplierChange={setOvertimeMultiplier}
+                hourlyRate={hourlyRate}
+                weeksPerYear={fifoEnabled ? tfnResult.actualWorkingWeeks : weeksPerYear}
+              />
             </div>
 
             {/* Results Panel */}
             <div className="lg:col-span-7 space-y-8">
-              <ComparisonResults tfnResult={tfnResult} abnResult={abnResult} />
+              <ComparisonResults 
+                tfnResult={tfnResult} 
+                abnResult={abnResult}
+                fifoEnabled={fifoEnabled}
+                overtimeEnabled={overtimeEnabled}
+              />
 
               <ScenarioComparison
                 currentScenario={{
@@ -274,6 +335,11 @@ export default function WageCalculator() {
                   weeksPerYear,
                   expenseRate,
                   includeSuper,
+                  fifoEnabled,
+                  fifoRoster,
+                  overtimeEnabled,
+                  overtimeHours,
+                  overtimeMultiplier,
                 }}
                 onLoadScenario={handleLoadScenario}
               />
@@ -311,7 +377,7 @@ export default function WageCalculator() {
         {JSON.stringify({
           "@context": "https://schema.org",
           "@type": "WebApplication",
-          name: "ABN vs TFN Wage Calculator",
+          name: "ABN vs TFN Wage Calculator with FIFO & Overtime",
           applicationCategory: "FinanceApplication",
           operatingSystem: "Web",
           offers: {
@@ -320,7 +386,7 @@ export default function WageCalculator() {
             priceCurrency: "AUD",
           },
           description:
-            "Free calculator to compare take-home pay between ABN contractor and TFN employee arrangements for Australian tradies.",
+            "Free calculator to compare take-home pay between ABN contractor and TFN employee arrangements for Australian tradies. Includes FIFO rosters, LAFHA, and overtime calculations.",
         })}
       </script>
     </Layout>
