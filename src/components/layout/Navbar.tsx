@@ -44,7 +44,7 @@ export function Navbar() {
             <img 
               src={logo} 
               alt="Precision Site Solutions" 
-              className="h-16 md:h-20 w-auto transition-transform duration-300 group-hover:scale-105"
+              className="h-48 md:h-60 w-auto transition-transform duration-300 group-hover:scale-105"
             />
           </Link>
 
