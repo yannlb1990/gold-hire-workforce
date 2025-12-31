@@ -3,10 +3,11 @@
 import {
   calculateTotalTax,
   calculateMedicareLevy,
+  calculateLITO,
   SUPER_GUARANTEE_RATE,
   calculateGrossAnnual,
 } from "./taxCalculations";
-import { calculateLAFHAValue, calculateFIFOWorkingWeeks } from "./fifoCalculations";
+import { calculateLAFHAValue, calculateFIFOWorkingWeeks, LAFHA_ACCOMMODATION_DAILY, LAFHA_MEALS_DAILY, getFIFORoster } from "./fifoCalculations";
 import { calculateOvertimePay } from "./overtimeCalculations";
 
 export interface TFNCalculationResult {
@@ -25,6 +26,16 @@ export interface TFNCalculationResult {
   actualWorkingWeeks: number;
   // Overtime fields
   overtimePay: number;
+  // NEW: Detailed breakdown fields
+  baseWages: number;
+  publicHolidayPay: number;
+  taxFreeAllowances: number;
+  taxableAllowances: number;
+  fifoAccommodationValue: number;
+  fifoMealsValue: number;
+  litoOffset: number;
+  annualLeaveValue: number;
+  sickLeaveValue: number;
 }
 
 // Leave entitlements calculation
@@ -33,17 +44,22 @@ const SICK_LEAVE_DAYS = 10;
 const PUBLIC_HOLIDAYS = 10;
 
 /**
- * Calculate the value of leave entitlements
+ * Calculate the value of leave entitlements with breakdown
  */
 export function calculateLeaveEntitlementsValue(
   hourlyRate: number,
   hoursPerWeek: number
-): number {
+): { total: number; annualLeave: number; sickLeave: number; publicHolidays: number } {
   const annualLeaveValue = hourlyRate * hoursPerWeek * ANNUAL_LEAVE_WEEKS;
   const sickLeaveValue = hourlyRate * (hoursPerWeek / 5) * SICK_LEAVE_DAYS;
   const publicHolidaysValue = hourlyRate * (hoursPerWeek / 5) * PUBLIC_HOLIDAYS;
 
-  return annualLeaveValue + sickLeaveValue + publicHolidaysValue;
+  return {
+    total: annualLeaveValue + sickLeaveValue + publicHolidaysValue,
+    annualLeave: annualLeaveValue,
+    sickLeave: sickLeaveValue,
+    publicHolidays: publicHolidaysValue,
+  };
 }
 
 export interface TFNScenarioOptions {
@@ -76,8 +92,8 @@ export function calculateTFNScenario(
     ? calculateFIFOWorkingWeeks(fifoRoster)
     : weeksPerYear;
 
-  // Base gross annual based on actual weeks worked
-  const baseGross = calculateGrossAnnual(hourlyRate, hoursPerWeek, actualWorkingWeeks);
+  // Base gross annual based on actual weeks worked (base wages)
+  const baseWages = calculateGrossAnnual(hourlyRate, hoursPerWeek, actualWorkingWeeks);
 
   // Calculate overtime pay
   const overtimePay = overtimeEnabled
@@ -85,25 +101,46 @@ export function calculateTFNScenario(
     : 0;
 
   // Total gross including overtime
-  const grossAnnual = baseGross + overtimePay;
+  const grossAnnual = baseWages + overtimePay;
 
-  // Tax calculations
-  const taxPayable = calculateTotalTax(grossAnnual);
-  const medicareLevy = calculateMedicareLevy(grossAnnual);
-
-  // Employer-paid super (on top of salary, not deducted)
-  const superContribution = grossAnnual * SUPER_GUARANTEE_RATE;
-
-  // Leave entitlements value
-  const leaveEntitlementsValue = calculateLeaveEntitlementsValue(
-    hourlyRate,
-    hoursPerWeek
-  );
+  // Leave entitlements breakdown
+  const leaveBreakdown = calculateLeaveEntitlementsValue(hourlyRate, hoursPerWeek);
+  const leaveEntitlementsValue = leaveBreakdown.total;
+  const publicHolidayPay = leaveBreakdown.publicHolidays;
+  const annualLeaveValue = leaveBreakdown.annualLeave;
+  const sickLeaveValue = leaveBreakdown.sickLeave;
 
   // LAFHA value (tax-free for FIFO TFN employees)
   const lafhaValue = fifoEnabled
     ? calculateLAFHAValue(fifoRoster, hoursPerWeek)
     : 0;
+
+  // Calculate FIFO non-cash benefit breakdown
+  let fifoAccommodationValue = 0;
+  let fifoMealsValue = 0;
+  if (fifoEnabled) {
+    const roster = getFIFORoster(fifoRoster);
+    if (roster) {
+      const workingDaysPerWeek = Math.min(hoursPerWeek / 8, 7);
+      const workingDaysPerYear = roster.workingWeeksPerYear * workingDaysPerWeek;
+      fifoAccommodationValue = workingDaysPerYear * LAFHA_ACCOMMODATION_DAILY;
+      fifoMealsValue = workingDaysPerYear * LAFHA_MEALS_DAILY;
+    }
+  }
+
+  // Tax-free allowances = LAFHA (when FIFO)
+  const taxFreeAllowances = lafhaValue;
+  const taxableAllowances = 0; // TFN employees typically don't have taxable allowances in this model
+
+  // Tax calculations (only on gross, LAFHA is tax-free and not counted here)
+  const taxPayable = calculateTotalTax(grossAnnual);
+  const medicareLevy = calculateMedicareLevy(grossAnnual);
+  
+  // LITO offset (already factored into taxPayable, but we calculate for display)
+  const litoOffset = calculateLITO(grossAnnual);
+
+  // Employer-paid super (on top of salary, not deducted)
+  const superContribution = grossAnnual * SUPER_GUARANTEE_RATE;
 
   // Net take-home after tax and Medicare, plus LAFHA (tax-free)
   const netTakeHome = grossAnnual - taxPayable - medicareLevy + lafhaValue;
@@ -132,5 +169,15 @@ export function calculateTFNScenario(
     fifoRoster: fifoEnabled ? fifoRoster : null,
     actualWorkingWeeks,
     overtimePay,
+    // NEW detailed fields
+    baseWages,
+    publicHolidayPay,
+    taxFreeAllowances,
+    taxableAllowances,
+    fifoAccommodationValue,
+    fifoMealsValue,
+    litoOffset,
+    annualLeaveValue,
+    sickLeaveValue,
   };
 }
