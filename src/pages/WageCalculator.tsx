@@ -10,7 +10,7 @@ import { Switch } from "@/components/ui/switch";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { Calculator, TrendingUp, AlertCircle, Plus, Trash2, Save, ChevronDown, Plane, Clock } from "lucide-react";
+import { Calculator, TrendingUp, AlertCircle, Plus, Trash2, Save, ChevronDown, Plane, Clock, Car, Wrench, UtensilsCrossed, DollarSign } from "lucide-react";
 import { calculateTFN } from "@/lib/calculator/tfnCalculations";
 import { calculateABN } from "@/lib/calculator/abnCalculations";
 import { PRESET_SCENARIOS, type PresetScenario } from "@/lib/calculator/presetScenarios";
@@ -31,12 +31,18 @@ interface CalculatorInputs {
   superContribution: number;
   accountForLeave: boolean;
 
-  // Simplified advanced options
+  // Advanced options
   enableFIFO: boolean;
   fifoRoster: "2-1" | "3-1" | "4-2" | "8-6";
   enableOvertime: boolean;
   overtimeHours: number;
   overtimeRate: number;
+
+  // Allowances
+  enableAllowances: boolean;
+  carAllowancePerWeek: number;
+  toolAllowancePerWeek: number;
+  mealAllowanceDaysPerWeek: number;
 }
 
 interface SavedScenario extends CalculatorInputs {
@@ -58,6 +64,10 @@ const WageCalculator = () => {
     enableOvertime: false,
     overtimeHours: 10,
     overtimeRate: 1.5,
+    enableAllowances: false,
+    carAllowancePerWeek: 150,
+    toolAllowancePerWeek: 12,
+    mealAllowanceDaysPerWeek: 5,
   });
 
   const [savedScenarios, setSavedScenarios] = useState<SavedScenario[]>([]);
@@ -89,6 +99,10 @@ const WageCalculator = () => {
         enableOvertime: preset.hasOvertime || false,
         overtimeHours: preset.overtimeHoursPerWeek || 10,
         overtimeRate: preset.overtimeRate || 1.5,
+        enableAllowances: preset.hasAllowances || false,
+        carAllowancePerWeek: 150,
+        toolAllowancePerWeek: 12,
+        mealAllowanceDaysPerWeek: 5,
       });
     }
   };
@@ -130,6 +144,16 @@ const WageCalculator = () => {
           rosterPattern: inputs.fifoRoster,
           accommodationProvided: true,
           mealsProvided: true,
+        }
+      : undefined,
+    allowancesConfig: inputs.enableAllowances
+      ? {
+          carAllowancePerWeek: inputs.carAllowancePerWeek,
+          toolAllowancePerWeek: inputs.toolAllowancePerWeek,
+          mealAllowanceDaysPerWeek: inputs.mealAllowanceDaysPerWeek,
+          includesBreakfast: true,
+          includesLunch: true,
+          includesDinner: true,
         }
       : undefined,
   });
@@ -497,6 +521,100 @@ const WageCalculator = () => {
                                     <SelectItem value="2.5">Double time and a half (2.5x)</SelectItem>
                                   </SelectContent>
                                 </Select>
+                              </div>
+                            </CollapsibleContent>
+                          )}
+                        </Collapsible>
+                      </div>
+
+                      {/* Allowances Toggle */}
+                      <div className="border-t pt-4">
+                        <Collapsible>
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-2">
+                              <DollarSign className="w-4 h-4 text-earth-green" />
+                              <Label htmlFor="enable-allowances" className="font-semibold">
+                                Allowances
+                              </Label>
+                            </div>
+                            <Switch
+                              id="enable-allowances"
+                              checked={inputs.enableAllowances}
+                              onCheckedChange={(checked) =>
+                                setInputs({ ...inputs, enableAllowances: checked })
+                              }
+                            />
+                          </div>
+
+                          {inputs.enableAllowances && (
+                            <CollapsibleContent className="mt-4 space-y-3 pl-6 border-l-2 border-earth-green/30">
+                              <div>
+                                <Label htmlFor="car-allowance" className="flex items-center gap-1">
+                                  <Car className="w-3 h-3" />
+                                  Car Allowance (per week)
+                                </Label>
+                                <div className="relative">
+                                  <span className="absolute left-3 top-2.5 text-muted-foreground text-sm">$</span>
+                                  <Input
+                                    id="car-allowance"
+                                    type="number"
+                                    value={inputs.carAllowancePerWeek}
+                                    onChange={(e) =>
+                                      setInputs({ ...inputs, carAllowancePerWeek: Number(e.target.value) })
+                                    }
+                                    className="pl-7"
+                                    min="0"
+                                    step="10"
+                                  />
+                                </div>
+                                <p className="text-xs text-muted-foreground mt-1">
+                                  Typical: $100-$300/week
+                                </p>
+                              </div>
+
+                              <div>
+                                <Label htmlFor="tool-allowance" className="flex items-center gap-1">
+                                  <Wrench className="w-3 h-3" />
+                                  Tool Allowance (per week)
+                                </Label>
+                                <div className="relative">
+                                  <span className="absolute left-3 top-2.5 text-muted-foreground text-sm">$</span>
+                                  <Input
+                                    id="tool-allowance"
+                                    type="number"
+                                    value={inputs.toolAllowancePerWeek}
+                                    onChange={(e) =>
+                                      setInputs({ ...inputs, toolAllowancePerWeek: Number(e.target.value) })
+                                    }
+                                    className="pl-7"
+                                    min="0"
+                                    step="1"
+                                  />
+                                </div>
+                                <p className="text-xs text-muted-foreground mt-1">
+                                  Typical: $8-$15/week
+                                </p>
+                              </div>
+
+                              <div>
+                                <Label htmlFor="meal-days" className="flex items-center gap-1">
+                                  <UtensilsCrossed className="w-3 h-3" />
+                                  Meal Allowance (days per week)
+                                </Label>
+                                <Input
+                                  id="meal-days"
+                                  type="number"
+                                  value={inputs.mealAllowanceDaysPerWeek}
+                                  onChange={(e) =>
+                                    setInputs({ ...inputs, mealAllowanceDaysPerWeek: Number(e.target.value) })
+                                  }
+                                  min="0"
+                                  max="7"
+                                  step="1"
+                                />
+                                <p className="text-xs text-muted-foreground mt-1">
+                                  Includes breakfast, lunch, dinner at ATO rates
+                                </p>
                               </div>
                             </CollapsibleContent>
                           )}
