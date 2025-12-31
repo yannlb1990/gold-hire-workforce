@@ -32,6 +32,9 @@ import FindWork from "./pages/FindWork";
 import ThankYouEmployer from "./pages/ThankYouEmployer";
 import ThankYouWorker from "./pages/ThankYouWorker";
 
+// Tools
+import WageCalculator from "./pages/WageCalculator";
+
 // Trust Pages
 import Compliance from "./pages/Compliance";
 import Insurances from "./pages/Insurances";
@@ -107,6 +110,10 @@ const App = () => (
             <Route path="/find-work" element={<FindWork />} />
             <Route path="/thank-you/request-labour" element={<ThankYouEmployer />} />
             <Route path="/thank-you/find-work" element={<ThankYouWorker />} />
+
+            {/* Tools */}
+            <Route path="/wage-calculator" element={<WageCalculator />} />
+            <Route path="/abn-vs-tfn-calculator" element={<WageCalculator />} />
             
             {/* Trust Pages */}
             <Route path="/compliance" element={<Compliance />} />
