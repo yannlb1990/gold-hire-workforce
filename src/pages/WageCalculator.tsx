@@ -19,6 +19,8 @@ import { ComparisonResults } from "@/components/calculator/ComparisonResults";
 import { ScenarioComparison } from "@/components/calculator/ScenarioComparison";
 import { EducationalSection, InfoTooltip } from "@/components/calculator/CalculatorTooltips";
 import { AdvancedOptions } from "@/components/calculator/AdvancedOptions";
+import { TaxBracketsReference } from "@/components/calculator/TaxBracketsReference";
+import { ActiveFeaturesSummary } from "@/components/calculator/ActiveFeaturesSummary";
 import { Calculator, DollarSign, Clock, Calendar, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -39,6 +41,13 @@ export default function WageCalculator() {
   const [overtimeEnabled, setOvertimeEnabled] = useState(false);
   const [overtimeHours, setOvertimeHours] = useState(0);
   const [overtimeMultiplier, setOvertimeMultiplier] = useState("1.5x");
+
+  // Allowances state
+  const [allowancesEnabled, setAllowancesEnabled] = useState(false);
+  const [carAllowance, setCarAllowance] = useState(0);
+  const [toolAllowance, setToolAllowance] = useState(0);
+  const [mealAllowanceDays, setMealAllowanceDays] = useState(0);
+  const [mealAllowanceRate, setMealAllowanceRate] = useState(25);
 
   // Get trade preset
   const tradePreset = getTradePreset(selectedTrade);
@@ -90,8 +99,13 @@ export default function WageCalculator() {
       overtimeEnabled,
       overtimeHours,
       overtimeMultiplier,
+      allowancesEnabled,
+      carAllowance,
+      toolAllowance,
+      mealAllowanceDays,
+      mealAllowanceRate,
     }),
-    [hourlyRate, hoursPerWeek, weeksPerYear, fifoEnabled, fifoRoster, overtimeEnabled, overtimeHours, overtimeMultiplier]
+    [hourlyRate, hoursPerWeek, weeksPerYear, fifoEnabled, fifoRoster, overtimeEnabled, overtimeHours, overtimeMultiplier, allowancesEnabled, carAllowance, toolAllowance, mealAllowanceDays, mealAllowanceRate]
   );
 
   const abnResult = useMemo(
@@ -301,6 +315,19 @@ export default function WageCalculator() {
                 </div>
               </div>
 
+              {/* Active Features Summary Card */}
+              <ActiveFeaturesSummary
+                fifoEnabled={fifoEnabled}
+                fifoRoster={fifoRoster}
+                overtimeEnabled={overtimeEnabled}
+                overtimeHours={overtimeHours}
+                overtimeMultiplier={overtimeMultiplier}
+                hourlyRate={hourlyRate}
+                weeksPerYear={weeksPerYear}
+                actualWorkingWeeks={tfnResult.actualWorkingWeeks}
+                lafhaValue={tfnResult.lafhaValue}
+              />
+
               {/* Advanced Options Card */}
               <AdvancedOptions
                 fifoEnabled={fifoEnabled}
@@ -313,9 +340,22 @@ export default function WageCalculator() {
                 onOvertimeHoursChange={setOvertimeHours}
                 overtimeMultiplier={overtimeMultiplier}
                 onOvertimeMultiplierChange={setOvertimeMultiplier}
+                allowancesEnabled={allowancesEnabled}
+                onAllowancesEnabledChange={setAllowancesEnabled}
+                carAllowance={carAllowance}
+                onCarAllowanceChange={setCarAllowance}
+                toolAllowance={toolAllowance}
+                onToolAllowanceChange={setToolAllowance}
+                mealAllowanceDays={mealAllowanceDays}
+                onMealAllowanceDaysChange={setMealAllowanceDays}
+                mealAllowanceRate={mealAllowanceRate}
+                onMealAllowanceRateChange={setMealAllowanceRate}
                 hourlyRate={hourlyRate}
                 weeksPerYear={fifoEnabled ? tfnResult.actualWorkingWeeks : weeksPerYear}
               />
+
+              {/* Tax Brackets Reference */}
+              <TaxBracketsReference />
             </div>
 
             {/* Results Panel */}

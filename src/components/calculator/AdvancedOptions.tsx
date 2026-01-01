@@ -11,7 +11,7 @@ import {
 import { FIFO_ROSTERS, getFIFORoster } from "@/lib/fifoCalculations";
 import { OVERTIME_MULTIPLIERS, getOvertimeMultiplier } from "@/lib/overtimeCalculations";
 import { InfoTooltip } from "./CalculatorTooltips";
-import { Plane, Clock, Sparkles } from "lucide-react";
+import { Plane, Clock, Sparkles, Car, Wrench, UtensilsCrossed } from "lucide-react";
 import { formatCurrency } from "@/lib/taxCalculations";
 
 interface AdvancedOptionsProps {
@@ -27,6 +27,17 @@ interface AdvancedOptionsProps {
   onOvertimeHoursChange: (hours: number) => void;
   overtimeMultiplier: string;
   onOvertimeMultiplierChange: (multiplier: string) => void;
+  // Allowances settings
+  allowancesEnabled: boolean;
+  onAllowancesEnabledChange: (enabled: boolean) => void;
+  carAllowance: number;
+  onCarAllowanceChange: (amount: number) => void;
+  toolAllowance: number;
+  onToolAllowanceChange: (amount: number) => void;
+  mealAllowanceDays: number;
+  onMealAllowanceDaysChange: (days: number) => void;
+  mealAllowanceRate: number;
+  onMealAllowanceRateChange: (rate: number) => void;
   // For display calculations
   hourlyRate: number;
   weeksPerYear: number;
@@ -43,6 +54,16 @@ export function AdvancedOptions({
   onOvertimeHoursChange,
   overtimeMultiplier,
   onOvertimeMultiplierChange,
+  allowancesEnabled,
+  onAllowancesEnabledChange,
+  carAllowance,
+  onCarAllowanceChange,
+  toolAllowance,
+  onToolAllowanceChange,
+  mealAllowanceDays,
+  onMealAllowanceDaysChange,
+  mealAllowanceRate,
+  onMealAllowanceRateChange,
   hourlyRate,
   weeksPerYear,
 }: AdvancedOptionsProps) {
@@ -54,6 +75,11 @@ export function AdvancedOptions({
     ? overtimeHours * hourlyRate * selectedMultiplier.rate * weeksPerYear
     : 0;
 
+  // Calculate allowances preview
+  const allowancesPreviewValue = allowancesEnabled
+    ? (carAllowance + toolAllowance + (mealAllowanceDays * mealAllowanceRate)) * weeksPerYear
+    : 0;
+
   return (
     <div className="bg-gradient-to-r from-amber-500/5 to-orange-500/5 border-2 border-amber-500/30 rounded-2xl p-6">
       <div className="flex items-center gap-3 mb-6">
@@ -62,7 +88,7 @@ export function AdvancedOptions({
         </div>
         <div>
           <h3 className="font-heading font-bold text-foreground">Advanced Options</h3>
-          <p className="text-xs text-muted-foreground">FIFO rosters & overtime calculations</p>
+          <p className="text-xs text-muted-foreground">FIFO, overtime & allowances</p>
         </div>
       </div>
 
@@ -183,6 +209,128 @@ export function AdvancedOptions({
                   </p>
                   <p className="text-xs text-muted-foreground">
                     ({overtimeHours} hrs × ${(hourlyRate * selectedMultiplier.rate).toFixed(2)}/hr × {weeksPerYear} wks)
+                  </p>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+
+        <div className="border-t border-border/50 pt-6" />
+
+        {/* Allowances Toggle Section */}
+        <div className="space-y-4">
+          <div className="flex items-center justify-between gap-4">
+            <div className="flex items-center gap-1.5 min-w-0">
+              <Car className="w-4 h-4 text-amber-500 shrink-0" />
+              <Label className="text-sm font-medium">Allowances</Label>
+              <InfoTooltip tooltipKey="allowances" />
+            </div>
+            <Switch
+              className="shrink-0"
+              checked={allowancesEnabled}
+              onCheckedChange={onAllowancesEnabledChange}
+            />
+          </div>
+
+          {allowancesEnabled && (
+            <div className="pl-6 space-y-4 border-l-2 border-amber-500/20">
+              {/* Car Allowance */}
+              <div className="space-y-3">
+                <div className="flex items-center justify-between gap-4">
+                  <div className="flex items-center gap-1.5 min-w-0">
+                    <Car className="w-3.5 h-3.5 text-muted-foreground" />
+                    <Label className="text-sm text-muted-foreground">Car Allowance</Label>
+                  </div>
+                  <span className="text-sm font-semibold text-foreground shrink-0">
+                    ${carAllowance}/wk
+                  </span>
+                </div>
+                <Slider
+                  value={[carAllowance]}
+                  onValueChange={(value) => onCarAllowanceChange(value[0])}
+                  min={0}
+                  max={200}
+                  step={5}
+                  className="w-full"
+                />
+                <div className="flex justify-between text-xs text-muted-foreground">
+                  <span>$0</span>
+                  <span>$200/wk</span>
+                </div>
+              </div>
+
+              {/* Tool Allowance */}
+              <div className="space-y-3">
+                <div className="flex items-center justify-between gap-4">
+                  <div className="flex items-center gap-1.5 min-w-0">
+                    <Wrench className="w-3.5 h-3.5 text-muted-foreground" />
+                    <Label className="text-sm text-muted-foreground">Tool Allowance</Label>
+                  </div>
+                  <span className="text-sm font-semibold text-foreground shrink-0">
+                    ${toolAllowance}/wk
+                  </span>
+                </div>
+                <Slider
+                  value={[toolAllowance]}
+                  onValueChange={(value) => onToolAllowanceChange(value[0])}
+                  min={0}
+                  max={100}
+                  step={5}
+                  className="w-full"
+                />
+                <div className="flex justify-between text-xs text-muted-foreground">
+                  <span>$0</span>
+                  <span>$100/wk</span>
+                </div>
+              </div>
+
+              {/* Meal Allowance */}
+              <div className="space-y-3">
+                <div className="flex items-center justify-between gap-4">
+                  <div className="flex items-center gap-1.5 min-w-0">
+                    <UtensilsCrossed className="w-3.5 h-3.5 text-muted-foreground" />
+                    <Label className="text-sm text-muted-foreground">Meal Allowance</Label>
+                  </div>
+                  <span className="text-sm font-semibold text-foreground shrink-0">
+                    {mealAllowanceDays} days × ${mealAllowanceRate}
+                  </span>
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label className="text-xs text-muted-foreground">Days/week</Label>
+                    <Slider
+                      value={[mealAllowanceDays]}
+                      onValueChange={(value) => onMealAllowanceDaysChange(value[0])}
+                      min={0}
+                      max={7}
+                      step={1}
+                      className="w-full"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label className="text-xs text-muted-foreground">$/day</Label>
+                    <Slider
+                      value={[mealAllowanceRate]}
+                      onValueChange={(value) => onMealAllowanceRateChange(value[0])}
+                      min={15}
+                      max={50}
+                      step={5}
+                      className="w-full"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Allowances Preview */}
+              {allowancesPreviewValue > 0 && (
+                <div className="bg-amber-500/10 rounded-lg p-3">
+                  <p className="text-xs text-muted-foreground mb-1">Estimated annual allowances (taxable)</p>
+                  <p className="text-lg font-bold text-amber-600">
+                    +{formatCurrency(allowancesPreviewValue)}
+                  </p>
+                  <p className="text-xs text-muted-foreground">
+                    (${(carAllowance + toolAllowance + (mealAllowanceDays * mealAllowanceRate)).toFixed(0)}/wk × {weeksPerYear} wks)
                   </p>
                 </div>
               )}
