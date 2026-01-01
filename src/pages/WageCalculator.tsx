@@ -16,6 +16,8 @@ import { calculateABN } from "@/lib/calculator/abnCalculations";
 import { PRESET_SCENARIOS, type PresetScenario } from "@/lib/calculator/presetScenarios";
 import { calculateTypicalExpenses } from "@/lib/calculator/abnCalculations";
 import ComparisonResults from "@/components/calculator/ComparisonResults";
+import TaxBracketsTable from "@/components/calculator/TaxBracketsTable";
+import { Badge } from "@/components/ui/badge";
 
 interface CalculatorInputs {
   // Common inputs
@@ -622,6 +624,61 @@ const WageCalculator = () => {
                       </div>
                     </CardContent>
                   </Card>
+
+                  {/* Active Features Summary */}
+                  {(inputs.enableFIFO || inputs.enableOvertime || inputs.enableAllowances) && (
+                    <Card className="shadow-elevated border-2 border-earth-green/30 bg-earth-green/5">
+                      <CardHeader className="pb-3">
+                        <CardTitle className="text-base flex items-center gap-2">
+                          <TrendingUp className="w-4 h-4 text-earth-green" />
+                          Active Features
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent className="space-y-2">
+                        {inputs.enableFIFO && (
+                          <div className="flex items-start gap-2 text-sm">
+                            <Plane className="w-4 h-4 text-earth-green mt-0.5 flex-shrink-0" />
+                            <div className="flex-1">
+                              <div className="font-semibold">FIFO {inputs.fifoRoster} Roster</div>
+                              <div className="text-xs text-muted-foreground">
+                                {(() => {
+                                  const patterns = { "2-1": "35 weeks/year", "3-1": "39 weeks/year", "4-2": "35 weeks/year", "8-6": "30 weeks/year" };
+                                  return `Working ~${patterns[inputs.fifoRoster]} with tax-free allowances`;
+                                })()}
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                        {inputs.enableOvertime && (
+                          <div className="flex items-start gap-2 text-sm">
+                            <Clock className="w-4 h-4 text-earth-green mt-0.5 flex-shrink-0" />
+                            <div className="flex-1">
+                              <div className="font-semibold">Overtime: {inputs.overtimeHours}hrs/week @ {inputs.overtimeRate}x</div>
+                              <div className="text-xs text-muted-foreground">
+                                Est. +${((inputs.tfnHourlyRate * inputs.overtimeRate * inputs.overtimeHours * inputs.weeksPerYear) || 0).toLocaleString('en-AU', { maximumFractionDigits: 0 })}/year (TFN)
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                        {inputs.enableAllowances && (
+                          <div className="flex items-start gap-2 text-sm">
+                            <DollarSign className="w-4 h-4 text-earth-green mt-0.5 flex-shrink-0" />
+                            <div className="flex-1">
+                              <div className="font-semibold">Allowances Enabled</div>
+                              <div className="text-xs text-muted-foreground space-y-0.5">
+                                {inputs.carAllowancePerWeek > 0 && <div>Car: ${inputs.carAllowancePerWeek}/week</div>}
+                                {inputs.toolAllowancePerWeek > 0 && <div>Tools: ${inputs.toolAllowancePerWeek}/week</div>}
+                                {inputs.mealAllowanceDaysPerWeek > 0 && <div>Meals: {inputs.mealAllowanceDaysPerWeek} days/week</div>}
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                      </CardContent>
+                    </Card>
+                  )}
+
+                  {/* Tax Brackets Reference */}
+                  <TaxBracketsTable />
 
                   {/* Save Scenario Button */}
                   <Button
