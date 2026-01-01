@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Select,
   SelectContent,
@@ -189,128 +190,178 @@ export default function WageCalculator() {
                     )}
                   </div>
 
-                  {/* Hourly Rate */}
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between gap-4">
-                      <Label className="text-sm font-medium flex items-center gap-1.5 min-w-0">
-                        Hourly Rate
-                        <DollarSign className="w-3.5 h-3.5 text-muted-foreground shrink-0" />
-                      </Label>
-                      <div className="flex items-center gap-1 shrink-0">
-                        <span className="text-xl font-bold text-primary">
-                          ${hourlyRate}
-                        </span>
-                        <span className="text-sm text-muted-foreground">/hr</span>
-                      </div>
-                    </div>
-                    <Slider
-                      value={[hourlyRate]}
-                      onValueChange={(value) => setHourlyRate(value[0])}
-                      min={20}
-                      max={120}
-                      step={1}
-                      className="w-full"
-                    />
-                    <div className="flex justify-between text-xs text-muted-foreground">
-                      <span>$20</span>
-                      <span>$120</span>
-                    </div>
-                  </div>
-
-                  {/* Hours Per Week */}
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between gap-4">
-                      <Label className="text-sm font-medium flex items-center gap-1.5 min-w-0">
-                        Hours Per Week
-                        <Clock className="w-3.5 h-3.5 text-muted-foreground shrink-0" />
-                      </Label>
-                      <span className="text-lg font-semibold text-foreground shrink-0">
-                        {hoursPerWeek} hrs
-                      </span>
-                    </div>
-                    <Slider
-                      value={[hoursPerWeek]}
-                      onValueChange={(value) => setHoursPerWeek(value[0])}
-                      min={20}
-                      max={60}
-                      step={1}
-                      className="w-full"
-                    />
-                    <div className="flex justify-between text-xs text-muted-foreground">
-                      <span>20 hrs</span>
-                      <span>60 hrs</span>
-                    </div>
-                  </div>
-
-                  {/* Weeks Per Year */}
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between gap-4">
-                      <Label className="text-sm font-medium flex items-center gap-1.5 min-w-0">
-                        Weeks Per Year
-                        <Calendar className="w-3.5 h-3.5 text-muted-foreground shrink-0" />
-                      </Label>
-                      <span className="text-lg font-semibold text-foreground shrink-0">
-                        {weeksPerYear} wks
-                      </span>
-                    </div>
-                    <Slider
-                      value={[weeksPerYear]}
-                      onValueChange={(value) => setWeeksPerYear(value[0])}
-                      min={40}
-                      max={52}
-                      step={1}
-                      className="w-full"
-                    />
-                    <div className="flex justify-between text-xs text-muted-foreground">
-                      <span>40 wks</span>
-                      <span>52 wks</span>
-                    </div>
-                  </div>
-
-                  {/* ABN Specific Settings */}
-                  <div className="pt-4 border-t border-border space-y-4">
-                    <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">
-                      ABN Settings
-                    </h3>
-
-                    {/* Business Expenses */}
-                    <div className="space-y-3">
-                      <div className="flex items-center justify-between gap-4">
-                        <Label className="text-sm font-medium flex items-center gap-1.5 min-w-0">
-                          Business Expenses
-                          <InfoTooltip tooltipKey="businessExpenses" />
+                  {/* Work Details - 2 Column Grid */}
+                  <div className="grid grid-cols-2 gap-4">
+                    {/* Hours Per Week */}
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between">
+                        <Label className="text-sm font-medium flex items-center gap-1">
+                          Hours/Week
+                          <Clock className="w-3 h-3 text-muted-foreground" />
                         </Label>
-                        <span className="text-lg font-semibold text-foreground shrink-0">
-                          {(expenseRate * 100).toFixed(0)}%
+                        <span className="text-sm font-semibold text-foreground">
+                          {hoursPerWeek}
                         </span>
                       </div>
                       <Slider
-                        value={[expenseRate * 100]}
-                        onValueChange={(value) => setExpenseRate(value[0] / 100)}
-                        min={5}
-                        max={40}
+                        value={[hoursPerWeek]}
+                        onValueChange={(value) => setHoursPerWeek(value[0])}
+                        min={20}
+                        max={60}
                         step={1}
                         className="w-full"
                       />
                       <div className="flex justify-between text-xs text-muted-foreground">
-                        <span>5%</span>
-                        <span>40%</span>
+                        <span>20</span>
+                        <span>60</span>
                       </div>
                     </div>
 
-                    {/* Include Super */}
-                    <div className="flex items-center justify-between gap-4 py-2">
-                      <div className="flex items-center gap-1.5 min-w-0">
-                        <Label className="text-sm font-medium">
-                          Self-fund Super (11.5%)
+                    {/* Weeks Per Year */}
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between">
+                        <Label className="text-sm font-medium flex items-center gap-1">
+                          Weeks/Year
+                          <Calendar className="w-3 h-3 text-muted-foreground" />
                         </Label>
-                        <InfoTooltip tooltipKey="super" />
+                        <span className="text-sm font-semibold text-foreground">
+                          {weeksPerYear}
+                        </span>
                       </div>
-                      <Switch className="shrink-0"
-                        checked={includeSuper}
-                        onCheckedChange={setIncludeSuper}
+                      <Slider
+                        value={[weeksPerYear]}
+                        onValueChange={(value) => setWeeksPerYear(value[0])}
+                        min={40}
+                        max={52}
+                        step={1}
+                        className="w-full"
                       />
+                      <div className="flex justify-between text-xs text-muted-foreground">
+                        <span>40</span>
+                        <span>52</span>
+                      </div>
                     </div>
+                  </div>
+
+                  {/* Tabbed TFN/ABN Hourly Rates */}
+                  <div className="pt-2">
+                    <Tabs defaultValue="tfn" className="w-full">
+                      <TabsList className="grid w-full grid-cols-2 mb-4">
+                        <TabsTrigger value="tfn" className="text-sm">
+                          TFN (Employee)
+                        </TabsTrigger>
+                        <TabsTrigger value="abn" className="text-sm">
+                          ABN (Contractor)
+                        </TabsTrigger>
+                      </TabsList>
+
+                      {/* TFN Tab */}
+                      <TabsContent value="tfn" className="space-y-4">
+                        <div className="space-y-3">
+                          <div className="flex items-center justify-between gap-4">
+                            <Label className="text-sm font-medium flex items-center gap-1.5">
+                              Hourly Rate
+                              <DollarSign className="w-3.5 h-3.5 text-muted-foreground" />
+                            </Label>
+                            <div className="flex items-center gap-1">
+                              <span className="text-xl font-bold text-primary">
+                                ${hourlyRate}
+                              </span>
+                              <span className="text-sm text-muted-foreground">/hr</span>
+                            </div>
+                          </div>
+                          <Slider
+                            value={[hourlyRate]}
+                            onValueChange={(value) => setHourlyRate(value[0])}
+                            min={20}
+                            max={120}
+                            step={1}
+                            className="w-full"
+                          />
+                          <div className="flex justify-between text-xs text-muted-foreground">
+                            <span>$20</span>
+                            <span>$120</span>
+                          </div>
+                        </div>
+                        <p className="text-xs text-muted-foreground bg-muted/50 rounded-lg p-3">
+                          As a TFN employee, your employer handles tax, super (11.5%), and leave entitlements.
+                        </p>
+                      </TabsContent>
+
+                      {/* ABN Tab */}
+                      <TabsContent value="abn" className="space-y-4">
+                        {/* Hourly Rate */}
+                        <div className="space-y-3">
+                          <div className="flex items-center justify-between gap-4">
+                            <Label className="text-sm font-medium flex items-center gap-1.5">
+                              Hourly Rate
+                              <DollarSign className="w-3.5 h-3.5 text-muted-foreground" />
+                            </Label>
+                            <div className="flex items-center gap-1">
+                              <span className="text-xl font-bold text-primary">
+                                ${hourlyRate}
+                              </span>
+                              <span className="text-sm text-muted-foreground">/hr</span>
+                            </div>
+                          </div>
+                          <Slider
+                            value={[hourlyRate]}
+                            onValueChange={(value) => setHourlyRate(value[0])}
+                            min={20}
+                            max={120}
+                            step={1}
+                            className="w-full"
+                          />
+                          <div className="flex justify-between text-xs text-muted-foreground">
+                            <span>$20</span>
+                            <span>$120</span>
+                          </div>
+                        </div>
+
+                        {/* Business Expenses */}
+                        <div className="space-y-3">
+                          <div className="flex items-center justify-between gap-4">
+                            <Label className="text-sm font-medium flex items-center gap-1.5">
+                              Business Expenses
+                              <InfoTooltip tooltipKey="businessExpenses" />
+                            </Label>
+                            <span className="text-lg font-semibold text-foreground">
+                              {(expenseRate * 100).toFixed(0)}%
+                            </span>
+                          </div>
+                          <Slider
+                            value={[expenseRate * 100]}
+                            onValueChange={(value) => setExpenseRate(value[0] / 100)}
+                            min={5}
+                            max={40}
+                            step={1}
+                            className="w-full"
+                          />
+                          <div className="flex justify-between text-xs text-muted-foreground">
+                            <span>5%</span>
+                            <span>40%</span>
+                          </div>
+                        </div>
+
+                        {/* Self-fund Super */}
+                        <div className="flex items-center justify-between gap-4 py-2 border-t border-border">
+                          <div className="flex items-center gap-1.5">
+                            <Label className="text-sm font-medium">
+                              Self-fund Super (11.5%)
+                            </Label>
+                            <InfoTooltip tooltipKey="super" />
+                          </div>
+                          <Switch
+                            checked={includeSuper}
+                            onCheckedChange={setIncludeSuper}
+                          />
+                        </div>
+
+                        <p className="text-xs text-muted-foreground bg-muted/50 rounded-lg p-3">
+                          As an ABN contractor, you manage your own tax, super, and insurance. No paid leave.
+                        </p>
+                      </TabsContent>
+                    </Tabs>
                   </div>
                 </div>
               </div>
