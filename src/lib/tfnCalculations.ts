@@ -36,6 +36,10 @@ export interface TFNCalculationResult {
   litoOffset: number;
   annualLeaveValue: number;
   sickLeaveValue: number;
+  // Allowance breakdown
+  carAllowanceAnnual: number;
+  toolAllowanceAnnual: number;
+  mealAllowanceAnnual: number;
 }
 
 // Leave entitlements calculation
@@ -68,6 +72,12 @@ export interface TFNScenarioOptions {
   overtimeEnabled?: boolean;
   overtimeHours?: number;
   overtimeMultiplier?: string;
+  // Allowances
+  allowancesEnabled?: boolean;
+  carAllowance?: number; // $/week
+  toolAllowance?: number; // $/week
+  mealAllowanceDays?: number; // days/week
+  mealAllowanceRate?: number; // $/day
 }
 
 /**
@@ -85,6 +95,11 @@ export function calculateTFNScenario(
     overtimeEnabled = false,
     overtimeHours = 0,
     overtimeMultiplier = "1.5x",
+    allowancesEnabled = false,
+    carAllowance = 0,
+    toolAllowance = 0,
+    mealAllowanceDays = 0,
+    mealAllowanceRate = 25,
   } = options;
 
   // Calculate actual working weeks (FIFO adjusts this)
@@ -100,8 +115,8 @@ export function calculateTFNScenario(
     ? calculateOvertimePay(hourlyRate, overtimeHours, overtimeMultiplier, actualWorkingWeeks)
     : 0;
 
-  // Total gross including overtime
-  const grossAnnual = baseWages + overtimePay;
+  // Total gross including overtime (allowances will be added separately as they're taxable income)
+  const baseGrossAnnual = baseWages + overtimePay;
 
   // Leave entitlements breakdown
   const leaveBreakdown = calculateLeaveEntitlementsValue(hourlyRate, hoursPerWeek);
@@ -128,19 +143,29 @@ export function calculateTFNScenario(
     }
   }
 
+  // Calculate allowances (these are taxable income for employees)
+  const carAllowanceAnnual = allowancesEnabled ? carAllowance * actualWorkingWeeks : 0;
+  const toolAllowanceAnnual = allowancesEnabled ? toolAllowance * actualWorkingWeeks : 0;
+  const mealAllowanceAnnual = allowancesEnabled ? mealAllowanceDays * mealAllowanceRate * actualWorkingWeeks : 0;
+  const totalAllowances = carAllowanceAnnual + toolAllowanceAnnual + mealAllowanceAnnual;
+
   // Tax-free allowances = LAFHA (when FIFO)
   const taxFreeAllowances = lafhaValue;
-  const taxableAllowances = 0; // TFN employees typically don't have taxable allowances in this model
+  // Taxable allowances = Car, Tools, Meals (these are added to taxable income)
+  const taxableAllowances = totalAllowances;
 
-  // Tax calculations (only on gross, LAFHA is tax-free and not counted here)
+  // Gross annual including taxable allowances
+  const grossAnnual = baseGrossAnnual + taxableAllowances;
+
+  // Tax calculations (on gross income including taxable allowances, LAFHA is tax-free)
   const taxPayable = calculateTotalTax(grossAnnual);
   const medicareLevy = calculateMedicareLevy(grossAnnual);
   
   // LITO offset (already factored into taxPayable, but we calculate for display)
   const litoOffset = calculateLITO(grossAnnual);
 
-  // Employer-paid super (on top of salary, not deducted)
-  const superContribution = grossAnnual * SUPER_GUARANTEE_RATE;
+  // Employer-paid super (on base gross, not on allowances typically)
+  const superContribution = baseGrossAnnual * SUPER_GUARANTEE_RATE;
 
   // Net take-home after tax and Medicare, plus LAFHA (tax-free)
   const netTakeHome = grossAnnual - taxPayable - medicareLevy + lafhaValue;
@@ -169,7 +194,7 @@ export function calculateTFNScenario(
     fifoRoster: fifoEnabled ? fifoRoster : null,
     actualWorkingWeeks,
     overtimePay,
-    // NEW detailed fields
+    // Detailed fields
     baseWages,
     publicHolidayPay,
     taxFreeAllowances,
@@ -179,5 +204,9 @@ export function calculateTFNScenario(
     litoOffset,
     annualLeaveValue,
     sickLeaveValue,
+    // Allowance breakdown
+    carAllowanceAnnual,
+    toolAllowanceAnnual,
+    mealAllowanceAnnual,
   };
 }
