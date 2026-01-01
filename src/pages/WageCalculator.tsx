@@ -161,7 +161,47 @@ export default function WageCalculator() {
           <div className="grid gap-8 lg:grid-cols-12">
             {/* Input Panel */}
             <div className="lg:col-span-5 space-y-6">
-              <div className="bg-card border border-border rounded-2xl p-6 sticky top-24">
+              {/* Advanced Options Card - First */}
+              <AdvancedOptions
+                fifoEnabled={fifoEnabled}
+                onFifoEnabledChange={setFifoEnabled}
+                fifoRoster={fifoRoster}
+                onFifoRosterChange={setFifoRoster}
+                overtimeEnabled={overtimeEnabled}
+                onOvertimeEnabledChange={setOvertimeEnabled}
+                overtimeHours={overtimeHours}
+                onOvertimeHoursChange={setOvertimeHours}
+                overtimeMultiplier={overtimeMultiplier}
+                onOvertimeMultiplierChange={setOvertimeMultiplier}
+                allowancesEnabled={allowancesEnabled}
+                onAllowancesEnabledChange={setAllowancesEnabled}
+                carAllowance={carAllowance}
+                onCarAllowanceChange={setCarAllowance}
+                toolAllowance={toolAllowance}
+                onToolAllowanceChange={setToolAllowance}
+                mealAllowanceDays={mealAllowanceDays}
+                onMealAllowanceDaysChange={setMealAllowanceDays}
+                mealAllowanceRate={mealAllowanceRate}
+                onMealAllowanceRateChange={setMealAllowanceRate}
+                hourlyRate={hourlyRate}
+                weeksPerYear={fifoEnabled ? tfnResult.actualWorkingWeeks : weeksPerYear}
+              />
+
+              {/* Active Features Summary Card */}
+              <ActiveFeaturesSummary
+                fifoEnabled={fifoEnabled}
+                fifoRoster={fifoRoster}
+                overtimeEnabled={overtimeEnabled}
+                overtimeHours={overtimeHours}
+                overtimeMultiplier={overtimeMultiplier}
+                hourlyRate={hourlyRate}
+                weeksPerYear={weeksPerYear}
+                actualWorkingWeeks={tfnResult.actualWorkingWeeks}
+                lafhaValue={tfnResult.lafhaValue}
+              />
+
+              {/* Your Details Card */}
+              <div className="bg-card border border-border rounded-2xl p-6">
                 <h2 className="font-heading font-bold text-xl text-foreground mb-6 flex items-center gap-2">
                   <DollarSign className="w-5 h-5 text-primary" />
                   Your Details
@@ -365,45 +405,6 @@ export default function WageCalculator() {
                   </div>
                 </div>
               </div>
-
-              {/* Active Features Summary Card */}
-              <ActiveFeaturesSummary
-                fifoEnabled={fifoEnabled}
-                fifoRoster={fifoRoster}
-                overtimeEnabled={overtimeEnabled}
-                overtimeHours={overtimeHours}
-                overtimeMultiplier={overtimeMultiplier}
-                hourlyRate={hourlyRate}
-                weeksPerYear={weeksPerYear}
-                actualWorkingWeeks={tfnResult.actualWorkingWeeks}
-                lafhaValue={tfnResult.lafhaValue}
-              />
-
-              {/* Advanced Options Card */}
-              <AdvancedOptions
-                fifoEnabled={fifoEnabled}
-                onFifoEnabledChange={setFifoEnabled}
-                fifoRoster={fifoRoster}
-                onFifoRosterChange={setFifoRoster}
-                overtimeEnabled={overtimeEnabled}
-                onOvertimeEnabledChange={setOvertimeEnabled}
-                overtimeHours={overtimeHours}
-                onOvertimeHoursChange={setOvertimeHours}
-                overtimeMultiplier={overtimeMultiplier}
-                onOvertimeMultiplierChange={setOvertimeMultiplier}
-                allowancesEnabled={allowancesEnabled}
-                onAllowancesEnabledChange={setAllowancesEnabled}
-                carAllowance={carAllowance}
-                onCarAllowanceChange={setCarAllowance}
-                toolAllowance={toolAllowance}
-                onToolAllowanceChange={setToolAllowance}
-                mealAllowanceDays={mealAllowanceDays}
-                onMealAllowanceDaysChange={setMealAllowanceDays}
-                mealAllowanceRate={mealAllowanceRate}
-                onMealAllowanceRateChange={setMealAllowanceRate}
-                hourlyRate={hourlyRate}
-                weeksPerYear={fifoEnabled ? tfnResult.actualWorkingWeeks : weeksPerYear}
-              />
 
               {/* Tax Brackets Reference */}
               <TaxBracketsReference />
