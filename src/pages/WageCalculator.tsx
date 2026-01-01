@@ -259,159 +259,168 @@ const WageCalculator = () => {
                       <CardTitle className="text-lg">Work Details</CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-4">
-                      <div>
-                        <Label htmlFor="hoursPerWeek">Hours per Week</Label>
-                        <Input
-                          id="hoursPerWeek"
-                          type="number"
-                          value={inputs.hoursPerWeek}
-                          onChange={(e) =>
-                            setInputs({ ...inputs, hoursPerWeek: Number(e.target.value) })
-                          }
-                          min="1"
-                          max="80"
-                        />
-                      </div>
-                      <div>
-                        <Label htmlFor="weeksPerYear">Weeks per Year</Label>
-                        <Input
-                          id="weeksPerYear"
-                          type="number"
-                          value={inputs.weeksPerYear}
-                          onChange={(e) =>
-                            setInputs({ ...inputs, weeksPerYear: Number(e.target.value) })
-                          }
-                          min="1"
-                          max="52"
-                        />
-                        <p className="text-xs text-muted-foreground mt-1">
-                          Account for holidays and downtime
-                        </p>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  {/* TFN Employee Rate */}
-                  <Card className="shadow-elevated border-2 border-border/50">
-                    <CardHeader>
-                      <CardTitle className="text-lg">TFN (Employee)</CardTitle>
-                      <CardDescription>Your hourly rate as an employee</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <div>
-                        <Label htmlFor="tfnRate">Hourly Rate</Label>
-                        <div className="relative">
-                          <span className="absolute left-3 top-2.5 text-muted-foreground">$</span>
+                      <div className="grid grid-cols-2 gap-3">
+                        <div>
+                          <Label htmlFor="hoursPerWeek" className="text-sm">Hours/Week</Label>
                           <Input
-                            id="tfnRate"
+                            id="hoursPerWeek"
                             type="number"
-                            value={inputs.tfnHourlyRate}
+                            value={inputs.hoursPerWeek}
                             onChange={(e) =>
-                              setInputs({ ...inputs, tfnHourlyRate: Number(e.target.value) })
+                              setInputs({ ...inputs, hoursPerWeek: Number(e.target.value) })
                             }
-                            className="pl-7"
-                            min="20"
-                            step="0.5"
+                            min="1"
+                            max="80"
+                          />
+                        </div>
+                        <div>
+                          <Label htmlFor="weeksPerYear" className="text-sm">Weeks/Year</Label>
+                          <Input
+                            id="weeksPerYear"
+                            type="number"
+                            value={inputs.weeksPerYear}
+                            onChange={(e) =>
+                              setInputs({ ...inputs, weeksPerYear: Number(e.target.value) })
+                            }
+                            min="1"
+                            max="52"
                           />
                         </div>
                       </div>
+                      <p className="text-xs text-muted-foreground">
+                        Account for holidays and downtime
+                      </p>
                     </CardContent>
                   </Card>
 
-                  {/* ABN Contractor Details */}
+                  {/* Rates - Using Tabs */}
                   <Card className="shadow-elevated border-2 border-border/50">
-                    <CardHeader>
-                      <CardTitle className="text-lg">ABN (Contractor)</CardTitle>
-                      <CardDescription>Your details as a contractor</CardDescription>
+                    <CardHeader className="pb-3">
+                      <CardTitle className="text-lg">Hourly Rates</CardTitle>
                     </CardHeader>
-                    <CardContent className="space-y-4">
-                      <div>
-                        <Label htmlFor="abnRate">Hourly Rate</Label>
-                        <div className="relative">
-                          <span className="absolute left-3 top-2.5 text-muted-foreground">$</span>
-                          <Input
-                            id="abnRate"
-                            type="number"
-                            value={inputs.abnHourlyRate}
-                            onChange={(e) =>
-                              setInputs({ ...inputs, abnHourlyRate: Number(e.target.value) })
-                            }
-                            className="pl-7"
-                            min="20"
-                            step="0.5"
-                          />
-                        </div>
-                      </div>
+                    <CardContent className="pt-0">
+                      <Tabs defaultValue="tfn" className="w-full">
+                        <TabsList className="grid w-full grid-cols-2 mb-4">
+                          <TabsTrigger value="tfn">TFN</TabsTrigger>
+                          <TabsTrigger value="abn">ABN</TabsTrigger>
+                        </TabsList>
 
-                      <div>
-                        <div className="flex items-center justify-between mb-2">
-                          <Label htmlFor="expenses">Business Expenses (Annual)</Label>
-                          <div className="flex items-center gap-2">
-                            <Label htmlFor="auto-expenses" className="text-xs text-muted-foreground">
-                              Auto
+                        <TabsContent value="tfn" className="space-y-3 mt-0">
+                          <div>
+                            <Label htmlFor="tfnRate" className="text-sm">Employee Rate</Label>
+                            <div className="relative">
+                              <span className="absolute left-3 top-2.5 text-muted-foreground text-sm">$</span>
+                              <Input
+                                id="tfnRate"
+                                type="number"
+                                value={inputs.tfnHourlyRate}
+                                onChange={(e) =>
+                                  setInputs({ ...inputs, tfnHourlyRate: Number(e.target.value) })
+                                }
+                                className="pl-7"
+                                min="20"
+                                step="0.5"
+                              />
+                            </div>
+                            <p className="text-xs text-muted-foreground mt-1">
+                              Your hourly rate as an employee
+                            </p>
+                          </div>
+                        </TabsContent>
+
+                        <TabsContent value="abn" className="space-y-3 mt-0">
+                          <div>
+                            <Label htmlFor="abnRate" className="text-sm">Contractor Rate</Label>
+                            <div className="relative">
+                              <span className="absolute left-3 top-2.5 text-muted-foreground text-sm">$</span>
+                              <Input
+                                id="abnRate"
+                                type="number"
+                                value={inputs.abnHourlyRate}
+                                onChange={(e) =>
+                                  setInputs({ ...inputs, abnHourlyRate: Number(e.target.value) })
+                                }
+                                className="pl-7"
+                                min="20"
+                                step="0.5"
+                              />
+                            </div>
+                            <p className="text-xs text-muted-foreground mt-1">
+                              Your hourly rate as a contractor
+                            </p>
+                          </div>
+
+                          <div>
+                            <div className="flex items-center justify-between mb-2">
+                              <Label htmlFor="expenses" className="text-sm">Business Expenses (Annual)</Label>
+                              <div className="flex items-center gap-1.5">
+                                <Label htmlFor="auto-expenses" className="text-xs text-muted-foreground">
+                                  Auto
+                                </Label>
+                                <Switch
+                                  id="auto-expenses"
+                                  checked={useEstimatedExpenses}
+                                  onCheckedChange={setUseEstimatedExpenses}
+                                />
+                              </div>
+                            </div>
+                            <div className="relative">
+                              <span className="absolute left-3 top-2.5 text-muted-foreground text-sm">$</span>
+                              <Input
+                                id="expenses"
+                                type="number"
+                                value={inputs.businessExpenses}
+                                onChange={(e) =>
+                                  setInputs({ ...inputs, businessExpenses: Number(e.target.value) })
+                                }
+                                className="pl-7"
+                                disabled={useEstimatedExpenses}
+                                min="0"
+                                step="500"
+                              />
+                            </div>
+                            <p className="text-xs text-muted-foreground mt-1">
+                              Tools, vehicle, insurance, etc.
+                            </p>
+                          </div>
+
+                          <div>
+                            <Label htmlFor="super" className="text-sm">Super Contribution (%)</Label>
+                            <Input
+                              id="super"
+                              type="number"
+                              value={inputs.superContribution}
+                              onChange={(e) =>
+                                setInputs({ ...inputs, superContribution: Number(e.target.value) })
+                              }
+                              min="0"
+                              max="100"
+                              step="1"
+                            />
+                            <p className="text-xs text-muted-foreground mt-1">
+                              % of net income for super
+                            </p>
+                          </div>
+
+                          <div className="flex items-center justify-between pt-2 border-t">
+                            <Label htmlFor="leave" className="text-sm">
+                              Account for unpaid leave
                             </Label>
                             <Switch
-                              id="auto-expenses"
-                              checked={useEstimatedExpenses}
-                              onCheckedChange={setUseEstimatedExpenses}
+                              id="leave"
+                              checked={inputs.accountForLeave}
+                              onCheckedChange={(checked) =>
+                                setInputs({ ...inputs, accountForLeave: checked })
+                              }
                             />
                           </div>
-                        </div>
-                        <div className="relative">
-                          <span className="absolute left-3 top-2.5 text-muted-foreground">$</span>
-                          <Input
-                            id="expenses"
-                            type="number"
-                            value={inputs.businessExpenses}
-                            onChange={(e) =>
-                              setInputs({ ...inputs, businessExpenses: Number(e.target.value) })
-                            }
-                            className="pl-7"
-                            disabled={useEstimatedExpenses}
-                            min="0"
-                            step="500"
-                          />
-                        </div>
-                        <p className="text-xs text-muted-foreground mt-1">
-                          Tools, vehicle, insurance, accountant, etc.
-                        </p>
-                      </div>
-
-                      <div>
-                        <Label htmlFor="super">Super Contribution (%)</Label>
-                        <Input
-                          id="super"
-                          type="number"
-                          value={inputs.superContribution}
-                          onChange={(e) =>
-                            setInputs({ ...inputs, superContribution: Number(e.target.value) })
-                          }
-                          min="0"
-                          max="100"
-                          step="1"
-                        />
-                        <p className="text-xs text-muted-foreground mt-1">
-                          How much of your net income to save for super
-                        </p>
-                      </div>
-
-                      <div className="flex items-center justify-between">
-                        <Label htmlFor="leave" className="text-sm">
-                          Account for unpaid leave
-                        </Label>
-                        <Switch
-                          id="leave"
-                          checked={inputs.accountForLeave}
-                          onCheckedChange={(checked) =>
-                            setInputs({ ...inputs, accountForLeave: checked })
-                          }
-                        />
-                      </div>
-                      {inputs.accountForLeave && (
-                        <p className="text-xs text-muted-foreground -mt-2">
-                          Includes 6 weeks unpaid leave opportunity cost
-                        </p>
-                      )}
+                          {inputs.accountForLeave && (
+                            <p className="text-xs text-muted-foreground -mt-2">
+                              Includes 6 weeks unpaid leave cost
+                            </p>
+                          )}
+                        </TabsContent>
+                      </Tabs>
                     </CardContent>
                   </Card>
 
