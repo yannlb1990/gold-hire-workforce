@@ -34,7 +34,7 @@ const Index = () => {
             "description": "Labour hire and workforce solutions for construction across South-East Queensland and Northern NSW",
             "url": "https://precisionsitesolutions.com.au",
             "telephone": PHONE_NUMBER,
-            "email": "enquiries@precisionsitesolutions.com.au",
+            "email": "admin@precisionsitesolutions.com.au",
             "areaServed": [
               { "@type": "City", "name": "Gold Coast" },
               { "@type": "City", "name": "Brisbane" },

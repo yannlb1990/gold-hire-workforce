@@ -91,11 +91,11 @@ export function Footer() {
                 <span>04XX XXX XXX</span>
               </a>
               <a
-                href="mailto:enquiries@precisionsitesolutions.com.au"
+                href="mailto:admin@precisionsitesolutions.com.au"
                 className="flex items-center gap-3 text-concrete/70 hover:text-primary transition-colors"
               >
                 <Mail size={18} className="text-primary" />
-                <span>enquiries@precisionsitesolutions.com.au</span>
+                <span>admin@precisionsitesolutions.com.au</span>
               </a>
               <div className="flex items-start gap-3 text-concrete/70">
                 <MapPin size={18} className="text-primary mt-1" />
