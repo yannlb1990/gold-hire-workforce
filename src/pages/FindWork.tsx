@@ -4,7 +4,7 @@ import { ArrowRight, Phone, CheckCircle, HardHat, MapPin, Calendar } from "lucid
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { WorkerRegistrationForm } from "@/components/forms/WorkerRegistrationForm";
-import { PHONE_HREF, PHONE_NUMBER } from "@/lib/constants";
+import { PHONE_TOBI, PHONE_TOBI_HREF } from "@/lib/constants";
 
 export default function FindWork() {
   const schemaData = {
@@ -139,9 +139,9 @@ export default function FindWork() {
             Give us a call to chat about opportunities and how we work.
           </p>
           <Button variant="navy" size="lg" asChild>
-            <a href={PHONE_HREF}>
+            <a href={PHONE_TOBI_HREF}>
               <Phone className="mr-2 h-5 w-5" />
-              Call {PHONE_NUMBER}
+              Call {PHONE_TOBI}
             </a>
           </Button>
         </div>

@@ -11,6 +11,7 @@ import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { getUTMParams } from "@/lib/utm";
 import { Phone, Mail, MapPin, Clock, ArrowRight, Loader2 } from "lucide-react";
+import { PHONE_YANN, PHONE_YANN_HREF, EMAIL } from "@/lib/constants";
 
 const Contact = () => {
   const navigate = useNavigate();
@@ -263,7 +264,7 @@ const Contact = () => {
                   </h3>
                   <div className="space-y-6">
                     <a
-                      href="tel:0400000000"
+                      href={PHONE_YANN_HREF}
                       className="flex items-start gap-4 text-concrete/80 hover:text-gold transition-colors"
                     >
                       <div className="w-14 h-14 rounded-2xl bg-gold/20 flex items-center justify-center shrink-0">
@@ -271,11 +272,11 @@ const Contact = () => {
                       </div>
                       <div>
                         <div className="font-medium text-concrete">Phone</div>
-                        <div className="text-lg">04XX XXX XXX</div>
+                        <div className="text-lg">{PHONE_YANN}</div>
                       </div>
                     </a>
                     <a
-                      href="mailto:admin@precisionsitesolutions.com.au"
+                      href={`mailto:${EMAIL}`}
                       className="flex items-start gap-4 text-concrete/80 hover:text-gold transition-colors"
                     >
                       <div className="w-14 h-14 rounded-2xl bg-gold/20 flex items-center justify-center shrink-0">
@@ -283,7 +284,7 @@ const Contact = () => {
                       </div>
                       <div>
                         <div className="font-medium text-concrete">Email</div>
-                        <div className="text-lg break-all">admin@precisionsitesolutions.com.au</div>
+                        <div className="text-lg break-all">{EMAIL}</div>
                       </div>
                     </a>
                     <div className="flex items-start gap-4 text-concrete/80">

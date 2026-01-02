@@ -1,8 +1,19 @@
 // Site-wide constants
 
 export const COMPANY_NAME = "Precision Site Solutions";
-export const PHONE_NUMBER = "1300 XXX XXX";
-export const PHONE_HREF = "tel:1300XXXXXX";
+
+// Employer/Client contact (Yann)
+export const PHONE_YANN = "0466 074 577";
+export const PHONE_YANN_HREF = "tel:0466074577";
+
+// Worker/Candidate contact (Tobi)
+export const PHONE_TOBI = "0426 613 066";
+export const PHONE_TOBI_HREF = "tel:0426613066";
+
+// Primary phone (Yann - for general/employer use)
+export const PHONE_NUMBER = "0466 074 577";
+export const PHONE_HREF = "tel:0466074577";
+
 export const EMAIL = "admin@precisionsitesolutions.com.au";
 export const ABN = "XX XXX XXX XXX";
 
