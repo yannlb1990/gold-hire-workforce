@@ -15,7 +15,7 @@ export const PHONE_NUMBER = "0466 074 577";
 export const PHONE_HREF = "tel:0466074577";
 
 export const EMAIL = "admin@precisionsitesolutions.com.au";
-export const ABN = "XX XXX XXX XXX";
+export const ABN = "97 598 230 254";
 
 export const LOCATIONS = [
   { id: "gold-coast", name: "Gold Coast", slug: "gold-coast", state: "QLD" },
