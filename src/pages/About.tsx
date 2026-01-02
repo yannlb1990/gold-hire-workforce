@@ -36,6 +36,35 @@ const About = () => {
           name="description"
           content="Precision Site Solutions is a management-led, systems-driven labour hire company serving Gold Coast, Brisbane, Logan, Ipswich, Tweed Heads and Byron Bay."
         />
+        <meta name="keywords" content="about precision site solutions, labour hire company gold coast, labour hire brisbane, management labour hire" />
+        <link rel="canonical" href="https://precisionsitesolutions.com.au/about" />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="About Us | Labour Hire Company Gold Coast Brisbane | Precision Site Solutions" />
+        <meta property="og:description" content="Precision Site Solutions is a management-led, systems-driven labour hire company serving Gold Coast, Brisbane, Logan, Ipswich, Tweed Heads and Byron Bay." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://precisionsitesolutions.com.au/about" />
+        <meta property="og:image" content="https://precisionsitesolutions.com.au/og-image.jpg" />
+        <meta property="og:site_name" content="Precision Site Solutions" />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="About Us | Precision Site Solutions" />
+        <meta name="twitter:description" content="Precision Site Solutions is a management-led, systems-driven labour hire company." />
+        <meta name="twitter:image" content="https://precisionsitesolutions.com.au/og-image.jpg" />
+        
+        {/* Organization Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Precision Site Solutions",
+            "url": "https://precisionsitesolutions.com.au",
+            "description": "Management-led, systems-driven labour hire company serving South-East Queensland and Northern NSW",
+            "areaServed": ["Gold Coast", "Brisbane", "Logan", "Ipswich", "Tweed Heads", "Byron Bay"],
+            "serviceType": ["Labour Hire", "Skilled Labourers", "Carpenters", "Demolition Crews", "Building Cleaners"]
+          })}
+        </script>
       </Helmet>
       <Layout>
         {/* Hero */}

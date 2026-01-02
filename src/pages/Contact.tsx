@@ -71,6 +71,22 @@ const Contact = () => {
           name="description"
           content="Contact Precision Site Solutions for labour hire enquiries. Request workers for Gold Coast, Brisbane, Logan, Ipswich, Tweed Heads and Byron Bay."
         />
+        <meta name="keywords" content="contact labour hire, request labour gold coast, labour hire brisbane contact, construction workers enquiry" />
+        <link rel="canonical" href="https://precisionsitesolutions.com.au/contact" />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="Contact Us | Request Labour | Precision Site Solutions" />
+        <meta property="og:description" content="Contact Precision Site Solutions for labour hire enquiries. Request workers for Gold Coast, Brisbane, Logan, Ipswich, Tweed Heads and Byron Bay." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://precisionsitesolutions.com.au/contact" />
+        <meta property="og:image" content="https://precisionsitesolutions.com.au/og-image.jpg" />
+        <meta property="og:site_name" content="Precision Site Solutions" />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Contact Us | Request Labour" />
+        <meta name="twitter:description" content="Contact Precision Site Solutions for labour hire enquiries." />
+        <meta name="twitter:image" content="https://precisionsitesolutions.com.au/og-image.jpg" />
       </Helmet>
       <Layout>
         {/* Hero */}

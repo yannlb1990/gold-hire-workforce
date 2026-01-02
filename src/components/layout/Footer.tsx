@@ -73,7 +73,7 @@ export function Footer() {
             <Link to="/" className="mb-6 inline-block overflow-hidden h-24">
               <img 
                 src={logo} 
-                alt="Precision Site Solutions" 
+                alt="Precision Site Solutions Logo - Labour Hire SEQ" 
                 className="h-48 w-auto -my-12"
               />
             </Link>

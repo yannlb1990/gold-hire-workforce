@@ -48,6 +48,21 @@ const Brisbane = () => {
         />
         <meta name="keywords" content="labour hire brisbane, hiring company brisbane, skilled labour hire brisbane, construction labour brisbane, commercial cleaning brisbane" />
         <link rel="canonical" href="https://precisionsitesolutions.com.au/locations/brisbane" />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="Labour Hire Brisbane | Skilled Workers & Trade Staff | Precision Site Solutions" />
+        <meta property="og:description" content="Brisbane labour hire specialists. Skilled labourers, carpenters, demolition crews and building cleaners." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://precisionsitesolutions.com.au/locations/brisbane" />
+        <meta property="og:image" content="https://precisionsitesolutions.com.au/og-image.jpg" />
+        <meta property="og:site_name" content="Precision Site Solutions" />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Labour Hire Brisbane | Precision Site Solutions" />
+        <meta name="twitter:description" content="Brisbane labour hire specialists. Fast response, compliant workers." />
+        <meta name="twitter:image" content="https://precisionsitesolutions.com.au/og-image.jpg" />
+        
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
