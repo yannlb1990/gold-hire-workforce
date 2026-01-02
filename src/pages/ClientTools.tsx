@@ -145,17 +145,12 @@ const ClientTools = () => {
               <p className="text-concrete/70 mb-8 max-w-xl mx-auto">
                 Get started today with a dedicated account manager and access to our client tools.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button variant="gold" size="xl" asChild>
-                  <Link to="/contact">
-                    Request Labour
-                    <ArrowRight className="ml-2" size={20} />
-                  </Link>
-                </Button>
-                <Button variant="hero" size="xl" asChild>
-                  <Link to="/contact">Speak With a Manager</Link>
-                </Button>
-              </div>
+              <Button variant="gold" size="xl" asChild>
+                <Link to="/contact">
+                  Request Labour
+                  <ArrowRight className="ml-2" size={20} />
+                </Link>
+              </Button>
             </div>
           </div>
         </section>

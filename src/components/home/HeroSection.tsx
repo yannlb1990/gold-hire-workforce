@@ -20,12 +20,6 @@ export function HeroSection() {
       {/* Content */}
       <div className="container mx-auto px-4 lg:px-8 relative z-10 pt-24 pb-16">
         <div className="max-w-3xl">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 badge-gold mb-8 opacity-0 animate-fade-up">
-            <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
-            Trusted by 500+ Businesses Across SEQ
-          </div>
-
           {/* Heading */}
           <h1 className="heading-xl text-concrete mb-6 opacity-0 animate-fade-up animation-delay-100">
             Labour Hire in Gold Coast, Brisbane & Byron Bay — 
