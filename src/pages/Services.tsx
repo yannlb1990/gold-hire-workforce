@@ -80,6 +80,22 @@ const Services = () => {
           name="description"
           content="Skilled labour hire services across Gold Coast, Brisbane & Byron Bay. Labourers, demolition crews, carpenters and building cleaners."
         />
+        <meta name="keywords" content="labour hire services, labourers hire, carpenters hire, demolition crews, building cleaners, construction workforce gold coast brisbane" />
+        <link rel="canonical" href="https://precisionsitesolutions.com.au/services" />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="Labour Hire Services | Labourers, Carpenters, Demolition | Precision Site Solutions" />
+        <meta property="og:description" content="Skilled labour hire services across Gold Coast, Brisbane & Byron Bay. Labourers, demolition crews, carpenters and building cleaners." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://precisionsitesolutions.com.au/services" />
+        <meta property="og:image" content="https://precisionsitesolutions.com.au/og-image.jpg" />
+        <meta property="og:site_name" content="Precision Site Solutions" />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Labour Hire Services | Precision Site Solutions" />
+        <meta name="twitter:description" content="Skilled labour hire services across Gold Coast, Brisbane & Byron Bay." />
+        <meta name="twitter:image" content="https://precisionsitesolutions.com.au/og-image.jpg" />
       </Helmet>
       <Layout>
         {/* Hero */}

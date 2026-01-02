@@ -48,6 +48,21 @@ const GoldCoast = () => {
         />
         <meta name="keywords" content="labour hire gold coast, gold coast labour hire, skilled labour gold coast, construction workers gold coast, cleaning labour gold coast" />
         <link rel="canonical" href="https://precisionsitesolutions.com.au/locations/gold-coast" />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="Labour Hire Gold Coast | Skilled Workers & Trades | Precision Site Solutions" />
+        <meta property="og:description" content="Gold Coast labour hire specialists. Local workforce, fast response, compliance-first approach." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://precisionsitesolutions.com.au/locations/gold-coast" />
+        <meta property="og:image" content="https://precisionsitesolutions.com.au/og-image.jpg" />
+        <meta property="og:site_name" content="Precision Site Solutions" />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Labour Hire Gold Coast | Precision Site Solutions" />
+        <meta name="twitter:description" content="Gold Coast labour hire specialists. Local workforce, fast response." />
+        <meta name="twitter:image" content="https://precisionsitesolutions.com.au/og-image.jpg" />
+        
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",

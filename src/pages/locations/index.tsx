@@ -53,13 +53,27 @@ const Locations = () => {
   return (
     <>
       <Helmet>
-        <title>Labour Hire Locations | Brisbane, Gold Coast, Byron Bay | The Gold Hire Company</title>
+        <title>Labour Hire Locations | Brisbane, Gold Coast, Byron Bay | Precision Site Solutions</title>
         <meta
           name="description"
           content="Labour hire across South-East Queensland and Northern NSW. Brisbane, Gold Coast, Tweed Heads, Byron Bay, Logan and Ipswich. Local workers, fast response."
         />
         <meta name="keywords" content="labour hire brisbane, labour hire gold coast, labour hire byron bay, labour hire tweed heads, labour hire logan, labour hire ipswich, skilled labour hire seq" />
-        <link rel="canonical" href="https://thegoldhirecompany.com.au/locations" />
+        <link rel="canonical" href="https://precisionsitesolutions.com.au/locations" />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="Labour Hire Locations | Brisbane, Gold Coast, Byron Bay | Precision Site Solutions" />
+        <meta property="og:description" content="Labour hire across South-East Queensland and Northern NSW. Brisbane, Gold Coast, Tweed Heads, Byron Bay, Logan and Ipswich. Local workers, fast response." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://precisionsitesolutions.com.au/locations" />
+        <meta property="og:image" content="https://precisionsitesolutions.com.au/og-image.jpg" />
+        <meta property="og:site_name" content="Precision Site Solutions" />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Labour Hire Locations | Brisbane, Gold Coast, Byron Bay" />
+        <meta name="twitter:description" content="Labour hire across South-East Queensland and Northern NSW. Local workers, fast response." />
+        <meta name="twitter:image" content="https://precisionsitesolutions.com.au/og-image.jpg" />
       </Helmet>
       <Layout>
         {/* Hero */}

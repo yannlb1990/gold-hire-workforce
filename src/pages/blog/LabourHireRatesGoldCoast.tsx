@@ -18,6 +18,20 @@ export default function LabourHireRatesGoldCoast() {
           content="labour hire rates gold coast, construction workers gold coast, hourly rates SEQ, gold coast labour hire prices, construction labour costs 2025"
         />
         <link rel="canonical" href="https://precisionsitesolutions.com.au/blog/labour-hire-rates-gold-coast" />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="Labour Hire Rates Gold Coast 2025 | Complete Pricing Guide" />
+        <meta property="og:description" content="Comprehensive guide to labour hire rates on the Gold Coast in 2025. Compare hourly rates for labourers, carpenters, demolition crews." />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://precisionsitesolutions.com.au/blog/labour-hire-rates-gold-coast" />
+        <meta property="og:image" content="https://precisionsitesolutions.com.au/og-image.jpg" />
+        <meta property="og:site_name" content="Precision Site Solutions" />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Labour Hire Rates Gold Coast 2025" />
+        <meta name="twitter:description" content="Comprehensive guide to labour hire rates on the Gold Coast in 2025." />
+        <meta name="twitter:image" content="https://precisionsitesolutions.com.au/og-image.jpg" />
       </Helmet>
       <Layout>
         {/* Hero */}

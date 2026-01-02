@@ -34,20 +34,39 @@ export function TradePageTemplate({ trade }: TradePageProps) {
     description: trade.description,
     provider: {
       "@type": "LocalBusiness",
-      name: "The Gold Hire Company",
+      name: "Precision Site Solutions",
+      url: "https://precisionsitesolutions.com.au",
       areaServed: ["Gold Coast", "Brisbane", "Byron Bay", "Logan", "Ipswich", "Tweed Heads"],
     },
     serviceType: "Labour Hire",
   };
 
+  const pageTitle = `${trade.name} Labour Hire | Gold Coast, Brisbane, Byron Bay | Precision Site Solutions`;
+  const pageDescription = `Hire skilled ${trade.name.toLowerCase()} for construction projects across Gold Coast, Brisbane and Byron Bay. Screened, compliant workers with rapid mobilisation.`;
+  const canonicalUrl = `https://precisionsitesolutions.com.au/trades/${trade.slug}`;
+
   return (
     <Layout>
       <Helmet>
-        <title>{trade.name} Labour Hire | Gold Coast, Brisbane, Byron Bay | The Gold Hire Company</title>
-        <meta name="description" content={`Hire skilled ${trade.name.toLowerCase()} for construction projects across Gold Coast, Brisbane and Byron Bay. Screened, compliant workers with rapid mobilisation.`} />
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
         <meta name="keywords" content={`${trade.name.toLowerCase()} hire, ${trade.name.toLowerCase()} labour hire, ${trade.name.toLowerCase()} Gold Coast, ${trade.name.toLowerCase()} Brisbane`} />
-        <link rel="canonical" href={`https://thegoldhirecompany.com.au/trades/${trade.slug}`} />
+        <link rel="canonical" href={canonicalUrl} />
         <script type="application/ld+json">{JSON.stringify(schemaData)}</script>
+        
+        {/* Open Graph */}
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:image" content="https://precisionsitesolutions.com.au/og-image.jpg" />
+        <meta property="og:site_name" content="Precision Site Solutions" />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+        <meta name="twitter:image" content="https://precisionsitesolutions.com.au/og-image.jpg" />
       </Helmet>
 
       {/* Hero Section */}

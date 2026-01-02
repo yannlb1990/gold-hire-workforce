@@ -31,8 +31,23 @@ export default function FindWork() {
       <Helmet>
         <title>Find Construction Work | Join Our Workforce | Precision Site Solutions</title>
         <meta name="description" content="Looking for construction work in Gold Coast, Brisbane or Byron Bay? Register with Precision Site Solutions for regular shifts and great rates." />
+        <meta name="keywords" content="construction jobs gold coast, labour hire jobs brisbane, find construction work, labourer jobs seq, carpenter jobs gold coast" />
         <link rel="canonical" href="https://precisionsitesolutions.com.au/find-work" />
         <script type="application/ld+json">{JSON.stringify(schemaData)}</script>
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="Find Construction Work | Join Our Workforce | Precision Site Solutions" />
+        <meta property="og:description" content="Looking for construction work in Gold Coast, Brisbane or Byron Bay? Register with Precision Site Solutions for regular shifts and great rates." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://precisionsitesolutions.com.au/find-work" />
+        <meta property="og:image" content="https://precisionsitesolutions.com.au/og-image.jpg" />
+        <meta property="og:site_name" content="Precision Site Solutions" />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Find Construction Work | Precision Site Solutions" />
+        <meta name="twitter:description" content="Looking for construction work in Gold Coast, Brisbane or Byron Bay? Register for regular shifts." />
+        <meta name="twitter:image" content="https://precisionsitesolutions.com.au/og-image.jpg" />
       </Helmet>
 
       {/* Hero Section */}

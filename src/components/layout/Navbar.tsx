@@ -44,7 +44,7 @@ export function Navbar() {
           <Link to="/" className="flex items-center group overflow-hidden h-20 md:h-24">
             <img 
               src={logo} 
-              alt="Precision Site Solutions" 
+              alt="Precision Site Solutions - Labour Hire Gold Coast Brisbane Byron Bay" 
               className="h-40 md:h-48 w-auto transition-transform duration-300 group-hover:scale-105 -my-10 md:-my-12"
             />
           </Link>

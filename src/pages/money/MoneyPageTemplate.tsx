@@ -63,6 +63,20 @@ export function MoneyPageTemplate({ location, trade }: MoneyPageProps) {
         <meta name="keywords" content={`${trade.name.toLowerCase()} ${location.name.toLowerCase()}, ${trade.name.toLowerCase()} hire ${location.name.toLowerCase()}, labour hire ${location.name.toLowerCase()}, construction workers ${location.name.toLowerCase()}`} />
         <link rel="canonical" href={canonicalUrl} />
         <script type="application/ld+json">{JSON.stringify(schemaData)}</script>
+        
+        {/* Open Graph */}
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:image" content="https://precisionsitesolutions.com.au/og-image.jpg" />
+        <meta property="og:site_name" content="Precision Site Solutions" />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+        <meta name="twitter:image" content="https://precisionsitesolutions.com.au/og-image.jpg" />
       </Helmet>
 
       {/* Hero Section */}

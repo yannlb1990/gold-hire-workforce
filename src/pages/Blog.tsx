@@ -93,11 +93,27 @@ const Blog = () => {
   return (
     <>
       <Helmet>
-        <title>Blog & Insights | Labour Hire Industry News | The Gold Hire Company</title>
+        <title>Blog & Insights | Labour Hire Industry News | Precision Site Solutions</title>
         <meta
           name="description"
           content="Industry insights, guides and news about labour hire in Queensland and NSW. Tips for hiring, compliance updates and workforce management."
         />
+        <meta name="keywords" content="labour hire blog, construction industry news, workforce management tips, labour hire queensland, compliance updates" />
+        <link rel="canonical" href="https://precisionsitesolutions.com.au/blog" />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="Blog & Insights | Labour Hire Industry News | Precision Site Solutions" />
+        <meta property="og:description" content="Industry insights, guides and news about labour hire in Queensland and NSW." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://precisionsitesolutions.com.au/blog" />
+        <meta property="og:image" content="https://precisionsitesolutions.com.au/og-image.jpg" />
+        <meta property="og:site_name" content="Precision Site Solutions" />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Blog & Insights | Labour Hire Industry News" />
+        <meta name="twitter:description" content="Industry insights, guides and news about labour hire in Queensland and NSW." />
+        <meta name="twitter:image" content="https://precisionsitesolutions.com.au/og-image.jpg" />
       </Helmet>
       <Layout>
         {/* Hero */}
