@@ -275,7 +275,7 @@ const Contact = () => {
                       </div>
                     </a>
                     <a
-                      href="mailto:enquiries@precisionsitesolutions.com.au"
+                      href="mailto:admin@precisionsitesolutions.com.au"
                       className="flex items-start gap-4 text-concrete/80 hover:text-gold transition-colors"
                     >
                       <div className="w-14 h-14 rounded-2xl bg-gold/20 flex items-center justify-center shrink-0">
@@ -283,7 +283,7 @@ const Contact = () => {
                       </div>
                       <div>
                         <div className="font-medium text-concrete">Email</div>
-                        <div className="text-lg break-all">enquiries@precisionsitesolutions.com.au</div>
+                        <div className="text-lg break-all">admin@precisionsitesolutions.com.au</div>
                       </div>
                     </a>
                     <div className="flex items-start gap-4 text-concrete/80">

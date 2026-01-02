@@ -3,7 +3,7 @@
 export const COMPANY_NAME = "Precision Site Solutions";
 export const PHONE_NUMBER = "1300 XXX XXX";
 export const PHONE_HREF = "tel:1300XXXXXX";
-export const EMAIL = "enquiries@precisionsitesolutions.com.au";
+export const EMAIL = "admin@precisionsitesolutions.com.au";
 export const ABN = "XX XXX XXX XXX";
 
 export const LOCATIONS = [
