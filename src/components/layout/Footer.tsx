@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.png";
-import { PHONE_YANN, PHONE_YANN_HREF, EMAIL } from "@/lib/constants";
+import { PHONE_YANN, PHONE_YANN_HREF, EMAIL, ABN } from "@/lib/constants";
 
 const footerLinks = {
   services: [
@@ -160,7 +160,7 @@ export function Footer() {
             <div className="flex flex-wrap items-center gap-4 text-sm text-concrete/60">
               <span>© {new Date().getFullYear()} Precision Site Solutions</span>
               <span className="hidden md:inline">•</span>
-              <span>ABN: XX XXX XXX XXX</span>
+              <span>ABN: {ABN}</span>
             </div>
             <div className="flex items-center gap-6">
               {footerLinks.legal.map((link) => (
