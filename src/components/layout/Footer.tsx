@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.png";
+import { PHONE_YANN, PHONE_YANN_HREF, EMAIL } from "@/lib/constants";
 
 const footerLinks = {
   services: [
@@ -84,18 +85,18 @@ export function Footer() {
             {/* Contact Info */}
             <div className="space-y-3">
               <a
-                href="tel:0400000000"
+                href={PHONE_YANN_HREF}
                 className="flex items-center gap-3 text-concrete/70 hover:text-primary transition-colors"
               >
                 <Phone size={18} className="text-primary" />
-                <span>04XX XXX XXX</span>
+                <span>{PHONE_YANN}</span>
               </a>
               <a
-                href="mailto:admin@precisionsitesolutions.com.au"
+                href={`mailto:${EMAIL}`}
                 className="flex items-center gap-3 text-concrete/70 hover:text-primary transition-colors"
               >
                 <Mail size={18} className="text-primary" />
-                <span>admin@precisionsitesolutions.com.au</span>
+                <span>{EMAIL}</span>
               </a>
               <div className="flex items-start gap-3 text-concrete/70">
                 <MapPin size={18} className="text-primary mt-1" />

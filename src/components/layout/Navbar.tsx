@@ -4,6 +4,7 @@ import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import logo from "@/assets/logo.png";
+import { PHONE_YANN, PHONE_YANN_HREF } from "@/lib/constants";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -67,11 +68,11 @@ export function Navbar() {
           {/* CTA Buttons */}
           <div className="hidden lg:flex items-center gap-4">
             <a
-              href="tel:0400000000"
+              href={PHONE_YANN_HREF}
               className="flex items-center gap-2 text-concrete/80 hover:text-primary transition-colors text-sm"
             >
               <Phone size={16} />
-              <span className="font-medium">04XX XXX XXX</span>
+              <span className="font-medium">{PHONE_YANN}</span>
             </a>
             <Button variant="default" size="lg" asChild>
               <Link to="/contact">Request Labour</Link>

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle2, MapPin, Phone } from "lucide-react";
+import { PHONE_YANN, PHONE_YANN_HREF } from "@/lib/constants";
 
 const Logan = () => {
   const services = [
@@ -54,7 +55,7 @@ const Logan = () => {
             "name": "Precision Site Solutions - Logan",
             "description": "Labour hire services in Logan City, Queensland",
             "url": "https://precisionsitesolutions.com.au/locations/logan",
-            "telephone": "04XX XXX XXX",
+            "telephone": PHONE_YANN,
             "areaServed": {
               "@type": "City",
               "name": "Logan City",
@@ -233,9 +234,9 @@ const Logan = () => {
                 </Link>
               </Button>
               <Button variant="hero" size="xl" asChild>
-                <a href="tel:0400000000">
+                <a href={PHONE_YANN_HREF}>
                   <Phone className="mr-2" size={20} />
-                  Call Us Direct
+                  Call {PHONE_YANN}
                 </a>
               </Button>
             </div>
