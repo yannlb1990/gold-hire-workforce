@@ -18,58 +18,57 @@ export function HeroSection() {
       </div>
 
       {/* Content */}
-      <div className="container mx-auto px-4 lg:px-8 relative z-10 pt-24 pb-16">
+      <div className="container mx-auto px-4 lg:px-8 relative z-10 pt-20 md:pt-24 pb-12 md:pb-16">
         <div className="max-w-3xl">
           {/* Heading */}
-          <h1 className="heading-xl text-concrete mb-6 opacity-0 animate-fade-up animation-delay-100">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.05] tracking-tight text-concrete mb-4 md:mb-6 opacity-0 animate-fade-up animation-delay-100">
             Labour Hire in Gold Coast, Brisbane & Byron Bay — 
             <span className="text-gradient-gold"> Done Properly</span>
           </h1>
 
           {/* Subheading */}
-          <p className="body-lg text-concrete/80 mb-10 max-w-2xl opacity-0 animate-fade-up animation-delay-200">
-            Skilled labour, cleaning crews, carpenters, painters and landscaping support — 
-            delivered with clear communication, fast replacements and compliance-first systems.
+          <p className="text-base md:text-lg lg:text-xl text-concrete/80 mb-8 md:mb-10 max-w-2xl opacity-0 animate-fade-up animation-delay-200 leading-relaxed">
+            Skilled labour, cleaning crews, carpenters and more — delivered with clear communication and fast replacements.
           </p>
 
           {/* CTAs */}
-          <div className="flex flex-col sm:flex-row gap-4 mb-12 opacity-0 animate-fade-up animation-delay-300">
-            <Button variant="hero-primary" size="xl" asChild>
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8 md:mb-12 opacity-0 animate-fade-up animation-delay-300">
+            <Button variant="hero-primary" size="xl" className="w-full sm:w-auto min-h-[48px] text-base" asChild>
               <Link to="/contact">
                 Request Labour
                 <ArrowRight className="ml-2" size={20} />
               </Link>
             </Button>
-            <Button variant="hero" size="xl" asChild>
+            <Button variant="hero" size="xl" className="w-full sm:w-auto min-h-[48px] text-base" asChild>
               <Link to="/contact">Speak With a Manager</Link>
             </Button>
           </div>
 
           {/* Trust Indicators */}
-          <div className="flex flex-wrap items-center gap-8 opacity-0 animate-fade-up animation-delay-400">
+          <div className="flex flex-wrap items-center gap-4 md:gap-8 opacity-0 animate-fade-up animation-delay-400">
             <div className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center">
-                <svg className="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20">
+              <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gold/20 flex items-center justify-center">
+                <svg className="w-4 h-4 md:w-5 md:h-5 text-gold" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                 </svg>
               </div>
-              <span className="text-concrete/80 text-sm">Fully Compliant</span>
+              <span className="text-concrete/80 text-xs md:text-sm">Fully Compliant</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center">
-                <svg className="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20">
+              <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gold/20 flex items-center justify-center">
+                <svg className="w-4 h-4 md:w-5 md:h-5 text-gold" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                 </svg>
               </div>
-              <span className="text-concrete/80 text-sm">24hr Response</span>
+              <span className="text-concrete/80 text-xs md:text-sm">24hr Response</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center">
-                <svg className="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20">
+              <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gold/20 flex items-center justify-center">
+                <svg className="w-4 h-4 md:w-5 md:h-5 text-gold" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                 </svg>
               </div>
-              <span className="text-concrete/80 text-sm">Fast Replacements</span>
+              <span className="text-concrete/80 text-xs md:text-sm">Fast Replacements</span>
             </div>
           </div>
         </div>

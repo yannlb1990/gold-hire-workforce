@@ -645,6 +645,63 @@
     @apply w-20 h-20 rounded-full flex items-center justify-center;
     background: hsla(142, 40%, 42%, 0.1);
   }
+  /* Mobile Touch Targets - Minimum 44x44px */
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px];
+  }
+  
+  .touch-target-lg {
+    @apply min-h-[48px] min-w-[48px];
+  }
+
+  /* Safe Area Inset for iOS */
+  .safe-area-pb {
+    padding-bottom: env(safe-area-inset-bottom, 16px);
+  }
+
+  .safe-area-pt {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+
+  /* Mobile Typography Scaling */
+  @media (max-width: 480px) {
+    .heading-xl {
+      @apply text-3xl;
+    }
+    
+    .heading-lg {
+      @apply text-2xl;
+    }
+    
+    .heading-md {
+      @apply text-xl;
+    }
+    
+    .body-lg {
+      @apply text-base;
+    }
+  }
+
+  /* Mobile-optimized form inputs - prevent iOS zoom */
+  .form-input-mobile {
+    @apply w-full px-4 py-3 rounded-xl border border-border bg-card text-foreground transition-all duration-200;
+    font-size: 16px !important; /* Prevents iOS zoom on focus */
+  }
+
+  /* Truncate text for mobile */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
 }
 
 /* Custom Scrollbar */

@@ -136,31 +136,31 @@ export default function WageCalculator() {
       </Helmet>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-12 bg-gradient-to-b from-navy via-navy-light to-background">
+      <section className="pt-24 md:pt-32 pb-8 md:pb-12 bg-gradient-to-b from-navy via-navy-light to-background">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-6">
-              <Calculator className="w-4 h-4" />
-              Free Calculator Tool
+            <div className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs md:text-sm font-medium mb-4 md:mb-6">
+              <Calculator className="w-3 h-3 md:w-4 md:h-4" />
+              Free Calculator
             </div>
-            <h1 className="heading-xl text-concrete mb-4">
+            <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.05] tracking-tight text-concrete mb-3 md:mb-4">
               ABN vs TFN{" "}
               <span className="text-gradient-green">Wage Calculator</span>
             </h1>
-            <p className="text-lg text-concrete/70 max-w-2xl mx-auto">
+            <p className="text-sm md:text-lg text-concrete/70 max-w-2xl mx-auto leading-relaxed">
               Compare your take-home pay as a contractor (ABN) versus employee (TFN). 
-              Now with FIFO rosters, LAFHA, and overtime calculations.
+              Now with FIFO rosters, LAFHA, and overtime.
             </p>
           </div>
         </div>
       </section>
 
       {/* Main Calculator Section */}
-      <section className="py-12 bg-background">
+      <section className="py-8 md:py-12 bg-background">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid gap-8 lg:grid-cols-12">
+          <div className="grid gap-6 md:gap-8 lg:grid-cols-12">
             {/* Input Panel */}
-            <div className="lg:col-span-5 space-y-6">
+            <div className="lg:col-span-5 space-y-4 md:space-y-6">
               {/* Advanced Options Card - First */}
               <AdvancedOptions
                 fifoEnabled={fifoEnabled}
@@ -201,18 +201,18 @@ export default function WageCalculator() {
               />
 
               {/* Your Details Card */}
-              <div className="bg-card border border-border rounded-2xl p-6">
-                <h2 className="font-heading font-bold text-xl text-foreground mb-6 flex items-center gap-2">
-                  <DollarSign className="w-5 h-5 text-primary" />
+              <div className="bg-card border border-border rounded-xl md:rounded-2xl p-4 md:p-6">
+                <h2 className="font-heading font-bold text-lg md:text-xl text-foreground mb-4 md:mb-6 flex items-center gap-2">
+                  <DollarSign className="w-4 h-4 md:w-5 md:h-5 text-primary" />
                   Your Details
                 </h2>
 
-                <div className="space-y-6">
+                <div className="space-y-4 md:space-y-6">
                   {/* Trade Selector */}
                   <div className="space-y-2">
-                    <Label className="text-sm font-medium">Trade / Role</Label>
+                    <Label className="text-xs md:text-sm font-medium">Trade / Role</Label>
                     <Select value={selectedTrade} onValueChange={handleTradeChange}>
-                      <SelectTrigger>
+                      <SelectTrigger className="h-12 text-base">
                         <SelectValue placeholder="Select a trade" />
                       </SelectTrigger>
                       <SelectContent>
@@ -224,22 +224,22 @@ export default function WageCalculator() {
                       </SelectContent>
                     </Select>
                     {tradePreset && (
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-[10px] md:text-xs text-muted-foreground">
                         {tradePreset.description}
                       </p>
                     )}
                   </div>
 
                   {/* Work Details - 2 Column Grid */}
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-2 gap-3 md:gap-4">
                     {/* Hours Per Week */}
                     <div className="space-y-2">
                       <div className="flex items-center justify-between">
-                        <Label className="text-sm font-medium flex items-center gap-1">
-                          Hours/Week
-                          <Clock className="w-3 h-3 text-muted-foreground" />
+                        <Label className="text-xs md:text-sm font-medium flex items-center gap-1">
+                          Hours/Wk
+                          <Clock className="w-3 h-3 text-muted-foreground hidden md:inline" />
                         </Label>
-                        <span className="text-sm font-semibold text-foreground">
+                        <span className="text-xs md:text-sm font-semibold text-foreground">
                           {hoursPerWeek}
                         </span>
                       </div>
@@ -251,7 +251,7 @@ export default function WageCalculator() {
                         step={1}
                         className="w-full"
                       />
-                      <div className="flex justify-between text-xs text-muted-foreground">
+                      <div className="flex justify-between text-[10px] md:text-xs text-muted-foreground">
                         <span>20</span>
                         <span>60</span>
                       </div>
@@ -260,11 +260,11 @@ export default function WageCalculator() {
                     {/* Weeks Per Year */}
                     <div className="space-y-2">
                       <div className="flex items-center justify-between">
-                        <Label className="text-sm font-medium flex items-center gap-1">
-                          Weeks/Year
-                          <Calendar className="w-3 h-3 text-muted-foreground" />
+                        <Label className="text-xs md:text-sm font-medium flex items-center gap-1">
+                          Wks/Yr
+                          <Calendar className="w-3 h-3 text-muted-foreground hidden md:inline" />
                         </Label>
-                        <span className="text-sm font-semibold text-foreground">
+                        <span className="text-xs md:text-sm font-semibold text-foreground">
                           {weeksPerYear}
                         </span>
                       </div>
@@ -276,7 +276,7 @@ export default function WageCalculator() {
                         step={1}
                         className="w-full"
                       />
-                      <div className="flex justify-between text-xs text-muted-foreground">
+                      <div className="flex justify-between text-[10px] md:text-xs text-muted-foreground">
                         <span>40</span>
                         <span>52</span>
                       </div>
@@ -286,28 +286,28 @@ export default function WageCalculator() {
                   {/* Tabbed TFN/ABN Hourly Rates */}
                   <div className="pt-2">
                     <Tabs defaultValue="tfn" className="w-full">
-                      <TabsList className="grid w-full grid-cols-2 mb-4">
-                        <TabsTrigger value="tfn" className="text-sm">
+                      <TabsList className="grid w-full grid-cols-2 mb-3 md:mb-4 h-10 md:h-auto">
+                        <TabsTrigger value="tfn" className="text-xs md:text-sm">
                           TFN (Employee)
                         </TabsTrigger>
-                        <TabsTrigger value="abn" className="text-sm">
+                        <TabsTrigger value="abn" className="text-xs md:text-sm">
                           ABN (Contractor)
                         </TabsTrigger>
                       </TabsList>
 
                       {/* TFN Tab */}
-                      <TabsContent value="tfn" className="space-y-4">
+                      <TabsContent value="tfn" className="space-y-3 md:space-y-4">
                         <div className="space-y-3">
                           <div className="flex items-center justify-between gap-4">
-                            <Label className="text-sm font-medium flex items-center gap-1.5">
+                            <Label className="text-xs md:text-sm font-medium flex items-center gap-1.5">
                               Hourly Rate
-                              <DollarSign className="w-3.5 h-3.5 text-muted-foreground" />
+                              <DollarSign className="w-3 h-3 md:w-3.5 md:h-3.5 text-muted-foreground" />
                             </Label>
                             <div className="flex items-center gap-1">
-                              <span className="text-xl font-bold text-primary">
+                              <span className="text-lg md:text-xl font-bold text-primary">
                                 ${hourlyRate}
                               </span>
-                              <span className="text-sm text-muted-foreground">/hr</span>
+                              <span className="text-xs md:text-sm text-muted-foreground">/hr</span>
                             </div>
                           </div>
                           <Slider
@@ -318,13 +318,13 @@ export default function WageCalculator() {
                             step={1}
                             className="w-full"
                           />
-                          <div className="flex justify-between text-xs text-muted-foreground">
+                          <div className="flex justify-between text-[10px] md:text-xs text-muted-foreground">
                             <span>$20</span>
                             <span>$120</span>
                           </div>
                         </div>
-                        <p className="text-xs text-muted-foreground bg-muted/50 rounded-lg p-3">
-                          As a TFN employee, your employer handles tax, super (11.5%), and leave entitlements.
+                        <p className="text-[10px] md:text-xs text-muted-foreground bg-muted/50 rounded-lg p-2 md:p-3">
+                          As a TFN employee, your employer handles tax, super (11.5%), and leave.
                         </p>
                       </TabsContent>
 

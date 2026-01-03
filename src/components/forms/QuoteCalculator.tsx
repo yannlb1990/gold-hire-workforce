@@ -90,17 +90,17 @@ export function QuoteCalculator({ onGetQuote }: QuoteCalculatorProps) {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-4 md:gap-6">
           {/* Left Column - Inputs */}
           <div className="space-y-5">
             {/* Trade Selection */}
             <div className="space-y-2">
-              <Label className="flex items-center gap-2">
+              <Label className="flex items-center gap-2 text-sm">
                 <Users className="w-4 h-4 text-gold" />
                 Trade Type
               </Label>
               <Select value={trade} onValueChange={setTrade}>
-                <SelectTrigger className="rounded-xl h-12">
+                <SelectTrigger className="rounded-xl h-12 text-base">
                   <SelectValue placeholder="Select trade..." />
                 </SelectTrigger>
                 <SelectContent>
@@ -115,12 +115,12 @@ export function QuoteCalculator({ onGetQuote }: QuoteCalculatorProps) {
 
             {/* Location Selection */}
             <div className="space-y-2">
-              <Label className="flex items-center gap-2">
+              <Label className="flex items-center gap-2 text-sm">
                 <MapPin className="w-4 h-4 text-gold" />
                 Location
               </Label>
               <Select value={location} onValueChange={setLocation}>
-                <SelectTrigger className="rounded-xl h-12">
+                <SelectTrigger className="rounded-xl h-12 text-base">
                   <SelectValue placeholder="Select location..." />
                 </SelectTrigger>
                 <SelectContent>
@@ -135,10 +135,10 @@ export function QuoteCalculator({ onGetQuote }: QuoteCalculatorProps) {
 
             {/* Workers Slider */}
             <div className="space-y-3">
-              <Label className="flex items-center justify-between">
+              <Label className="flex items-center justify-between text-sm">
                 <span className="flex items-center gap-2">
                   <Users className="w-4 h-4 text-gold" />
-                  Number of Workers
+                  Workers
                 </span>
                 <span className="font-bold text-gold text-lg">{workers}</span>
               </Label>
@@ -158,12 +158,12 @@ export function QuoteCalculator({ onGetQuote }: QuoteCalculatorProps) {
 
             {/* Duration Selection */}
             <div className="space-y-2">
-              <Label className="flex items-center gap-2">
+              <Label className="flex items-center gap-2 text-sm">
                 <CalendarDays className="w-4 h-4 text-gold" />
                 Duration
               </Label>
               <Select value={duration} onValueChange={setDuration}>
-                <SelectTrigger className="rounded-xl h-12">
+                <SelectTrigger className="rounded-xl h-12 text-base">
                   <SelectValue placeholder="Select duration..." />
                 </SelectTrigger>
                 <SelectContent>
@@ -226,7 +226,7 @@ export function QuoteCalculator({ onGetQuote }: QuoteCalculatorProps) {
             <Button
               variant="gold"
               size="lg"
-              className="w-full mt-4 rounded-xl"
+              className="w-full mt-4 rounded-xl min-h-[48px] text-base"
               disabled={!isComplete}
               onClick={handleGetQuote}
             >
