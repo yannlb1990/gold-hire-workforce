@@ -65,26 +65,26 @@ export function ServicesSection() {
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {services.map((service, index) => (
             <Link
               key={service.title}
               to={service.href}
-              className="group card-elevated hover:border-gold/20 border border-transparent"
+              className="group card-elevated hover:border-gold/20 border border-transparent p-4 sm:p-6"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className="w-14 h-14 rounded-xl bg-navy flex items-center justify-center mb-6 group-hover:bg-gold transition-colors duration-300">
-                <service.icon className="w-7 h-7 text-gold group-hover:text-navy transition-colors duration-300" />
+              <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-lg sm:rounded-xl bg-navy flex items-center justify-center mb-3 sm:mb-6 group-hover:bg-gold transition-colors duration-300">
+                <service.icon className="w-5 h-5 sm:w-7 sm:h-7 text-gold group-hover:text-navy transition-colors duration-300" />
               </div>
-              <h3 className="text-xl font-heading font-bold text-navy mb-3 group-hover:text-gold transition-colors">
+              <h3 className="text-base sm:text-xl font-heading font-bold text-navy mb-2 sm:mb-3 group-hover:text-gold transition-colors">
                 {service.title}
               </h3>
-              <p className="text-charcoal/70 mb-4 leading-relaxed">
+              <p className="text-sm sm:text-base text-charcoal/70 mb-3 sm:mb-4 leading-relaxed line-clamp-2 sm:line-clamp-none">
                 {service.description}
               </p>
-              <div className="flex items-center gap-2 text-gold font-medium text-sm">
+              <div className="flex items-center gap-2 text-gold font-medium text-xs sm:text-sm">
                 Learn More
-                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                <ArrowRight size={14} className="sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
               </div>
             </Link>
           ))}

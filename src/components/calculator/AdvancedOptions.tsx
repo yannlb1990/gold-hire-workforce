@@ -81,24 +81,24 @@ export function AdvancedOptions({
     : 0;
 
   return (
-    <div className="bg-gradient-to-r from-amber-500/5 to-orange-500/5 border-2 border-amber-500/30 rounded-2xl p-6">
-      <div className="flex items-center gap-3 mb-6">
-        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500/20 to-orange-500/20 flex items-center justify-center">
-          <Sparkles className="w-5 h-5 text-amber-500" />
+    <div className="bg-gradient-to-r from-amber-500/5 to-orange-500/5 border-2 border-amber-500/30 rounded-xl md:rounded-2xl p-4 md:p-6">
+      <div className="flex items-center gap-2 md:gap-3 mb-4 md:mb-6">
+        <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg md:rounded-xl bg-gradient-to-br from-amber-500/20 to-orange-500/20 flex items-center justify-center shrink-0">
+          <Sparkles className="w-4 h-4 md:w-5 md:h-5 text-amber-500" />
         </div>
-        <div>
-          <h3 className="font-heading font-bold text-foreground">Advanced Options</h3>
-          <p className="text-xs text-muted-foreground">FIFO, overtime & allowances</p>
+        <div className="min-w-0">
+          <h3 className="font-heading font-bold text-sm md:text-base text-foreground">Advanced Options</h3>
+          <p className="text-[10px] md:text-xs text-muted-foreground truncate">FIFO, overtime & allowances</p>
         </div>
       </div>
 
       <div className="space-y-6">
         {/* FIFO Toggle Section */}
-        <div className="space-y-4">
-          <div className="flex items-center justify-between gap-4">
-            <div className="flex items-center gap-1.5 min-w-0">
-              <Plane className="w-4 h-4 text-amber-500 shrink-0" />
-              <Label className="text-sm font-medium">FIFO (Fly-In Fly-Out)</Label>
+        <div className="space-y-3 md:space-y-4">
+          <div className="flex items-center justify-between gap-2 md:gap-4">
+            <div className="flex items-center gap-1 md:gap-1.5 min-w-0 flex-wrap">
+              <Plane className="w-3.5 h-3.5 md:w-4 md:h-4 text-amber-500 shrink-0" />
+              <Label className="text-xs md:text-sm font-medium">FIFO</Label>
               <InfoTooltip tooltipKey="fifo" />
             </div>
             <Switch
@@ -141,11 +141,11 @@ export function AdvancedOptions({
         <div className="border-t border-border/50 pt-6" />
 
         {/* Overtime Toggle Section */}
-        <div className="space-y-4">
-          <div className="flex items-center justify-between gap-4">
-            <div className="flex items-center gap-1.5 min-w-0">
-              <Clock className="w-4 h-4 text-amber-500 shrink-0" />
-              <Label className="text-sm font-medium">Overtime</Label>
+        <div className="space-y-3 md:space-y-4">
+          <div className="flex items-center justify-between gap-2 md:gap-4">
+            <div className="flex items-center gap-1 md:gap-1.5 min-w-0 flex-wrap">
+              <Clock className="w-3.5 h-3.5 md:w-4 md:h-4 text-amber-500 shrink-0" />
+              <Label className="text-xs md:text-sm font-medium">Overtime</Label>
               <InfoTooltip tooltipKey="overtime" />
             </div>
             <Switch
@@ -219,11 +219,11 @@ export function AdvancedOptions({
         <div className="border-t border-border/50 pt-6" />
 
         {/* Allowances Toggle Section */}
-        <div className="space-y-4">
-          <div className="flex items-center justify-between gap-4">
-            <div className="flex items-center gap-1.5 min-w-0">
-              <Car className="w-4 h-4 text-amber-500 shrink-0" />
-              <Label className="text-sm font-medium">Allowances</Label>
+        <div className="space-y-3 md:space-y-4">
+          <div className="flex items-center justify-between gap-2 md:gap-4">
+            <div className="flex items-center gap-1 md:gap-1.5 min-w-0 flex-wrap">
+              <Car className="w-3.5 h-3.5 md:w-4 md:h-4 text-amber-500 shrink-0" />
+              <Label className="text-xs md:text-sm font-medium">Allowances</Label>
               <InfoTooltip tooltipKey="allowances" />
             </div>
             <Switch

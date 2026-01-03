@@ -33,14 +33,18 @@ export function HeroSection() {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8 md:mb-12 opacity-0 animate-fade-up animation-delay-300">
-            <Button variant="hero-primary" size="xl" className="w-full sm:w-auto min-h-[48px] text-base" asChild>
+            <Button variant="hero-primary" size="lg" className="w-full sm:w-auto min-h-[48px] text-sm sm:text-base px-4 sm:px-8" asChild>
               <Link to="/contact">
-                Request Labour
-                <ArrowRight className="ml-2" size={20} />
+                <span className="sm:hidden">Request</span>
+                <span className="hidden sm:inline">Request Labour</span>
+                <ArrowRight className="ml-1.5 sm:ml-2 w-4 h-4 sm:w-5 sm:h-5" />
               </Link>
             </Button>
-            <Button variant="hero" size="xl" className="w-full sm:w-auto min-h-[48px] text-base" asChild>
-              <Link to="/contact">Speak With a Manager</Link>
+            <Button variant="hero" size="lg" className="w-full sm:w-auto min-h-[48px] text-sm sm:text-base px-4 sm:px-8" asChild>
+              <Link to="/contact">
+                <span className="sm:hidden">Speak to Manager</span>
+                <span className="hidden sm:inline">Speak With a Manager</span>
+              </Link>
             </Button>
           </div>
 
