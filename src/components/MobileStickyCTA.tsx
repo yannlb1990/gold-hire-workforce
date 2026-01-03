@@ -1,11 +1,14 @@
-import { Phone, FileText } from "lucide-react";
+import { Phone, FileText, Home, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PHONE_HREF } from "@/lib/constants";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 export function MobileStickyCTA() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
+
   const handleCallClick = () => {
-    // Fire analytics event
     if (typeof window !== "undefined" && (window as any).dataLayer) {
       (window as any).dataLayer.push({
         event: "call_click",
@@ -15,9 +18,35 @@ export function MobileStickyCTA() {
     }
   };
 
+  const handleBack = () => {
+    navigate(-1);
+  };
+
   return (
     <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-navy border-t border-steel-blue/30 p-2 xs:p-3 safe-area-pb">
       <div className="flex gap-2 xs:gap-3">
+        {!isHomePage && (
+          <>
+            <Button
+              variant="outline"
+              className="flex-1 h-12 xs:h-14 text-xs xs:text-sm font-semibold min-w-0 px-2 xs:px-3 border-steel-blue/50 text-concrete hover:bg-steel-blue/20"
+              onClick={handleBack}
+            >
+              <ArrowLeft className="h-4 w-4 xs:h-5 xs:w-5 shrink-0" />
+              <span className="hidden xs:inline ml-1">Back</span>
+            </Button>
+            <Button
+              asChild
+              variant="outline"
+              className="flex-1 h-12 xs:h-14 text-xs xs:text-sm font-semibold min-w-0 px-2 xs:px-3 border-steel-blue/50 text-concrete hover:bg-steel-blue/20"
+            >
+              <Link to="/">
+                <Home className="h-4 w-4 xs:h-5 xs:w-5 shrink-0" />
+                <span className="hidden xs:inline ml-1">Home</span>
+              </Link>
+            </Button>
+          </>
+        )}
         <Button
           asChild
           variant="gold"
