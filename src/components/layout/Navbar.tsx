@@ -79,10 +79,10 @@ export function Navbar() {
             </Button>
           </div>
 
-          {/* Mobile Menu Toggle */}
+          {/* Mobile Menu Toggle - larger touch target */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden text-concrete hover:text-primary transition-colors p-2"
+            className="lg:hidden text-concrete hover:text-primary transition-colors p-3 -mr-2 min-w-[44px] min-h-[44px] flex items-center justify-center"
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -96,15 +96,15 @@ export function Navbar() {
             isMobileMenuOpen ? "max-h-[500px] opacity-100 mt-4" : "max-h-0 opacity-0"
           )}
         >
-          <div className="bg-navy-light/50 backdrop-blur-lg rounded-xl p-4 border border-steel-blue/20">
-            <div className="flex flex-col gap-2">
+          <div className="bg-navy-light/50 backdrop-blur-lg rounded-xl p-3 md:p-4 border border-steel-blue/20">
+            <div className="flex flex-col gap-1">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
                   to={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className={cn(
-                    "px-4 py-3 rounded-lg text-concrete/80 hover:text-concrete hover:bg-steel-blue/20 transition-all",
+                    "px-4 py-3.5 rounded-lg text-concrete/80 hover:text-concrete hover:bg-steel-blue/20 transition-all min-h-[48px] flex items-center text-base",
                     location.pathname === link.href && "text-primary bg-steel-blue/20"
                   )}
                 >
@@ -112,7 +112,7 @@ export function Navbar() {
                 </Link>
               ))}
               <hr className="border-steel-blue/20 my-2" />
-              <Button variant="default" size="lg" className="w-full" asChild>
+              <Button variant="default" size="lg" className="w-full min-h-[48px] text-base" asChild>
                 <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
                   Request Labour
                 </Link>

@@ -143,10 +143,10 @@ export function EmployerShortForm({
 
   const inputClasses =
     variant === "dark"
-      ? "bg-navy-light border-steel-blue/30 text-concrete placeholder:text-concrete/50 focus:border-gold focus:ring-gold rounded-xl"
-      : "bg-background border-border text-foreground rounded-xl";
+      ? "bg-navy-light border-steel-blue/30 text-concrete placeholder:text-concrete/50 focus:border-gold focus:ring-gold rounded-xl h-12 text-base"
+      : "bg-background border-border text-foreground rounded-xl h-12 text-base";
 
-  const labelClasses = variant === "dark" ? "text-concrete/90" : "text-foreground";
+  const labelClasses = variant === "dark" ? "text-concrete/90 text-sm" : "text-foreground text-sm";
 
   return (
     <form onSubmit={handleSubmit} className={`space-y-4 ${className}`}>
@@ -160,7 +160,7 @@ export function EmployerShortForm({
             onValueChange={(value) => handleChange("location", value)}
             required
           >
-            <SelectTrigger className={inputClasses}>
+            <SelectTrigger className={`${inputClasses} min-h-[48px]`}>
               <SelectValue placeholder="Select location" />
             </SelectTrigger>
             <SelectContent>
@@ -182,7 +182,7 @@ export function EmployerShortForm({
             onValueChange={(value) => handleChange("trade", value)}
             required
           >
-            <SelectTrigger className={inputClasses}>
+            <SelectTrigger className={`${inputClasses} min-h-[48px]`}>
               <SelectValue placeholder="Select trade" />
             </SelectTrigger>
             <SelectContent>
@@ -235,7 +235,7 @@ export function EmployerShortForm({
             value={formData.duration}
             onValueChange={(value) => handleChange("duration", value)}
           >
-            <SelectTrigger className={inputClasses}>
+            <SelectTrigger className={`${inputClasses} min-h-[48px]`}>
               <SelectValue placeholder="Select" />
             </SelectTrigger>
             <SelectContent>
@@ -360,7 +360,7 @@ export function EmployerShortForm({
         type="submit"
         variant="gold"
         size="lg"
-        className="w-full sm:w-auto"
+        className="w-full sm:w-auto min-h-[48px] text-base"
         disabled={isSubmitting}
       >
         {isSubmitting ? (
