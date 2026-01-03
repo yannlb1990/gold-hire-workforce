@@ -1,10 +1,17 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import logo from "@/assets/logo.png";
 import { PHONE_YANN, PHONE_YANN_HREF } from "@/lib/constants";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -18,7 +25,7 @@ const navLinks = [
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -79,47 +86,69 @@ export function Navbar() {
             </Button>
           </div>
 
-          {/* Mobile Menu Toggle - larger touch target */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden text-concrete hover:text-primary transition-colors p-3 -mr-2 min-w-[44px] min-h-[44px] flex items-center justify-center"
-            aria-label="Toggle menu"
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </nav>
-
-        {/* Mobile Menu */}
-        <div
-          className={cn(
-            "lg:hidden overflow-hidden transition-all duration-300",
-            isMobileMenuOpen ? "max-h-[500px] opacity-100 mt-4" : "max-h-0 opacity-0"
-          )}
-        >
-          <div className="bg-navy-light/50 backdrop-blur-lg rounded-xl p-3 md:p-4 border border-steel-blue/20">
-            <div className="flex flex-col gap-1">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  to={link.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className={cn(
-                    "px-4 py-3.5 rounded-lg text-concrete/80 hover:text-concrete hover:bg-steel-blue/20 transition-all min-h-[48px] flex items-center text-base",
-                    location.pathname === link.href && "text-primary bg-steel-blue/20"
-                  )}
+          {/* Mobile Menu */}
+          <Sheet open={isOpen} onOpenChange={setIsOpen}>
+            <SheetTrigger asChild>
+              <button
+                className="lg:hidden text-concrete hover:text-primary transition-colors p-3 -mr-2 min-w-[44px] min-h-[44px] flex items-center justify-center"
+                aria-label="Open menu"
+              >
+                <Menu size={24} />
+              </button>
+            </SheetTrigger>
+            <SheetContent 
+              side="right" 
+              className="w-[75vw] max-w-[320px] bg-navy-light/95 backdrop-blur-lg border-steel-blue/20 p-0"
+            >
+              <SheetHeader className="p-6 pb-4 border-b border-steel-blue/20">
+                <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+                <Link 
+                  to="/" 
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center"
                 >
-                  {link.name}
+                  <img 
+                    src={logo} 
+                    alt="Precision Site Solutions" 
+                    className="h-16 w-auto"
+                  />
                 </Link>
-              ))}
-              <hr className="border-steel-blue/20 my-2" />
-              <Button variant="default" size="lg" className="w-full min-h-[48px] text-base" asChild>
-                <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-                  Request Labour
-                </Link>
-              </Button>
-            </div>
-          </div>
-        </div>
+              </SheetHeader>
+              
+              <nav className="flex flex-col p-4">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.name}
+                    to={link.href}
+                    onClick={() => setIsOpen(false)}
+                    className={cn(
+                      "px-4 py-3.5 rounded-lg text-concrete/80 hover:text-concrete hover:bg-steel-blue/20 transition-all min-h-[48px] flex items-center text-base",
+                      location.pathname === link.href && "text-primary bg-steel-blue/20"
+                    )}
+                  >
+                    {link.name}
+                  </Link>
+                ))}
+                
+                <hr className="border-steel-blue/20 my-4" />
+                
+                <a
+                  href={PHONE_YANN_HREF}
+                  className="flex items-center gap-3 px-4 py-3.5 text-concrete/80 hover:text-primary transition-colors"
+                >
+                  <Phone size={18} />
+                  <span className="font-medium">{PHONE_YANN}</span>
+                </a>
+                
+                <Button variant="default" size="lg" className="w-full mt-4 min-h-[48px]" asChild>
+                  <Link to="/contact" onClick={() => setIsOpen(false)}>
+                    Request Labour
+                  </Link>
+                </Button>
+              </nav>
+            </SheetContent>
+          </Sheet>
+        </nav>
       </div>
     </header>
   );
