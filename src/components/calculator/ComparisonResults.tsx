@@ -157,34 +157,34 @@ export function ComparisonResults({
   const weeklyDifference = abnResult.weeklyTakeHome - tfnResult.weeklyTakeHome;
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 md:space-y-6">
       {/* Summary Cards */}
-      <div className="grid gap-4 md:grid-cols-2">
-        <div className="bg-accent/5 border border-accent/20 rounded-xl p-5">
-          <div className="flex items-center gap-2 mb-3">
-            <div className="w-3 h-3 rounded-full bg-accent" />
-            <span className="text-sm font-medium text-muted-foreground">TFN (Employee)</span>
+      <div className="grid gap-3 md:gap-4 grid-cols-2">
+        <div className="bg-accent/5 border border-accent/20 rounded-lg md:rounded-xl p-3 md:p-5">
+          <div className="flex items-center gap-1.5 md:gap-2 mb-2 md:mb-3">
+            <div className="w-2 h-2 md:w-3 md:h-3 rounded-full bg-accent" />
+            <span className="text-[10px] md:text-sm font-medium text-muted-foreground">TFN</span>
           </div>
-          <div className="space-y-1">
-            <p className="text-3xl font-bold text-foreground">
+          <div className="space-y-0.5 md:space-y-1">
+            <p className="text-lg md:text-3xl font-bold text-foreground break-words">
               {formatCurrency(tfnResult.netTakeHome)}
             </p>
-            <p className="text-sm text-muted-foreground">
-              {formatCurrency(tfnResult.weeklyTakeHome)}/week
+            <p className="text-[10px] md:text-sm text-muted-foreground">
+              {formatCurrency(tfnResult.weeklyTakeHome)}/wk
             </p>
           </div>
         </div>
-        <div className="bg-primary/5 border border-primary/20 rounded-xl p-5">
-          <div className="flex items-center gap-2 mb-3">
-            <div className="w-3 h-3 rounded-full bg-primary" />
-            <span className="text-sm font-medium text-muted-foreground">ABN (Contractor)</span>
+        <div className="bg-primary/5 border border-primary/20 rounded-lg md:rounded-xl p-3 md:p-5">
+          <div className="flex items-center gap-1.5 md:gap-2 mb-2 md:mb-3">
+            <div className="w-2 h-2 md:w-3 md:h-3 rounded-full bg-primary" />
+            <span className="text-[10px] md:text-sm font-medium text-muted-foreground">ABN</span>
           </div>
-          <div className="space-y-1">
-            <p className="text-3xl font-bold text-foreground">
+          <div className="space-y-0.5 md:space-y-1">
+            <p className="text-lg md:text-3xl font-bold text-foreground break-words">
               {formatCurrency(abnResult.netTakeHome)}
             </p>
-            <p className="text-sm text-muted-foreground">
-              {formatCurrency(abnResult.weeklyTakeHome)}/week
+            <p className="text-[10px] md:text-sm text-muted-foreground">
+              {formatCurrency(abnResult.weeklyTakeHome)}/wk
             </p>
           </div>
         </div>
@@ -193,29 +193,27 @@ export function ComparisonResults({
       {/* Difference Banner */}
       <div
         className={cn(
-          "rounded-xl p-4 flex items-center justify-between",
+          "rounded-lg md:rounded-xl p-3 md:p-4 flex items-center gap-2 md:gap-3",
           abnBetter
             ? "bg-primary/10 border border-primary/20"
             : "bg-accent/10 border border-accent/20"
         )}
       >
-        <div className="flex items-center gap-3">
-          {abnBetter ? (
-            <TrendingUp className="w-6 h-6 text-primary" />
-          ) : (
-            <TrendingDown className="w-6 h-6 text-accent" />
-          )}
-          <div>
-            <p className="font-semibold text-foreground">
-              {abnBetter ? "ABN" : "TFN"} is better by{" "}
-              <span className={abnBetter ? "text-primary" : "text-accent"}>
-                {formatCurrency(Math.abs(netDifference))}/year
-              </span>
-            </p>
-            <p className="text-sm text-muted-foreground">
-              That's {formatCurrency(Math.abs(weeklyDifference))} more per week
-            </p>
-          </div>
+        {abnBetter ? (
+          <TrendingUp className="w-5 h-5 md:w-6 md:h-6 text-primary shrink-0" />
+        ) : (
+          <TrendingDown className="w-5 h-5 md:w-6 md:h-6 text-accent shrink-0" />
+        )}
+        <div className="min-w-0">
+          <p className="text-sm md:text-base font-semibold text-foreground">
+            {abnBetter ? "ABN" : "TFN"} +
+            <span className={cn("ml-1", abnBetter ? "text-primary" : "text-accent")}>
+              {formatCurrency(Math.abs(netDifference))}/yr
+            </span>
+          </p>
+          <p className="text-xs md:text-sm text-muted-foreground">
+            {formatCurrency(Math.abs(weeklyDifference))}/wk more
+          </p>
         </div>
       </div>
 
@@ -421,26 +419,26 @@ export function ComparisonResults({
       </div>
 
       {/* Comparison Summary Table */}
-      <div className="bg-card border border-border rounded-xl p-6">
-        <h3 className="font-heading font-bold text-lg mb-4 text-foreground flex items-center gap-2">
-          <Percent className="w-5 h-5" />
+      <div className="bg-card border border-border rounded-lg md:rounded-xl p-3 md:p-6">
+        <h3 className="font-heading font-bold text-base md:text-lg mb-3 md:mb-4 text-foreground flex items-center gap-2">
+          <Percent className="w-4 h-4 md:w-5 md:h-5" />
           Quick Comparison
         </h3>
         
         {/* Header */}
-        <div className="grid grid-cols-3 gap-4 pb-3 border-b-2 border-border mb-2">
-          <div className="text-sm font-semibold text-muted-foreground">Metric</div>
-          <div className="text-sm font-semibold text-muted-foreground text-right">TFN</div>
-          <div className="text-sm font-semibold text-muted-foreground text-right">ABN</div>
+        <div className="grid grid-cols-3 gap-2 md:gap-4 pb-2 md:pb-3 border-b-2 border-border mb-2">
+          <div className="text-xs md:text-sm font-semibold text-muted-foreground">Metric</div>
+          <div className="text-xs md:text-sm font-semibold text-muted-foreground text-right">TFN</div>
+          <div className="text-xs md:text-sm font-semibold text-muted-foreground text-right">ABN</div>
         </div>
 
         {/* Comparison Rows */}
-        <div className="space-y-2">
-          <ComparisonMetric label="Gross Income" tfnValue={tfnResult.grossAnnual} abnValue={abnResult.grossAnnual} />
-          <ComparisonMetric label="Total Tax" tfnValue={tfnResult.taxPayable + tfnResult.medicareLevy} abnValue={abnResult.taxPayable + abnResult.medicareLevy} invertBetter />
-          <ComparisonMetric label="Effective Tax Rate" tfnValue={tfnResult.effectiveTaxRate} abnValue={abnResult.effectiveTaxRate} isPercent invertBetter />
-          <ComparisonMetric label="Net Take-Home" tfnValue={tfnResult.netTakeHome} abnValue={abnResult.netTakeHome} isBold />
-          <ComparisonMetric label="Weekly Take-Home" tfnValue={tfnResult.weeklyTakeHome} abnValue={abnResult.weeklyTakeHome} isBold />
+        <div className="space-y-1 md:space-y-2">
+          <ComparisonMetric label="Gross" tfnValue={tfnResult.grossAnnual} abnValue={abnResult.grossAnnual} />
+          <ComparisonMetric label="Tax" tfnValue={tfnResult.taxPayable + tfnResult.medicareLevy} abnValue={abnResult.taxPayable + abnResult.medicareLevy} invertBetter />
+          <ComparisonMetric label="Tax Rate" tfnValue={tfnResult.effectiveTaxRate} abnValue={abnResult.effectiveTaxRate} isPercent invertBetter />
+          <ComparisonMetric label="Net" tfnValue={tfnResult.netTakeHome} abnValue={abnResult.netTakeHome} isBold />
+          <ComparisonMetric label="Weekly" tfnValue={tfnResult.weeklyTakeHome} abnValue={abnResult.weeklyTakeHome} isBold />
         </div>
       </div>
     </div>
@@ -468,27 +466,27 @@ function ComparisonMetric({
 
   return (
     <div className={cn(
-      "grid grid-cols-3 gap-4 py-2 border-b border-border/50 last:border-0",
-      isBold && "bg-muted/30 -mx-4 px-4 rounded"
+      "grid grid-cols-3 gap-2 md:gap-4 py-1.5 md:py-2 border-b border-border/50 last:border-0",
+      isBold && "bg-muted/30 -mx-2 md:-mx-4 px-2 md:px-4 rounded"
     )}>
-      <div className={cn("text-sm", isBold ? "font-semibold text-foreground" : "text-muted-foreground")}>
+      <div className={cn("text-xs md:text-sm truncate", isBold ? "font-semibold text-foreground" : "text-muted-foreground")}>
         {label}
       </div>
       <div className="text-right">
-        <span className={cn("text-sm", isBold ? "font-bold" : "")}>
+        <span className={cn("text-xs md:text-sm", isBold ? "font-bold" : "")}>
           {isPercent ? `${tfnValue.toFixed(1)}%` : formatCurrency(tfnValue)}
         </span>
       </div>
-      <div className="text-right flex items-center justify-end gap-2">
-        <span className={cn("text-sm", isBold ? "font-bold" : "")}>
+      <div className="text-right flex items-center justify-end gap-1 md:gap-2">
+        <span className={cn("text-xs md:text-sm", isBold ? "font-bold" : "")}>
           {isPercent ? `${abnValue.toFixed(1)}%` : formatCurrency(abnValue)}
         </span>
         {!isPercent && difference !== 0 && (
           <span className={cn(
-            "text-xs px-1.5 py-0.5 rounded flex items-center gap-0.5",
+            "text-[10px] md:text-xs px-1 md:px-1.5 py-0.5 rounded items-center gap-0.5 hidden sm:flex",
             abnBetter ? "bg-primary/10 text-primary" : "bg-accent/10 text-accent"
           )}>
-            {difference > 0 ? <ArrowUp className="w-3 h-3" /> : <ArrowDown className="w-3 h-3" />}
+            {difference > 0 ? <ArrowUp className="w-2.5 h-2.5 md:w-3 md:h-3" /> : <ArrowDown className="w-2.5 h-2.5 md:w-3 md:h-3" />}
             {formatCurrency(Math.abs(difference))}
           </span>
         )}

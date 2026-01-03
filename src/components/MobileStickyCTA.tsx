@@ -16,27 +16,27 @@ export function MobileStickyCTA() {
   };
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-navy border-t border-steel-blue/30 p-3 safe-area-pb">
-      <div className="flex gap-3">
+    <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-navy border-t border-steel-blue/30 p-2 xs:p-3 safe-area-pb">
+      <div className="flex gap-2 xs:gap-3">
         <Button
           asChild
           variant="gold"
-          className="flex-1 h-14 text-base font-semibold"
+          className="flex-1 h-12 xs:h-14 text-xs xs:text-sm sm:text-base font-semibold min-w-0 px-2 xs:px-4"
           onClick={handleCallClick}
         >
           <a href={PHONE_HREF}>
-            <Phone className="mr-2 h-5 w-5" />
-            Call Now
+            <Phone className="mr-1 xs:mr-2 h-4 w-4 xs:h-5 xs:w-5 shrink-0" />
+            <span className="truncate">Call</span>
           </a>
         </Button>
         <Button
           asChild
           variant="navy"
-          className="flex-1 h-14 text-base font-semibold bg-steel-blue hover:bg-steel-blue-light text-concrete"
+          className="flex-1 h-12 xs:h-14 text-xs xs:text-sm sm:text-base font-semibold bg-steel-blue hover:bg-steel-blue-light text-concrete min-w-0 px-2 xs:px-4"
         >
           <Link to="/request-labour">
-            <FileText className="mr-2 h-5 w-5" />
-            Request Labour
+            <FileText className="mr-1 xs:mr-2 h-4 w-4 xs:h-5 xs:w-5 shrink-0" />
+            <span className="truncate">Request</span>
           </Link>
         </Button>
       </div>

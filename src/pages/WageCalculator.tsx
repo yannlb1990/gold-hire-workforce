@@ -287,11 +287,13 @@ export default function WageCalculator() {
                   <div className="pt-2">
                     <Tabs defaultValue="tfn" className="w-full">
                       <TabsList className="grid w-full grid-cols-2 mb-3 md:mb-4 h-10 md:h-auto">
-                        <TabsTrigger value="tfn" className="text-xs md:text-sm">
-                          TFN (Employee)
+                        <TabsTrigger value="tfn" className="text-[11px] xs:text-xs md:text-sm px-1 xs:px-2">
+                          <span className="xs:hidden">TFN</span>
+                          <span className="hidden xs:inline">TFN (Employee)</span>
                         </TabsTrigger>
-                        <TabsTrigger value="abn" className="text-xs md:text-sm">
-                          ABN (Contractor)
+                        <TabsTrigger value="abn" className="text-[11px] xs:text-xs md:text-sm px-1 xs:px-2">
+                          <span className="xs:hidden">ABN</span>
+                          <span className="hidden xs:inline">ABN (Contractor)</span>
                         </TabsTrigger>
                       </TabsList>
 
