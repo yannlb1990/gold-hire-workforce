@@ -106,23 +106,23 @@ export function CalculatorPreview() {
             {/* Results Row */}
             <div className="grid gap-2 xs:gap-3 md:gap-4 grid-cols-2 md:grid-cols-3 mb-4 md:mb-6">
               {/* TFN Result */}
-              <div className="bg-accent/10 border border-accent/20 rounded-lg md:rounded-xl p-2 xs:p-3 md:p-4 text-center">
+              <div className="bg-accent/10 border border-accent/20 rounded-lg md:rounded-xl p-2 xs:p-3 md:p-4 text-center overflow-hidden">
                 <p className="text-[9px] xs:text-[10px] md:text-xs text-concrete/60 mb-0.5 md:mb-1">TFN</p>
-                <p className="text-base xs:text-lg md:text-2xl font-bold text-concrete break-words">
+                <p className="text-sm xs:text-base md:text-2xl font-bold text-concrete truncate">
                   {formatCurrency(tfnResult.netTakeHome)}
                 </p>
-                <p className="text-[9px] xs:text-[10px] md:text-xs text-concrete/60">
+                <p className="text-[9px] xs:text-[10px] md:text-xs text-concrete/60 truncate">
                   {formatCurrency(tfnResult.weeklyTakeHome)}/wk
                 </p>
               </div>
 
               {/* ABN Result */}
-              <div className="bg-primary/10 border border-primary/20 rounded-lg md:rounded-xl p-2 xs:p-3 md:p-4 text-center">
+              <div className="bg-primary/10 border border-primary/20 rounded-lg md:rounded-xl p-2 xs:p-3 md:p-4 text-center overflow-hidden">
                 <p className="text-[9px] xs:text-[10px] md:text-xs text-concrete/60 mb-0.5 md:mb-1">ABN</p>
-                <p className="text-base xs:text-lg md:text-2xl font-bold text-concrete break-words">
+                <p className="text-sm xs:text-base md:text-2xl font-bold text-concrete truncate">
                   {formatCurrency(abnResult.netTakeHome)}
                 </p>
-                <p className="text-[9px] xs:text-[10px] md:text-xs text-concrete/60">
+                <p className="text-[9px] xs:text-[10px] md:text-xs text-concrete/60 truncate">
                   {formatCurrency(abnResult.weeklyTakeHome)}/wk
                 </p>
               </div>

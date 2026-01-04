@@ -24,17 +24,17 @@ export function TradesGrid() {
             <Link
               key={index}
               to={`/trades/${trade.slug}`}
-              className="card-dark group min-h-[80px] p-4 md:p-6"
+              className="card-dark group min-h-[80px] p-3 xs:p-4 md:p-6 overflow-hidden"
             >
-              <div className="flex items-center gap-3 md:gap-4">
-                <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-gold/10 flex items-center justify-center flex-shrink-0 group-hover:bg-gold/20 transition-colors">
-                  <trade.icon className="w-6 h-6 md:w-7 md:h-7 text-gold" />
+              <div className="flex items-center gap-2 xs:gap-3 md:gap-4">
+                <div className="w-10 h-10 xs:w-12 xs:h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-gold/10 flex items-center justify-center flex-shrink-0 group-hover:bg-gold/20 transition-colors">
+                  <trade.icon className="w-5 h-5 xs:w-6 xs:h-6 md:w-7 md:h-7 text-gold" />
                 </div>
-                <div className="flex-1 min-w-0">
-                  <h3 className="font-semibold text-sm md:text-base text-concrete group-hover:text-gold transition-colors">
+                <div className="flex-1 min-w-0 overflow-hidden">
+                  <h3 className="font-semibold text-xs xs:text-sm md:text-base text-concrete group-hover:text-gold transition-colors truncate">
                     {trade.name}
                   </h3>
-                  <p className="text-concrete/60 text-xs md:text-sm mt-0.5 md:mt-1 truncate">{trade.description}</p>
+                  <p className="text-concrete/60 text-[10px] xs:text-xs md:text-sm mt-0.5 md:mt-1 truncate">{trade.description}</p>
                 </div>
                 <ArrowRight className="w-4 h-4 md:w-5 md:h-5 text-roman-coffee group-hover:text-gold transition-colors flex-shrink-0" />
               </div>
